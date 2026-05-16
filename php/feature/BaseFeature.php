@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// Tronalddump SDK base feature
+
+class TronalddumpBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(TronalddumpContext $ctx, array $options): void {}
+    public function PostConstruct(TronalddumpContext $ctx): void {}
+    public function PostConstructEntity(TronalddumpContext $ctx): void {}
+    public function SetData(TronalddumpContext $ctx): void {}
+    public function GetData(TronalddumpContext $ctx): void {}
+    public function GetMatch(TronalddumpContext $ctx): void {}
+    public function SetMatch(TronalddumpContext $ctx): void {}
+    public function PrePoint(TronalddumpContext $ctx): void {}
+    public function PreSpec(TronalddumpContext $ctx): void {}
+    public function PreRequest(TronalddumpContext $ctx): void {}
+    public function PreResponse(TronalddumpContext $ctx): void {}
+    public function PreResult(TronalddumpContext $ctx): void {}
+    public function PreDone(TronalddumpContext $ctx): void {}
+    public function PreUnexpected(TronalddumpContext $ctx): void {}
+}

@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "quote": {
+      "QUOTE00": {
+        "appeared_at": "s64",
+        "count": "s65",
+        "created_at": "s66",
+        "embedded": {},
+        "link": {},
+        "quote_id": "QUOTE01",
+        "tag": [],
+        "total": "s6b",
+        "updated_at": "s6c",
+        "value": "s6d"
+      },
+      "QUOTE01": {
+        "appeared_at": "sc8",
+        "count": "sc9",
+        "created_at": "sca",
+        "embedded": {},
+        "link": {},
+        "quote_id": "QUOTE01",
+        "tag": [],
+        "total": "scf",
+        "updated_at": "sd0",
+        "value": "sd1"
+      },
+      "QUOTE02": {
+        "appeared_at": "s12c",
+        "count": "s12d",
+        "created_at": "s12e",
+        "embedded": {},
+        "link": {},
+        "quote_id": "QUOTE01",
+        "tag": [],
+        "total": "s133",
+        "updated_at": "s134",
+        "value": "s135"
+      }
+    }
+  },
+  "new": {
+    "quote": {
+      "quote_ref01": {
+        "appeared_at": "s190",
+        "count": "s191",
+        "created_at": "s192",
+        "embedded": {},
+        "link": {},
+        "quote_id": "QUOTE01",
+        "tag": [],
+        "total": "s197",
+        "updated_at": "s198",
+        "value": "s199"
+      }
+    }
+  }
+}

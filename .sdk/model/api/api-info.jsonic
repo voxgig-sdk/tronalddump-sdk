@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "tronalddump API Documentation"
+        url: "https://docs.tronalddump.io/"
+      }
+      description: "Api & web archive for the dumbest things Donald Trump has ever said. Service to retrieve and create tags, quotes sources, authors, and quotes."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.tronalddump.io"
+        }
+      ]
+      title: "tronalddump API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

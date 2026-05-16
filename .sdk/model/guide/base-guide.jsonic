@@ -1,0 +1,51 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 9
+  metrics: count: method: 9
+
+  entity: author: {
+    path: "/author": {
+      op: load: method: *GET
+    }
+    path: "/author/{author_id}": {
+      rename: param: "author_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: quote: {
+    path: "/quote/{quote_id}": {
+      rename: param: "quote_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/random/quote": {
+      op: list: method: *GET
+    }
+    path: "/search/quote": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: source: {
+    path: "/source": {
+      op: load: method: *GET
+    }
+    path: "/source/{source_id}": {
+      rename: param: "source_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: tag: {
+    path: "/tag": {
+      op: load: method: *GET
+    }
+    path: "/tag/{tag_value}": {
+      rename: param: "tag_value": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

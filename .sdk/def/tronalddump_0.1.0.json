@@ -1,0 +1,622 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "tronalddump API",
+    "description": "Api & web archive for the dumbest things Donald Trump has ever said. Service to retrieve and create tags, quotes sources, authors, and quotes.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "tronalddump API Documentation",
+      "url": "https://docs.tronalddump.io/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tronalddump.io",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/random/quote": {
+      "get": {
+        "summary": "Get a random quote",
+        "description": "Retrieve a random quote from Donald Trump",
+        "operationId": "getRandomQuote",
+        "tags": [
+          "Quotes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Quote not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/quote/{quote_id}": {
+      "get": {
+        "summary": "Get a specific quote by ID",
+        "description": "Retrieve a specific quote by its unique identifier",
+        "operationId": "getQuoteById",
+        "tags": [
+          "Quotes"
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "description": "The unique identifier of the quote",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Quote not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/search/quote": {
+      "get": {
+        "summary": "Search for quotes",
+        "description": "Search for quotes using a query string",
+        "operationId": "searchQuotes",
+        "tags": [
+          "Quotes"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query string",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteSearchResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No quotes found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tag": {
+      "get": {
+        "summary": "Get all tags",
+        "description": "Retrieve a list of all available tags",
+        "operationId": "getAllTags",
+        "tags": [
+          "Tags"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tag/{tag_value}": {
+      "get": {
+        "summary": "Get quotes by tag",
+        "description": "Retrieve quotes associated with a specific tag",
+        "operationId": "getQuotesByTag",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "name": "tag_value",
+            "in": "path",
+            "description": "The tag value to filter quotes",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteSearchResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tag not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/author": {
+      "get": {
+        "summary": "Get all authors",
+        "description": "Retrieve a list of all authors",
+        "operationId": "getAllAuthors",
+        "tags": [
+          "Authors"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/author/{author_id}": {
+      "get": {
+        "summary": "Get author by ID",
+        "description": "Retrieve a specific author by their unique identifier",
+        "operationId": "getAuthorById",
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "description": "The unique identifier of the author",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Author not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/source": {
+      "get": {
+        "summary": "Get all sources",
+        "description": "Retrieve a list of all quote sources",
+        "operationId": "getAllSources",
+        "tags": [
+          "Sources"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/source/{source_id}": {
+      "get": {
+        "summary": "Get source by ID",
+        "description": "Retrieve a specific source by its unique identifier",
+        "operationId": "getSourceById",
+        "tags": [
+          "Sources"
+        ],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "description": "The unique identifier of the source",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Source not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "appeared_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the quote appeared"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the quote was created in the system"
+          },
+          "quote_id": {
+            "type": "string",
+            "description": "Unique identifier for the quote"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags associated with the quote"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the quote was last updated"
+          },
+          "value": {
+            "type": "string",
+            "description": "The actual quote text"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links related to the quote"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "author": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Author"
+                }
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Author": {
+        "type": "object",
+        "properties": {
+          "author_id": {
+            "type": "string",
+            "description": "Unique identifier for the author"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the author"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly slug for the author"
+          },
+          "bio": {
+            "type": "string",
+            "description": "Biography of the author"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links related to the author"
+          }
+        }
+      },
+      "Source": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "description": "Unique identifier for the source"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the source"
+          },
+          "filename": {
+            "type": "string",
+            "description": "Filename associated with the source"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the source was created"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the source was last updated"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links related to the source"
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The tag value"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links related to the tag"
+          }
+        }
+      },
+      "QuoteSearchResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of quotes found"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of quotes available"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "quotes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links for pagination"
+          }
+        }
+      },
+      "TagListResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of tags"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of tags available"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "tags": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links"
+          }
+        }
+      },
+      "AuthorListResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of authors"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of authors available"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "authors": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links"
+          }
+        }
+      },
+      "SourceListResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of sources"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of sources available"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Quotes",
+      "description": "Operations related to Donald Trump quotes"
+    },
+    {
+      "name": "Tags",
+      "description": "Operations related to quote tags"
+    },
+    {
+      "name": "Authors",
+      "description": "Operations related to authors"
+    },
+    {
+      "name": "Sources",
+      "description": "Operations related to quote sources"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official tronalddump API Documentation",
+    "url": "https://docs.tronalddump.io/"
+  }
+}

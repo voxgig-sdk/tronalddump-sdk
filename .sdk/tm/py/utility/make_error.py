@@ -1,0 +1,64 @@
+# Tronalddump SDK utility: make_error
+
+from __future__ import annotations
+from core.operation import TronalddumpOperation
+from core.result import TronalddumpResult
+from core.control import TronalddumpControl
+from core.error import TronalddumpError
+
+
+def make_error_util(ctx, err):
+    if ctx is None:
+        from core.context import TronalddumpContext
+        ctx = TronalddumpContext({}, None)
+
+    op = ctx.op
+    if op is None:
+        op = TronalddumpOperation({})
+    opname = op.name
+    if opname == "" or opname == "_":
+        opname = "unknown operation"
+
+    result = ctx.result
+    if result is None:
+        result = TronalddumpResult({})
+    result.ok = False
+
+    if err is None:
+        err = result.err
+    if err is None:
+        err = ctx.make_error("unknown", "unknown error")
+
+    errmsg = ""
+    if isinstance(err, TronalddumpError):
+        errmsg = err.msg
+    elif hasattr(err, "msg") and err.msg is not None:
+        errmsg = err.msg
+    elif isinstance(err, str):
+        errmsg = err
+    else:
+        errmsg = str(err)
+
+    msg = "TronalddumpSDK: " + opname + ": " + errmsg
+    msg = ctx.utility.clean(ctx, msg)
+
+    result.err = None
+
+    spec = ctx.spec
+
+    if ctx.ctrl.explain is not None:
+        ctx.ctrl.explain["err"] = {"message": msg}
+
+    sdk_err = TronalddumpError("", msg, ctx)
+    sdk_err.result = ctx.utility.clean(ctx, result)
+    sdk_err.spec = ctx.utility.clean(ctx, spec)
+
+    if isinstance(err, TronalddumpError):
+        sdk_err.code = err.code
+
+    ctx.ctrl.err = sdk_err
+
+    if ctx.ctrl.throw_err is False:
+        return result.resdata, None
+
+    return None, sdk_err

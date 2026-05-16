@@ -1,0 +1,6 @@
+# Entity Models
+
+@"author.jsonic"
+@"quote.jsonic"
+@"source.jsonic"
+@"tag.jsonic"

@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "tag": {
+      "TAG00": {
+        "count": "s28",
+        "embedded": {},
+        "link": {},
+        "total": "s2b"
+      },
+      "TAG01": {
+        "count": "s50",
+        "embedded": {},
+        "link": {},
+        "total": "s53"
+      },
+      "TAG02": {
+        "count": "s78",
+        "embedded": {},
+        "link": {},
+        "total": "s7b"
+      }
+    }
+  },
+  "new": {
+    "tag": {
+      "tag_ref01": {
+        "count": "sa0",
+        "embedded": {},
+        "link": {},
+        "total": "sa3"
+      }
+    }
+  }
+}
