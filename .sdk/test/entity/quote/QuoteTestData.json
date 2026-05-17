@@ -11,7 +11,8 @@
         "tag": [],
         "total": "s6b",
         "updated_at": "s6c",
-        "value": "s6d"
+        "value": "s6d",
+        "id": "QUOTE00"
       },
       "QUOTE01": {
         "appeared_at": "sc8",
@@ -23,7 +24,8 @@
         "tag": [],
         "total": "scf",
         "updated_at": "sd0",
-        "value": "sd1"
+        "value": "sd1",
+        "id": "QUOTE01"
       },
       "QUOTE02": {
         "appeared_at": "s12c",
@@ -35,7 +37,8 @@
         "tag": [],
         "total": "s133",
         "updated_at": "s134",
-        "value": "s135"
+        "value": "s135",
+        "id": "QUOTE02"
       }
     }
   },

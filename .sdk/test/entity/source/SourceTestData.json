@@ -10,7 +10,8 @@
         "source_id": "SOURCE01",
         "total": "s60",
         "updated_at": "s61",
-        "url": "s62"
+        "url": "s62",
+        "id": "SOURCE00"
       },
       "SOURCE01": {
         "count": "sb4",
@@ -21,7 +22,8 @@
         "source_id": "SOURCE01",
         "total": "sba",
         "updated_at": "sbb",
-        "url": "sbc"
+        "url": "sbc",
+        "id": "SOURCE01"
       },
       "SOURCE02": {
         "count": "s10e",
@@ -32,7 +34,8 @@
         "source_id": "SOURCE01",
         "total": "s114",
         "updated_at": "s115",
-        "url": "s116"
+        "url": "s116",
+        "id": "SOURCE02"
       }
     }
   },

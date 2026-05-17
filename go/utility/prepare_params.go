@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/tronalddump-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/tronalddump-sdk/core"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/core"
 )
 
 func prepareParamsUtil(ctx *core.Context) map[string]any {

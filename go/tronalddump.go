@@ -1,10 +1,10 @@
 package voxgigtronalddumpsdk
 
 import (
-	"github.com/voxgig-sdk/tronalddump-sdk/core"
-	"github.com/voxgig-sdk/tronalddump-sdk/entity"
-	"github.com/voxgig-sdk/tronalddump-sdk/feature"
-	_ "github.com/voxgig-sdk/tronalddump-sdk/utility"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/core"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/entity"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/feature"
+	_ "github.com/voxgig-sdk/tronalddump-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/tronalddump-sdk"
-	"github.com/voxgig-sdk/tronalddump-sdk/core"
+	sdk "github.com/voxgig-sdk/tronalddump-sdk/go"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/core"
 )
 
 func TestTagDirect(t *testing.T) {

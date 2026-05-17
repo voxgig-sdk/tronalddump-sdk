@@ -9,7 +9,8 @@
         "link": {},
         "name": "s55",
         "slug": "s56",
-        "total": "s57"
+        "total": "s57",
+        "id": "AUTHOR00"
       },
       "AUTHOR01": {
         "author_id": "AUTHOR01",
@@ -19,7 +20,8 @@
         "link": {},
         "name": "sa5",
         "slug": "sa6",
-        "total": "sa7"
+        "total": "sa7",
+        "id": "AUTHOR01"
       },
       "AUTHOR02": {
         "author_id": "AUTHOR01",
@@ -29,7 +31,8 @@
         "link": {},
         "name": "sf5",
         "slug": "sf6",
-        "total": "sf7"
+        "total": "sf7",
+        "id": "AUTHOR02"
       }
     }
   },

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/tronalddump-sdk"
-	"github.com/voxgig-sdk/tronalddump-sdk/core"
+	sdk "github.com/voxgig-sdk/tronalddump-sdk/go"
+	"github.com/voxgig-sdk/tronalddump-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/tronalddump-sdk/go/utility/struct"
 )
 
 func TestQuoteEntity(t *testing.T) {

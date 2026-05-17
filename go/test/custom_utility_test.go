@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/tronalddump-sdk"
+	sdk "github.com/voxgig-sdk/tronalddump-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {
