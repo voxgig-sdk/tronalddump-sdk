@@ -17,7 +17,18 @@
           }
         ],
         "title": "tronalddump API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Archive of Donald Trump quotes with sources, authors and tags",
+        "homepage": "https://www.tronalddump.io",
+        "docs_url": "https://www.tronalddump.io",
+        "about_md": "The Tronald Dump API is a web archive of quotes attributed to Donald Trump, together with the sources they came from, the people who recorded them, and topical tags. It exposes quotes, sources, authors and tags as queryable resources, plus a convenience endpoint for fetching a random quote.\n\nWhat you get from the API:\n\n- Quotes attributed to Donald Trump\n- Sources the quotes are drawn from\n- Authors who recorded or submitted the quotes\n- Tags grouping quotes by topic\n- A random-quote endpoint at `GET /random/quote`\n\nThe API is served from `https://api.tronalddump.io`. Public catalogues currently flag the service as unreliable, so treat availability as best-effort and code defensively against failures.",
+        "entity_desc": {
+          "author": "A contributor who recorded or submitted quotes and sources to the archive.",
+          "quote": "A single quote attributed to Donald Trump, the core resource of the archive; a random quote is available at `GET /random/quote`.",
+          "source": "The originating source a quote was taken from (e.g. a speech, interview or tweet).",
+          "tag": "A topical label used to group related quotes."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +36,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "author": {

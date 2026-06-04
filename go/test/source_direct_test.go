@@ -117,14 +117,12 @@ func sourceDirectSetup(mockres any) *sourceDirectSetupResult {
 	env := envOverride(map[string]any{
 		"TRONALDDUMP_TEST_SOURCE_ENTID": map[string]any{},
 		"TRONALDDUMP_TEST_LIVE":    "FALSE",
-		"TRONALDDUMP_APIKEY":       "NONE",
 	})
 
 	live := env["TRONALDDUMP_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["TRONALDDUMP_APIKEY"],
 		}
 		client := sdk.NewTronalddumpSDK(mergedOpts)
 

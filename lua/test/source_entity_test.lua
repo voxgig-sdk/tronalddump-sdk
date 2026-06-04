@@ -91,7 +91,6 @@ function source_basic_setup(extra)
     ["TRONALDDUMP_TEST_SOURCE_ENTID"] = idmap,
     ["TRONALDDUMP_TEST_LIVE"] = "FALSE",
     ["TRONALDDUMP_TEST_EXPLAIN"] = "FALSE",
-    ["TRONALDDUMP_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function source_basic_setup(extra)
   if env["TRONALDDUMP_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["TRONALDDUMP_APIKEY"],
       },
       extra or {},
     })
