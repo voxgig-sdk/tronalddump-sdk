@@ -10,7 +10,7 @@ The TypeScript SDK for the Tronalddump API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install tronalddump
+npm install @voxgig-sdk/tronalddump
 ```
 ## Tutorial: your first API call
 

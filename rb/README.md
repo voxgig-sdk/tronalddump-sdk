@@ -10,13 +10,13 @@ The Ruby SDK for the Tronalddump API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install tronalddump-sdk
+gem install voxgig-sdk-tronalddump
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "tronalddump-sdk"
+gem "voxgig-sdk-tronalddump"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Python SDK for the Tronalddump API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install tronalddump-sdk
+pip install voxgig-sdk-tronalddump
 ```
 
 Or install from source:
