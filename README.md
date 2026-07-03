@@ -1,22 +1,8 @@
 # Tronalddump SDK
 
-Archive of Donald Trump quotes with sources, authors and tags
+tronalddump API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About tronalddump API
-
-The Tronald Dump API is a web archive of quotes attributed to Donald Trump, together with the sources they came from, the people who recorded them, and topical tags. It exposes quotes, sources, authors and tags as queryable resources, plus a convenience endpoint for fetching a random quote.
-
-What you get from the API:
-
-- Quotes attributed to Donald Trump
-- Sources the quotes are drawn from
-- Authors who recorded or submitted the quotes
-- Tags grouping quotes by topic
-- A random-quote endpoint at `GET /random/quote`
-
-The API is served from `https://api.tronalddump.io`. Public catalogues currently flag the service as unreliable, so treat availability as best-effort and code defensively against failures.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install tronalddump-sdk
 luarocks install tronalddump-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { TronalddumpSDK } from 'tronalddump'
 
-const client = new TronalddumpSDK({})
+const client = new TronalddumpSDK({
+  apikey: process.env.TRONALDDUMP_APIKEY,
+})
 
+// Load author data
+const author = await client.Author().load({})
+console.log(author.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Author** | A contributor who recorded or submitted quotes and sources to the archive. | `/author/{author_id}` |
-| **Quote** | A single quote attributed to Donald Trump, the core resource of the archive; a random quote is available at `GET /random/quote`. | `/random/quote` |
-| **Source** | The originating source a quote was taken from (e.g. a speech, interview or tweet). | `/source/{source_id}` |
-| **Tag** | A topical label used to group related quotes. | `/tag/{tag_value}` |
+| **Author** |  | `/author/{author_id}` |
+| **Quote** |  | `/random/quote` |
+| **Source** |  | `/source/{source_id}` |
+| **Tag** |  | `/tag/{tag_value}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from tronalddump_sdk import TronalddumpSDK
 
-client = TronalddumpSDK({})
+client = TronalddumpSDK({
+    "apikey": os.environ.get("TRONALDDUMP_APIKEY"),
+})
 
 
 # Load a specific author
-author, err = client.Author(None).load(
-    {"id": "example_id"}, None
-)
+author, err = client.Author().load({"id": "example_id"})
+print(author)
 ```
 
 ### PHP
@@ -130,13 +122,14 @@ author, err = client.Author(None).load(
 <?php
 require_once 'tronalddump_sdk.php';
 
-$client = new TronalddumpSDK([]);
+$client = new TronalddumpSDK([
+    "apikey" => getenv("TRONALDDUMP_APIKEY"),
+]);
 
 
 // Load a specific author
-[$author, $err] = $client->Author(null)->load(
-    ["id" => "example_id"], null
-);
+[$author, $err] = $client->Author()->load(["id" => "example_id"]);
+print_r($author);
 ```
 
 ### Golang
@@ -144,8 +137,13 @@ $client = new TronalddumpSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/tronalddump-sdk/go"
 
-client := sdk.NewTronalddumpSDK(map[string]any{})
+client := sdk.NewTronalddumpSDK(map[string]any{
+    "apikey": os.Getenv("TRONALDDUMP_APIKEY"),
+})
 
+// Load author data
+author, err := client.Author(nil).Load(map[string]any{}, nil)
+fmt.Println(author)
 ```
 
 ### Ruby
@@ -153,13 +151,14 @@ client := sdk.NewTronalddumpSDK(map[string]any{})
 ```ruby
 require_relative "Tronalddump_sdk"
 
-client = TronalddumpSDK.new({})
+client = TronalddumpSDK.new({
+  "apikey" => ENV["TRONALDDUMP_APIKEY"],
+})
 
 
 # Load a specific author
-author, err = client.Author(nil).load(
-  { "id" => "example_id" }, nil
-)
+author, err = client.Author().load({ "id" => "example_id" })
+puts author
 ```
 
 ### Lua
@@ -167,13 +166,14 @@ author, err = client.Author(nil).load(
 ```lua
 local sdk = require("tronalddump_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("TRONALDDUMP_APIKEY"),
+})
 
 
 -- Load a specific author
-local author, err = client:Author(nil):load(
-  { id = "example_id" }, nil
-)
+local author, err = client:Author():load({ id = "example_id" })
+print(author)
 ```
 
 ## Unit testing in offline mode
@@ -192,25 +192,21 @@ const result = await client.Author().load({ id: 'test01' })
 ### Python
 
 ```python
-client = TronalddumpSDK.test(None, None)
-result, err = client.Author(None).load(
-    {"id": "test01"}, None
-)
+client = TronalddumpSDK.test()
+result, err = client.Author().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = TronalddumpSDK::test(null, null);
-[$result, $err] = $client->Author(null)->load(
-    ["id" => "test01"], null
-);
+$client = TronalddumpSDK::test();
+[$result, $err] = $client->Author()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Author(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -219,19 +215,15 @@ result, err := client.Author(nil).Load(
 ### Ruby
 
 ```ruby
-client = TronalddumpSDK.test(nil, nil)
-result, err = client.Author(nil).load(
-  { "id" => "test01" }, nil
-)
+client = TronalddumpSDK.test
+result, err = client.Author().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Author(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Author():load({ id = "test01" })
 ```
 
 ## How it works
@@ -335,10 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the tronalddump API
-
-- Upstream: [https://www.tronalddump.io](https://www.tronalddump.io)
 
 ---
 

@@ -85,6 +85,7 @@ function tag_basic_setup($extra)
         "TRONALDDUMP_TEST_TAG_ENTID" => $idmap,
         "TRONALDDUMP_TEST_LIVE" => "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
+        "TRONALDDUMP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function tag_basic_setup($extra)
     if ($env["TRONALDDUMP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["TRONALDDUMP_APIKEY"],
             ],
             $extra ?? [],
         ]);

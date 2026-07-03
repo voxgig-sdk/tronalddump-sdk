@@ -117,6 +117,7 @@ func tagBasicSetup(extra map[string]any) *entityTestSetup {
 		"TRONALDDUMP_TEST_TAG_ENTID": idmap,
 		"TRONALDDUMP_TEST_LIVE":      "FALSE",
 		"TRONALDDUMP_TEST_EXPLAIN":   "FALSE",
+		"TRONALDDUMP_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["TRONALDDUMP_TEST_TAG_ENTID"])
@@ -127,6 +128,7 @@ func tagBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["TRONALDDUMP_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["TRONALDDUMP_APIKEY"],
 			},
 			extra,
 		})

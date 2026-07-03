@@ -135,12 +135,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'TRONALDDUMP_TEST_QUOTE_ENTID': {},
     'TRONALDDUMP_TEST_LIVE': 'FALSE',
+    'TRONALDDUMP_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.TRONALDDUMP_TEST_LIVE
 
   if (live) {
     const client = new TronalddumpSDK({
+      apikey: env.TRONALDDUMP_APIKEY,
     })
 
     let idmap: any = env['TRONALDDUMP_TEST_QUOTE_ENTID']

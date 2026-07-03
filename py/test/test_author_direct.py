@@ -69,12 +69,14 @@ def _author_direct_setup(mockres):
     env = runner.env_override({
         "TRONALDDUMP_TEST_AUTHOR_ENTID": {},
         "TRONALDDUMP_TEST_LIVE": "FALSE",
+        "TRONALDDUMP_APIKEY": "NONE",
     })
 
     live = env.get("TRONALDDUMP_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("TRONALDDUMP_APIKEY"),
         }
         client = TronalddumpSDK(merged_opts)
         return {

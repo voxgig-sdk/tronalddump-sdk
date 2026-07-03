@@ -77,12 +77,14 @@ function author_direct_setup($mockres)
     $env = Runner::env_override([
         "TRONALDDUMP_TEST_AUTHOR_ENTID" => [],
         "TRONALDDUMP_TEST_LIVE" => "FALSE",
+        "TRONALDDUMP_APIKEY" => "NONE",
     ]);
 
     $live = $env["TRONALDDUMP_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["TRONALDDUMP_APIKEY"],
         ];
         $client = new TronalddumpSDK($merged_opts);
         return [

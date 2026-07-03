@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://api.tronalddump.io',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -64,77 +68,79 @@ class Config {
     "author": {
       "fields": [
         {
+          "active": true,
           "name": "author_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "bio",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "count",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "embedded",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "link",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "slug",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         }
       ],
       "name": "author",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "author_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -158,26 +164,24 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/author",
               "parts": [
                 "author"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -188,132 +192,134 @@ class Config {
     "quote": {
       "fields": [
         {
+          "active": true,
           "name": "appeared_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "count",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "created_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "embedded",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "link",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "quote_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "tag",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "updated_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "value",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 9
         }
       ],
       "name": "quote",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/random/quote",
               "parts": [
                 "random",
                 "quote"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         },
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "query",
                     "orig": "query",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": 25,
                     "kind": "query",
                     "name": "size",
                     "orig": "size",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -334,19 +340,19 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "quote_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -370,11 +376,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -385,84 +389,86 @@ class Config {
     "source": {
       "fields": [
         {
+          "active": true,
           "name": "count",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "created_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "embedded",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "filename",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "link",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "source_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "updated_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "url",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 8
         }
       ],
       "name": "source",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "source_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -486,26 +492,24 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/source",
               "parts": [
                 "source"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -516,69 +520,71 @@ class Config {
     "tag": {
       "fields": [
         {
+          "active": true,
           "name": "count",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "embedded",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "link",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 3
         }
       ],
       "name": "tag",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "tag_value",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
+                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "example": 25,
                     "kind": "query",
                     "name": "size",
                     "orig": "size",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -604,26 +610,24 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/tag",
               "parts": [
                 "tag"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
