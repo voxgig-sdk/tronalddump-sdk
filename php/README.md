@@ -33,9 +33,10 @@ $client = new TronalddumpSDK();
 
 ```php
 try {
-    $result = $client->author()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Author record (throws on error).
+    $author = $client->Author()->load(["id" => "example_id"]);
+    print_r($author);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = TronalddumpSDK::test();
+$client = TronalddumpSDK::test([
+    "entity" => ["author" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->author()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$author = $client->Author()->load(["id" => "test01"]);
+print_r($author);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Author` | `($data): AuthorEntity` | Create a Author entity instance. |
+| `Author` | `($data): AuthorEntity` | Create an Author entity instance. |
 | `Quote` | `($data): QuoteEntity` | Create a Quote entity instance. |
 | `Source` | `($data): SourceEntity` | Create a Source entity instance. |
 | `Tag` | `($data): TagEntity` | Create a Tag entity instance. |
@@ -283,7 +288,7 @@ API path: `/tag/{tag_value}`
 
 ### Author
 
-Create an instance: `const author = client.author`
+Create an instance: `$author = $client->Author();`
 
 #### Operations
 
@@ -306,14 +311,15 @@ Create an instance: `const author = client.author`
 
 #### Example: Load
 
-```ts
-const author = await client.author.load({ id: 'author_id' })
+```php
+// load() returns the bare Author record (throws on error).
+$author = $client->Author()->load(["id" => "author_id"]);
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `$quote = $client->Quote();`
 
 #### Operations
 
@@ -339,20 +345,22 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```php
+// load() returns the bare Quote record (throws on error).
+$quote = $client->Quote()->load(["id" => "quote_id"]);
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```php
+// list() returns an array of Quote records (throws on error).
+$quotes = $client->Quote()->list();
 ```
 
 
 ### Source
 
-Create an instance: `const source = client.source`
+Create an instance: `$source = $client->Source();`
 
 #### Operations
 
@@ -376,14 +384,15 @@ Create an instance: `const source = client.source`
 
 #### Example: Load
 
-```ts
-const source = await client.source.load({ id: 'source_id' })
+```php
+// load() returns the bare Source record (throws on error).
+$source = $client->Source()->load(["id" => "source_id"]);
 ```
 
 
 ### Tag
 
-Create an instance: `const tag = client.tag`
+Create an instance: `$tag = $client->Tag();`
 
 #### Operations
 
@@ -402,8 +411,9 @@ Create an instance: `const tag = client.tag`
 
 #### Example: Load
 
-```ts
-const tag = await client.tag.load({ id: 'tag_id' })
+```php
+// load() returns the bare Tag record (throws on error).
+$tag = $client->Tag()->load(["id" => "tag_id"]);
 ```
 
 
@@ -478,7 +488,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$author = $client->author();
+$author = $client->Author();
 $author->load(["id" => "example_id"]);
 
 // $author->dataGet() now returns the loaded author data

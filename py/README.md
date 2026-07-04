@@ -33,10 +33,12 @@ client = TronalddumpSDK()
 
 ### 3. Load an author
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.author.load({"id": "example_id"})
-    print(result)
+    author = client.Author().load({"id": "example_id"})
+    print(author)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TronalddumpSDK.test()
 
-result = client.author.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+author = client.Author().load({"id": "test01"})
+# author contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Author` | `(data) -> AuthorEntity` | Create a Author entity instance. |
+| `Author` | `(data) -> AuthorEntity` | Create an Author entity instance. |
 | `Quote` | `(data) -> QuoteEntity` | Create a Quote entity instance. |
 | `Source` | `(data) -> SourceEntity` | Create a Source entity instance. |
 | `Tag` | `(data) -> TagEntity` | Create a Tag entity instance. |
@@ -278,7 +281,7 @@ API path: `/tag/{tag_value}`
 
 ### Author
 
-Create an instance: `const author = client.author`
+Create an instance: `author = client.Author()`
 
 #### Operations
 
@@ -301,14 +304,14 @@ Create an instance: `const author = client.author`
 
 #### Example: Load
 
-```ts
-const author = await client.author.load({ id: 'author_id' })
+```python
+author = client.Author().load({"id": "author_id"})
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `quote = client.Quote()`
 
 #### Operations
 
@@ -334,20 +337,20 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```python
+quote = client.Quote().load({"id": "quote_id"})
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```python
+quotes = client.Quote().list({})
 ```
 
 
 ### Source
 
-Create an instance: `const source = client.source`
+Create an instance: `source = client.Source()`
 
 #### Operations
 
@@ -371,14 +374,14 @@ Create an instance: `const source = client.source`
 
 #### Example: Load
 
-```ts
-const source = await client.source.load({ id: 'source_id' })
+```python
+source = client.Source().load({"id": "source_id"})
 ```
 
 
 ### Tag
 
-Create an instance: `const tag = client.tag`
+Create an instance: `tag = client.Tag()`
 
 #### Operations
 
@@ -397,8 +400,8 @@ Create an instance: `const tag = client.tag`
 
 #### Example: Load
 
-```ts
-const tag = await client.tag.load({ id: 'tag_id' })
+```python
+tag = client.Tag().load({"id": "tag_id"})
 ```
 
 
@@ -472,7 +475,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-author = client.author
+author = client.Author()
 author.load({"id": "example_id"})
 
 # author.data_get() now returns the loaded author data

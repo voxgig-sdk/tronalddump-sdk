@@ -4,90 +4,85 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Author:
-    author_id: Optional[str] = None
-    bio: Optional[str] = None
-    count: Optional[int] = None
-    embedded: Optional[dict] = None
-    link: Optional[dict] = None
-    name: Optional[str] = None
-    slug: Optional[str] = None
-    total: Optional[int] = None
+class Author(TypedDict, total=False):
+    author_id: str
+    bio: str
+    count: int
+    embedded: dict
+    link: dict
+    name: str
+    slug: str
+    total: int
 
 
-@dataclass
-class AuthorLoadMatch:
+class AuthorLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Quote:
-    appeared_at: Optional[str] = None
-    count: Optional[int] = None
-    created_at: Optional[str] = None
-    embedded: Optional[dict] = None
-    link: Optional[dict] = None
-    quote_id: Optional[str] = None
-    tag: Optional[list] = None
-    total: Optional[int] = None
-    updated_at: Optional[str] = None
-    value: Optional[str] = None
+class Quote(TypedDict, total=False):
+    appeared_at: str
+    count: int
+    created_at: str
+    embedded: dict
+    link: dict
+    quote_id: str
+    tag: list
+    total: int
+    updated_at: str
+    value: str
 
 
-@dataclass
-class QuoteLoadMatch:
+class QuoteLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class QuoteListMatch:
-    appeared_at: Optional[str] = None
-    count: Optional[int] = None
-    created_at: Optional[str] = None
-    embedded: Optional[dict] = None
-    link: Optional[dict] = None
-    quote_id: Optional[str] = None
-    tag: Optional[list] = None
-    total: Optional[int] = None
-    updated_at: Optional[str] = None
-    value: Optional[str] = None
+class QuoteListMatch(TypedDict, total=False):
+    appeared_at: str
+    count: int
+    created_at: str
+    embedded: dict
+    link: dict
+    quote_id: str
+    tag: list
+    total: int
+    updated_at: str
+    value: str
 
 
-@dataclass
-class Source:
-    count: Optional[int] = None
-    created_at: Optional[str] = None
-    embedded: Optional[dict] = None
-    filename: Optional[str] = None
-    link: Optional[dict] = None
-    source_id: Optional[str] = None
-    total: Optional[int] = None
-    updated_at: Optional[str] = None
-    url: Optional[str] = None
+class Source(TypedDict, total=False):
+    count: int
+    created_at: str
+    embedded: dict
+    filename: str
+    link: dict
+    source_id: str
+    total: int
+    updated_at: str
+    url: str
 
 
-@dataclass
-class SourceLoadMatch:
+class SourceLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Tag:
-    count: Optional[int] = None
-    embedded: Optional[dict] = None
-    link: Optional[dict] = None
-    total: Optional[int] = None
+class Tag(TypedDict, total=False):
+    count: int
+    embedded: dict
+    link: dict
+    total: int
 
 
-@dataclass
-class TagLoadMatch:
+class TagLoadMatch(TypedDict):
     id: str
-

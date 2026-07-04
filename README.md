@@ -26,9 +26,9 @@ import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
 
 const client = new TronalddumpSDK()
 
-// Load author data
-const author = await client.author.load({})
-console.log(author.data)
+// Load author data (returns a Author)
+const author = await client.Author().load()
+console.log(author)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from tronalddump_sdk import TronalddumpSDK
 client = TronalddumpSDK()
 
 
-# Load a specific author
-author = client.author.load({"id": "example_id"})
+# Load a specific author (returns the record, raises on error)
+author = client.Author().load({"id": "example_id"})
 print(author)
 ```
 
@@ -101,8 +101,8 @@ require_once 'tronalddump_sdk.php';
 $client = new TronalddumpSDK();
 
 
-// Load a specific author
-$author = $client->author()->load(["id" => "example_id"]);
+// Load a specific author (returns the bare record; throws on error)
+$author = $client->Author()->load(["id" => "example_id"]);
 print_r($author);
 ```
 
@@ -126,8 +126,8 @@ require_relative "Tronalddump_sdk"
 client = TronalddumpSDK.new
 
 
-# Load a specific author
-author = client.author.load({ "id" => "example_id" })
+# Load a specific author (returns the bare record; raises on error)
+author = client.Author.load({ "id" => "example_id" })
 puts author
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific author
-local author, err = client:author():load({ id = "example_id" })
+local author, err = client:Author():load({ id = "example_id" })
 print(author)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = TronalddumpSDK.test()
-const result = await client.author.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const author = await client.Author().load({ id: 'test01' })
+// author is a bare Author populated with mock data
+console.log(author)
 ```
 
 ### Python
 
 ```python
 client = TronalddumpSDK.test()
-result = client.author.load({"id": "test01"})
+author = client.Author().load({"id": "test01"})
+print(author)
 ```
 
 ### PHP
 
 ```php
-$client = TronalddumpSDK::test();
-$result = $client->author()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = TronalddumpSDK::test([
+    "entity" => ["author" => ["test01" => ["id" => "test01"]]],
+]);
+$author = $client->Author()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.Author(nil).Load(
 ### Ruby
 
 ```ruby
-client = TronalddumpSDK.test
-result = client.author.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = TronalddumpSDK.test({
+  "entity" => { "author" => { "test01" => { "id" => "test01" } } },
+})
+author = client.Author.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:author():load({ id = "test01" })
+local result, err = client:Author():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

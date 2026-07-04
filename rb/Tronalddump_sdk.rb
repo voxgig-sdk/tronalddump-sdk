@@ -208,52 +208,28 @@ class TronalddumpSDK
   end
 
 
-  # Idiomatic facade: client.author.list / client.author.load({ "id" => ... })
-  def author
-    require_relative 'entity/author_entity'
-    @author ||= AuthorEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.author instead.
+  # Canonical facade: client.Author.list / client.Author.load({ "id" => ... })
   def Author(data = nil)
     require_relative 'entity/author_entity'
     AuthorEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.quote.list / client.quote.load({ "id" => ... })
-  def quote
-    require_relative 'entity/quote_entity'
-    @quote ||= QuoteEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.quote instead.
+  # Canonical facade: client.Quote.list / client.Quote.load({ "id" => ... })
   def Quote(data = nil)
     require_relative 'entity/quote_entity'
     QuoteEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.source.list / client.source.load({ "id" => ... })
-  def source
-    require_relative 'entity/source_entity'
-    @source ||= SourceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.source instead.
+  # Canonical facade: client.Source.list / client.Source.load({ "id" => ... })
   def Source(data = nil)
     require_relative 'entity/source_entity'
     SourceEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.tag.list / client.tag.load({ "id" => ... })
-  def tag
-    require_relative 'entity/tag_entity'
-    @tag ||= TagEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.tag instead.
+  # Canonical facade: client.Tag.list / client.Tag.load({ "id" => ... })
   def Tag(data = nil)
     require_relative 'entity/tag_entity'
     TagEntity.new(self, data)

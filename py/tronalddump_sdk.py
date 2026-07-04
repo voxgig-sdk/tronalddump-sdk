@@ -220,73 +220,33 @@ class TronalddumpSDK:
         }
 
 
-    @property
-    def author(self):
-        """Idiomatic facade: client.author.list() / client.author.load({"id": ...})."""
-        from entity.author_entity import AuthorEntity
-        cached = getattr(self, "_author", None)
-        if cached is None:
-            cached = AuthorEntity(self, None)
-            self._author = cached
-        return cached
-
-    def Author(self, data=None):
-        # Deprecated: use client.author instead.
+    def Author(self, data=None) -> "AuthorEntity":
+        """Entity factory: client.Author().list({}) / client.Author().load({"id": ...})."""
         from entity.author_entity import AuthorEntity
         return AuthorEntity(self, data)
 
 
-    @property
-    def quote(self):
-        """Idiomatic facade: client.quote.list() / client.quote.load({"id": ...})."""
-        from entity.quote_entity import QuoteEntity
-        cached = getattr(self, "_quote", None)
-        if cached is None:
-            cached = QuoteEntity(self, None)
-            self._quote = cached
-        return cached
-
-    def Quote(self, data=None):
-        # Deprecated: use client.quote instead.
+    def Quote(self, data=None) -> "QuoteEntity":
+        """Entity factory: client.Quote().list({}) / client.Quote().load({"id": ...})."""
         from entity.quote_entity import QuoteEntity
         return QuoteEntity(self, data)
 
 
-    @property
-    def source(self):
-        """Idiomatic facade: client.source.list() / client.source.load({"id": ...})."""
-        from entity.source_entity import SourceEntity
-        cached = getattr(self, "_source", None)
-        if cached is None:
-            cached = SourceEntity(self, None)
-            self._source = cached
-        return cached
-
-    def Source(self, data=None):
-        # Deprecated: use client.source instead.
+    def Source(self, data=None) -> "SourceEntity":
+        """Entity factory: client.Source().list({}) / client.Source().load({"id": ...})."""
         from entity.source_entity import SourceEntity
         return SourceEntity(self, data)
 
 
-    @property
-    def tag(self):
-        """Idiomatic facade: client.tag.list() / client.tag.load({"id": ...})."""
-        from entity.tag_entity import TagEntity
-        cached = getattr(self, "_tag", None)
-        if cached is None:
-            cached = TagEntity(self, None)
-            self._tag = cached
-        return cached
-
-    def Tag(self, data=None):
-        # Deprecated: use client.tag instead.
+    def Tag(self, data=None) -> "TagEntity":
+        """Entity factory: client.Tag().list({}) / client.Tag().load({"id": ...})."""
         from entity.tag_entity import TagEntity
         return TagEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "TronalddumpSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class TronalddumpSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.author_entity import AuthorEntity
+    from entity.quote_entity import QuoteEntity
+    from entity.source_entity import SourceEntity
+    from entity.tag_entity import TagEntity

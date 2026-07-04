@@ -145,7 +145,7 @@ Alias for `TronalddumpSDK.test()`.
 ## AuthorEntity
 
 ```ts
-const author = client.author
+const author = client.Author()
 ```
 
 ### Fields
@@ -168,7 +168,7 @@ const author = client.author
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.author.load({ id: 'author_id' })
+const result = await client.Author().load({ id: 'author_id' })
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ Return a copy of the entity options.
 ## QuoteEntity
 
 ```ts
-const quote = client.quote
+const quote = client.Quote()
 ```
 
 ### Fields
@@ -227,7 +227,7 @@ const quote = client.quote
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.quote.list()
+const results = await client.Quote().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -235,7 +235,7 @@ const results = await client.quote.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.quote.load({ id: 'quote_id' })
+const result = await client.Quote().load({ id: 'quote_id' })
 ```
 
 ### Common Methods
@@ -269,7 +269,7 @@ Return a copy of the entity options.
 ## SourceEntity
 
 ```ts
-const source = client.source
+const source = client.Source()
 ```
 
 ### Fields
@@ -293,7 +293,7 @@ const source = client.source
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.source.load({ id: 'source_id' })
+const result = await client.Source().load({ id: 'source_id' })
 ```
 
 ### Common Methods
@@ -327,7 +327,7 @@ Return a copy of the entity options.
 ## TagEntity
 
 ```ts
-const tag = client.tag
+const tag = client.Tag()
 ```
 
 ### Fields
@@ -346,7 +346,7 @@ const tag = client.tag
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.tag.load({ id: 'tag_id' })
+const result = await client.Tag().load({ id: 'tag_id' })
 ```
 
 ### Common Methods

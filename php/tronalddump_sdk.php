@@ -233,10 +233,10 @@ class TronalddumpSDK
 
     private $_author = null;
 
-    // Idiomatic facade: $client->author()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Author() (PHP method
-    // names are case-insensitive).
-    public function author($data = null)
+    // Canonical facade: $client->Author()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->author()
+    // resolves here too.
+    public function Author($data = null)
     {
         require_once __DIR__ . '/entity/author_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class TronalddumpSDK
 
     private $_quote = null;
 
-    // Idiomatic facade: $client->quote()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Quote() (PHP method
-    // names are case-insensitive).
-    public function quote($data = null)
+    // Canonical facade: $client->Quote()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->quote()
+    // resolves here too.
+    public function Quote($data = null)
     {
         require_once __DIR__ . '/entity/quote_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class TronalddumpSDK
 
     private $_source = null;
 
-    // Idiomatic facade: $client->source()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Source() (PHP method
-    // names are case-insensitive).
-    public function source($data = null)
+    // Canonical facade: $client->Source()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->source()
+    // resolves here too.
+    public function Source($data = null)
     {
         require_once __DIR__ . '/entity/source_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class TronalddumpSDK
 
     private $_tag = null;
 
-    // Idiomatic facade: $client->tag()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Tag() (PHP method
-    // names are case-insensitive).
-    public function tag($data = null)
+    // Canonical facade: $client->Tag()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->tag()
+    // resolves here too.
+    public function Tag($data = null)
     {
         require_once __DIR__ . '/entity/tag_entity.php';
         if ($data === null) {

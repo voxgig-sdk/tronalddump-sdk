@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## AuthorEntity
 
 ```lua
-local author = client:author(nil)
+local author = client:Author(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local author = client:author(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:author():load({ id = "author_id" })
+local result, err = client:Author():load({ id = "author_id" })
 ```
 
 ### Common Methods
@@ -154,7 +154,7 @@ Return the entity name.
 ## QuoteEntity
 
 ```lua
-local quote = client:quote(nil)
+local quote = client:Quote(nil)
 ```
 
 ### Fields
@@ -179,7 +179,7 @@ local quote = client:quote(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:quote():list()
+local results, err = client:Quote():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -187,7 +187,7 @@ local results, err = client:quote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:quote():load({ id = "quote_id" })
+local result, err = client:Quote():load({ id = "quote_id" })
 ```
 
 ### Common Methods
@@ -223,7 +223,7 @@ Return the entity name.
 ## SourceEntity
 
 ```lua
-local source = client:source(nil)
+local source = client:Source(nil)
 ```
 
 ### Fields
@@ -247,7 +247,7 @@ local source = client:source(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:source():load({ id = "source_id" })
+local result, err = client:Source():load({ id = "source_id" })
 ```
 
 ### Common Methods
@@ -283,7 +283,7 @@ Return the entity name.
 ## TagEntity
 
 ```lua
-local tag = client:tag(nil)
+local tag = client:Tag(nil)
 ```
 
 ### Fields
@@ -302,7 +302,7 @@ local tag = client:tag(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:tag():load({ id = "tag_id" })
+local result, err = client:Tag():load({ id = "tag_id" })
 ```
 
 ### Common Methods

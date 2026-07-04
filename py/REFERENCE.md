@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AuthorEntity
 
 ```python
-author = client.author
+author = client.Author()
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ author = client.author
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.author.load({"id": "author_id"})
+result = client.Author().load({"id": "author_id"})
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## QuoteEntity
 
 ```python
-quote = client.quote
+quote = client.Quote()
 ```
 
 ### Fields
@@ -175,7 +175,9 @@ quote = client.quote
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.quote.list({})
+results = client.Quote().list({})
+for quote in results:
+    print(quote)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -183,7 +185,7 @@ results = client.quote.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.quote.load({"id": "quote_id"})
+result = client.Quote().load({"id": "quote_id"})
 ```
 
 ### Common Methods
@@ -218,7 +220,7 @@ Return the entity name.
 ## SourceEntity
 
 ```python
-source = client.source
+source = client.Source()
 ```
 
 ### Fields
@@ -242,7 +244,7 @@ source = client.source
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.source.load({"id": "source_id"})
+result = client.Source().load({"id": "source_id"})
 ```
 
 ### Common Methods
@@ -277,7 +279,7 @@ Return the entity name.
 ## TagEntity
 
 ```python
-tag = client.tag
+tag = client.Tag()
 ```
 
 ### Fields
@@ -296,7 +298,7 @@ tag = client.tag
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.tag.load({"id": "tag_id"})
+result = client.Tag().load({"id": "tag_id"})
 ```
 
 ### Common Methods
