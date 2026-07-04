@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `TronalddumpSDK.test()`.
 ## AuthorEntity
 
 ```ts
-const author = client.Author()
+const author = client.author
 ```
 
 ### Fields
@@ -169,7 +168,7 @@ const author = client.Author()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Author().load({ id: 'author_id' })
+const result = await client.author.load({ id: 'author_id' })
 ```
 
 ### Common Methods
@@ -203,7 +202,7 @@ Return a copy of the entity options.
 ## QuoteEntity
 
 ```ts
-const quote = client.Quote()
+const quote = client.quote
 ```
 
 ### Fields
@@ -228,7 +227,7 @@ const quote = client.Quote()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Quote().list()
+const results = await client.quote.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -236,7 +235,7 @@ const results = await client.Quote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Quote().load({ id: 'quote_id' })
+const result = await client.quote.load({ id: 'quote_id' })
 ```
 
 ### Common Methods
@@ -270,7 +269,7 @@ Return a copy of the entity options.
 ## SourceEntity
 
 ```ts
-const source = client.Source()
+const source = client.source
 ```
 
 ### Fields
@@ -294,7 +293,7 @@ const source = client.Source()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Source().load({ id: 'source_id' })
+const result = await client.source.load({ id: 'source_id' })
 ```
 
 ### Common Methods
@@ -328,7 +327,7 @@ Return a copy of the entity options.
 ## TagEntity
 
 ```ts
-const tag = client.Tag()
+const tag = client.tag
 ```
 
 ### Fields
@@ -347,7 +346,7 @@ const tag = client.Tag()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Tag().load({ id: 'tag_id' })
+const result = await client.tag.load({ id: 'tag_id' })
 ```
 
 ### Common Methods

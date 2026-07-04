@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "tronalddump API Documentation"
         url: "https://docs.tronalddump.io/"

@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:author():list() / client:author():load({ id = ... })
+function TronalddumpSDK:author(data)
+  local EntityMod = require("entity.author_entity")
+  if data == nil then
+    if self._author == nil then
+      self._author = EntityMod.new(self, nil)
+    end
+    return self._author
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:author() instead.
 function TronalddumpSDK:Author(data)
   local EntityMod = require("entity.author_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:quote():list() / client:quote():load({ id = ... })
+function TronalddumpSDK:quote(data)
+  local EntityMod = require("entity.quote_entity")
+  if data == nil then
+    if self._quote == nil then
+      self._quote = EntityMod.new(self, nil)
+    end
+    return self._quote
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:quote() instead.
 function TronalddumpSDK:Quote(data)
   local EntityMod = require("entity.quote_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:source():list() / client:source():load({ id = ... })
+function TronalddumpSDK:source(data)
+  local EntityMod = require("entity.source_entity")
+  if data == nil then
+    if self._source == nil then
+      self._source = EntityMod.new(self, nil)
+    end
+    return self._source
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:source() instead.
 function TronalddumpSDK:Source(data)
   local EntityMod = require("entity.source_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:tag():list() / client:tag():load({ id = ... })
+function TronalddumpSDK:tag(data)
+  local EntityMod = require("entity.tag_entity")
+  if data == nil then
+    if self._tag == nil then
+      self._tag = EntityMod.new(self, nil)
+    end
+    return self._tag
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:tag() instead.
 function TronalddumpSDK:Tag(data)
   local EntityMod = require("entity.tag_entity")
   return EntityMod.new(self, data)

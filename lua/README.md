@@ -9,12 +9,9 @@ The Lua SDK for the Tronalddump API — an entity-oriented client using Lua conv
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-tronalddump
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/tronalddump-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("tronalddump_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("TRONALDDUMP_APIKEY"),
-})
+local client = sdk.new()
 ```
 
-### 3. Load a author
+### 3. Load an author
 
 ```lua
-local result, err = client:Author():load({ id = "example_id" })
+local result, err = client:author():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Tronalddump():load({ id = "test01" })
+local result, err = client:author():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -121,7 +116,6 @@ Create a `.env.local` file at the project root:
 
 ```
 TRONALDDUMP_TEST_LIVE=TRUE
-TRONALDDUMP_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -281,7 +274,7 @@ API path: `/tag/{tag_value}`
 
 ### Author
 
-Create an instance: `const author = client.Author()`
+Create an instance: `const author = client.author`
 
 #### Operations
 
@@ -305,13 +298,13 @@ Create an instance: `const author = client.Author()`
 #### Example: Load
 
 ```ts
-const author = await client.Author().load({ id: 'author_id' })
+const author = await client.author.load({ id: 'author_id' })
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.Quote()`
+Create an instance: `const quote = client.quote`
 
 #### Operations
 
@@ -338,19 +331,19 @@ Create an instance: `const quote = client.Quote()`
 #### Example: Load
 
 ```ts
-const quote = await client.Quote().load({ id: 'quote_id' })
+const quote = await client.quote.load({ id: 'quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const quotes = await client.Quote().list()
+const quotes = await client.quote.list()
 ```
 
 
 ### Source
 
-Create an instance: `const source = client.Source()`
+Create an instance: `const source = client.source`
 
 #### Operations
 
@@ -375,13 +368,13 @@ Create an instance: `const source = client.Source()`
 #### Example: Load
 
 ```ts
-const source = await client.Source().load({ id: 'source_id' })
+const source = await client.source.load({ id: 'source_id' })
 ```
 
 
 ### Tag
 
-Create an instance: `const tag = client.Tag()`
+Create an instance: `const tag = client.tag`
 
 #### Operations
 
@@ -401,7 +394,7 @@ Create an instance: `const tag = client.Tag()`
 #### Example: Load
 
 ```ts
-const tag = await client.Tag().load({ id: 'tag_id' })
+const tag = await client.tag.load({ id: 'tag_id' })
 ```
 
 
@@ -476,11 +469,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local author = client:author()
+author:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- author:data_get() now returns the loaded author data
+-- author:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

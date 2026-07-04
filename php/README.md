@@ -9,9 +9,10 @@ The PHP SDK for the Tronalddump API — an entity-oriented client using PHP conv
 
 
 ## Install
-```bash
-composer require voxgig-sdk/tronalddump
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/tronalddump-sdk/releases](https://github.com/voxgig-sdk/tronalddump-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'tronalddump_sdk.php';
 
-$client = new TronalddumpSDK([
-    "apikey" => getenv("TRONALDDUMP_APIKEY"),
-]);
+$client = new TronalddumpSDK();
 ```
 
-### 3. Load a author
+### 3. Load an author
 
 ```php
-[$result, $err] = $client->Author()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->author()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = TronalddumpSDK::test();
 
-[$result, $err] = $client->Tronalddump()->load(["id" => "test01"]);
+$result = $client->author()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -116,7 +121,6 @@ Create a `.env.local` file at the project root:
 
 ```
 TRONALDDUMP_TEST_LIVE=TRUE
-TRONALDDUMP_APIKEY=<your-key>
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -188,8 +191,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -276,7 +283,7 @@ API path: `/tag/{tag_value}`
 
 ### Author
 
-Create an instance: `const author = client.Author()`
+Create an instance: `const author = client.author`
 
 #### Operations
 
@@ -300,13 +307,13 @@ Create an instance: `const author = client.Author()`
 #### Example: Load
 
 ```ts
-const author = await client.Author().load({ id: 'author_id' })
+const author = await client.author.load({ id: 'author_id' })
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.Quote()`
+Create an instance: `const quote = client.quote`
 
 #### Operations
 
@@ -333,19 +340,19 @@ Create an instance: `const quote = client.Quote()`
 #### Example: Load
 
 ```ts
-const quote = await client.Quote().load({ id: 'quote_id' })
+const quote = await client.quote.load({ id: 'quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const quotes = await client.Quote().list()
+const quotes = await client.quote.list()
 ```
 
 
 ### Source
 
-Create an instance: `const source = client.Source()`
+Create an instance: `const source = client.source`
 
 #### Operations
 
@@ -370,13 +377,13 @@ Create an instance: `const source = client.Source()`
 #### Example: Load
 
 ```ts
-const source = await client.Source().load({ id: 'source_id' })
+const source = await client.source.load({ id: 'source_id' })
 ```
 
 
 ### Tag
 
-Create an instance: `const tag = client.Tag()`
+Create an instance: `const tag = client.tag`
 
 #### Operations
 
@@ -396,7 +403,7 @@ Create an instance: `const tag = client.Tag()`
 #### Example: Load
 
 ```ts
-const tag = await client.Tag().load({ id: 'tag_id' })
+const tag = await client.tag.load({ id: 'tag_id' })
 ```
 
 
@@ -471,11 +478,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$author = $client->author();
+$author->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $author->dataGet() now returns the loaded author data
+// $author->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

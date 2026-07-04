@@ -49,8 +49,7 @@ class TestTagEntity:
         # LOAD
         tag_ref01_ent = client.Tag(None)
         tag_ref01_match_dt0 = {}
-        tag_ref01_data_dt0_loaded, err = tag_ref01_ent.load(tag_ref01_match_dt0, None)
-        assert err is None
+        tag_ref01_data_dt0_loaded = tag_ref01_ent.load(tag_ref01_match_dt0, None)
         assert tag_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _tag_basic_setup(extra):
         "TRONALDDUMP_TEST_TAG_ENTID": idmap,
         "TRONALDDUMP_TEST_LIVE": "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN": "FALSE",
-        "TRONALDDUMP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _tag_basic_setup(extra):
     if env.get("TRONALDDUMP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("TRONALDDUMP_APIKEY"),
             },
             extra or {},
         ])

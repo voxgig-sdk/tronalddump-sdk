@@ -49,8 +49,7 @@ class SourceEntityTest extends TestCase
         // LOAD
         $source_ref01_ent = $client->Source(null);
         $source_ref01_match_dt0 = [];
-        [$source_ref01_data_dt0_loaded, $err] = $source_ref01_ent->load($source_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $source_ref01_data_dt0_loaded = $source_ref01_ent->load($source_ref01_match_dt0, null);
         $this->assertNotNull($source_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function source_basic_setup($extra)
         "TRONALDDUMP_TEST_SOURCE_ENTID" => $idmap,
         "TRONALDDUMP_TEST_LIVE" => "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
-        "TRONALDDUMP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function source_basic_setup($extra)
     if ($env["TRONALDDUMP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TRONALDDUMP_APIKEY"],
             ],
             $extra ?? [],
         ]);

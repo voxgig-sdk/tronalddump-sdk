@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AuthorLoadMatch
+---@param ctrl? table
+---@return Author
+---@return string? err
 function AuthorEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

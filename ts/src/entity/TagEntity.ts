@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Tag,
+  TagLoadMatch,
+} from '../TronalddumpTypes'
 
 // TODO: needs Entity superclass
-class TagEntity extends TronalddumpEntityBase {
+class TagEntity extends TronalddumpEntityBase<Tag> {
 
   constructor(client: TronalddumpSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class TagEntity extends TronalddumpEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TagLoadMatch, ctrl?: Control): Promise<Tag> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class TagEntity extends TronalddumpEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Tag> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

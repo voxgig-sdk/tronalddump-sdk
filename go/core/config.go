@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://api.tronalddump.io",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -104,6 +101,7 @@ func MakeConfig() map[string]any {
 											"orig": "author_id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},
@@ -316,6 +314,7 @@ func MakeConfig() map[string]any {
 											"orig": "quote_id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},
@@ -432,6 +431,7 @@ func MakeConfig() map[string]any {
 											"orig": "source_id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},
@@ -528,6 +528,7 @@ func MakeConfig() map[string]any {
 											"orig": "tag_value",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 									"query": []any{

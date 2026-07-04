@@ -15,9 +15,6 @@ module TronalddumpConfig
       },
       "options" => {
         "base" => "https://api.tronalddump.io",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -105,6 +102,7 @@ module TronalddumpConfig
                         "orig" => "author_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -317,6 +315,7 @@ module TronalddumpConfig
                         "orig" => "quote_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -433,6 +432,7 @@ module TronalddumpConfig
                         "orig" => "source_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -529,6 +529,7 @@ module TronalddumpConfig
                         "orig" => "tag_value",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

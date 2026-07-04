@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'TRONALDDUMP_TEST_SOURCE_ENTID': idmap,
     'TRONALDDUMP_TEST_LIVE': 'FALSE',
     'TRONALDDUMP_TEST_EXPLAIN': 'FALSE',
-    'TRONALDDUMP_APIKEY': 'NONE',
   })
 
   idmap = env['TRONALDDUMP_TEST_SOURCE_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new TronalddumpSDK(merge([
       {
-        apikey: env.TRONALDDUMP_APIKEY,
       },
       extra
     ]))

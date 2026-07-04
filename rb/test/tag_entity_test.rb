@@ -42,8 +42,7 @@ class TagEntityTest < Minitest::Test
     # LOAD
     tag_ref01_ent = client.Tag(nil)
     tag_ref01_match_dt0 = {}
-    tag_ref01_data_dt0_loaded, err = tag_ref01_ent.load(tag_ref01_match_dt0, nil)
-    assert_nil err
+    tag_ref01_data_dt0_loaded = tag_ref01_ent.load(tag_ref01_match_dt0, nil)
     assert !tag_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def tag_basic_setup(extra)
     "TRONALDDUMP_TEST_TAG_ENTID" => idmap,
     "TRONALDDUMP_TEST_LIVE" => "FALSE",
     "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
-    "TRONALDDUMP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def tag_basic_setup(extra)
   if env["TRONALDDUMP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["TRONALDDUMP_APIKEY"],
       },
       extra || {},
     ])

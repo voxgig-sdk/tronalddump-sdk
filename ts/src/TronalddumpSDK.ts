@@ -5,6 +5,8 @@ import { QuoteEntity } from './entity/QuoteEntity'
 import { SourceEntity } from './entity/SourceEntity'
 import { TagEntity } from './entity/TagEntity'
 
+export type * from './TronalddumpTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -205,24 +207,56 @@ class TronalddumpSDK {
 
 
 
+  _author?: AuthorEntity
+
+  // Idiomatic facade: `client.author.list()` / `client.author.load({ id })`.
+  get author(): AuthorEntity {
+    return (this._author ??= new AuthorEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.author` instead. */
   Author(data?: any) {
     const self = this
     return new AuthorEntity(self,data)
   }
 
 
+  _quote?: QuoteEntity
+
+  // Idiomatic facade: `client.quote.list()` / `client.quote.load({ id })`.
+  get quote(): QuoteEntity {
+    return (this._quote ??= new QuoteEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.quote` instead. */
   Quote(data?: any) {
     const self = this
     return new QuoteEntity(self,data)
   }
 
 
+  _source?: SourceEntity
+
+  // Idiomatic facade: `client.source.list()` / `client.source.load({ id })`.
+  get source(): SourceEntity {
+    return (this._source ??= new SourceEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.source` instead. */
   Source(data?: any) {
     const self = this
     return new SourceEntity(self,data)
   }
 
 
+  _tag?: TagEntity
+
+  // Idiomatic facade: `client.tag.list()` / `client.tag.load({ id })`.
+  get tag(): TagEntity {
+    return (this._tag ??= new TagEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.tag` instead. */
   Tag(data?: any) {
     const self = this
     return new TagEntity(self,data)

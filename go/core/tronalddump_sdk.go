@@ -245,21 +245,33 @@ func (sdk *TronalddumpSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// Author returns a Author entity bound to this client.
+// Idiomatic usage: client.Author(nil).List(nil, nil) or
+// client.Author(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TronalddumpSDK) Author(data map[string]any) TronalddumpEntity {
 	return NewAuthorEntityFunc(sdk, data)
 }
 
 
+// Quote returns a Quote entity bound to this client.
+// Idiomatic usage: client.Quote(nil).List(nil, nil) or
+// client.Quote(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TronalddumpSDK) Quote(data map[string]any) TronalddumpEntity {
 	return NewQuoteEntityFunc(sdk, data)
 }
 
 
+// Source returns a Source entity bound to this client.
+// Idiomatic usage: client.Source(nil).List(nil, nil) or
+// client.Source(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TronalddumpSDK) Source(data map[string]any) TronalddumpEntity {
 	return NewSourceEntityFunc(sdk, data)
 }
 
 
+// Tag returns a Tag entity bound to this client.
+// Idiomatic usage: client.Tag(nil).List(nil, nil) or
+// client.Tag(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TronalddumpSDK) Tag(data map[string]any) TronalddumpEntity {
 	return NewTagEntityFunc(sdk, data)
 }

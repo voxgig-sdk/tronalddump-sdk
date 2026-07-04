@@ -9,9 +9,12 @@ The TypeScript SDK for the Tronalddump API — a type-safe, entity-oriented clie
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/tronalddump
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/tronalddump-sdk/releases](https://github.com/voxgig-sdk/tronalddump-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TronalddumpSDK } from 'tronalddump'
+import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
 
-const client = new TronalddumpSDK({
-  apikey: process.env.TRONALDDUMP_APIKEY,
-})
+const client = new TronalddumpSDK()
 ```
 
-### 3. Load a author
+### 3. Load an author
 
 ```ts
-const result = await client.Author().load({ id: 'example_id' })
+const result = await client.author.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = TronalddumpSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.author.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new TronalddumpSDK({ apikey: '...' })
+const client = new TronalddumpSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.author
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new TronalddumpSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 TRONALDDUMP_TEST_LIVE=TRUE
-TRONALDDUMP_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new TronalddumpSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new TronalddumpSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -326,7 +323,7 @@ API path: `/tag/{tag_value}`
 
 ### Author
 
-Create an instance: `const author = client.Author()`
+Create an instance: `const author = client.author`
 
 #### Operations
 
@@ -350,13 +347,13 @@ Create an instance: `const author = client.Author()`
 #### Example: Load
 
 ```ts
-const author = await client.Author().load({ id: 'author_id' })
+const author = await client.author.load({ id: 'author_id' })
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.Quote()`
+Create an instance: `const quote = client.quote`
 
 #### Operations
 
@@ -383,19 +380,19 @@ Create an instance: `const quote = client.Quote()`
 #### Example: Load
 
 ```ts
-const quote = await client.Quote().load({ id: 'quote_id' })
+const quote = await client.quote.load({ id: 'quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const quotes = await client.Quote().list()
+const quotes = await client.quote.list()
 ```
 
 
 ### Source
 
-Create an instance: `const source = client.Source()`
+Create an instance: `const source = client.source`
 
 #### Operations
 
@@ -420,13 +417,13 @@ Create an instance: `const source = client.Source()`
 #### Example: Load
 
 ```ts
-const source = await client.Source().load({ id: 'source_id' })
+const source = await client.source.load({ id: 'source_id' })
 ```
 
 
 ### Tag
 
-Create an instance: `const tag = client.Tag()`
+Create an instance: `const tag = client.tag`
 
 #### Operations
 
@@ -446,7 +443,7 @@ Create an instance: `const tag = client.Tag()`
 #### Example: Load
 
 ```ts
-const tag = await client.Tag().load({ id: 'tag_id' })
+const tag = await client.tag.load({ id: 'tag_id' })
 ```
 
 
@@ -507,7 +504,7 @@ tronalddump/
 Import the SDK from the package root:
 
 ```ts
-import { TronalddumpSDK } from 'tronalddump'
+import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
 ```
 
 ### Entity state
@@ -517,11 +514,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const author = client.author
+await author.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// author.data() now returns the loaded author data
+// author.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

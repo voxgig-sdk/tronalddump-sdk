@@ -42,8 +42,7 @@ class AuthorEntityTest < Minitest::Test
     # LOAD
     author_ref01_ent = client.Author(nil)
     author_ref01_match_dt0 = {}
-    author_ref01_data_dt0_loaded, err = author_ref01_ent.load(author_ref01_match_dt0, nil)
-    assert_nil err
+    author_ref01_data_dt0_loaded = author_ref01_ent.load(author_ref01_match_dt0, nil)
     assert !author_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def author_basic_setup(extra)
     "TRONALDDUMP_TEST_AUTHOR_ENTID" => idmap,
     "TRONALDDUMP_TEST_LIVE" => "FALSE",
     "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
-    "TRONALDDUMP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def author_basic_setup(extra)
   if env["TRONALDDUMP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["TRONALDDUMP_APIKEY"],
       },
       extra || {},
     ])

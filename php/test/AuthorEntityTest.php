@@ -49,8 +49,7 @@ class AuthorEntityTest extends TestCase
         // LOAD
         $author_ref01_ent = $client->Author(null);
         $author_ref01_match_dt0 = [];
-        [$author_ref01_data_dt0_loaded, $err] = $author_ref01_ent->load($author_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $author_ref01_data_dt0_loaded = $author_ref01_ent->load($author_ref01_match_dt0, null);
         $this->assertNotNull($author_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function author_basic_setup($extra)
         "TRONALDDUMP_TEST_AUTHOR_ENTID" => $idmap,
         "TRONALDDUMP_TEST_LIVE" => "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
-        "TRONALDDUMP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function author_basic_setup($extra)
     if ($env["TRONALDDUMP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TRONALDDUMP_APIKEY"],
             ],
             $extra ?? [],
         ]);

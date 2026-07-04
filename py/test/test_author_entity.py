@@ -49,8 +49,7 @@ class TestAuthorEntity:
         # LOAD
         author_ref01_ent = client.Author(None)
         author_ref01_match_dt0 = {}
-        author_ref01_data_dt0_loaded, err = author_ref01_ent.load(author_ref01_match_dt0, None)
-        assert err is None
+        author_ref01_data_dt0_loaded = author_ref01_ent.load(author_ref01_match_dt0, None)
         assert author_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _author_basic_setup(extra):
         "TRONALDDUMP_TEST_AUTHOR_ENTID": idmap,
         "TRONALDDUMP_TEST_LIVE": "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN": "FALSE",
-        "TRONALDDUMP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _author_basic_setup(extra):
     if env.get("TRONALDDUMP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("TRONALDDUMP_APIKEY"),
             },
             extra or {},
         ])

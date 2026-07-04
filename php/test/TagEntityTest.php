@@ -49,8 +49,7 @@ class TagEntityTest extends TestCase
         // LOAD
         $tag_ref01_ent = $client->Tag(null);
         $tag_ref01_match_dt0 = [];
-        [$tag_ref01_data_dt0_loaded, $err] = $tag_ref01_ent->load($tag_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $tag_ref01_data_dt0_loaded = $tag_ref01_ent->load($tag_ref01_match_dt0, null);
         $this->assertNotNull($tag_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function tag_basic_setup($extra)
         "TRONALDDUMP_TEST_TAG_ENTID" => $idmap,
         "TRONALDDUMP_TEST_LIVE" => "FALSE",
         "TRONALDDUMP_TEST_EXPLAIN" => "FALSE",
-        "TRONALDDUMP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function tag_basic_setup($extra)
     if ($env["TRONALDDUMP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TRONALDDUMP_APIKEY"],
             ],
             $extra ?? [],
         ]);

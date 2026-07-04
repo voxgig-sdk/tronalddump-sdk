@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.tronalddump.io',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -140,7 +136,8 @@ class Config {
                     "name": "id",
                     "orig": "author_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -352,7 +349,8 @@ class Config {
                     "name": "id",
                     "orig": "quote_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -468,7 +466,8 @@ class Config {
                     "name": "id",
                     "orig": "source_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -564,7 +563,8 @@ class Config {
                     "name": "id",
                     "orig": "tag_value",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

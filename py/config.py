@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://api.tronalddump.io",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -105,6 +102,7 @@ def make_config():
                       "orig": "author_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -317,6 +315,7 @@ def make_config():
                       "orig": "quote_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -433,6 +432,7 @@ def make_config():
                       "orig": "source_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -529,6 +529,7 @@ def make_config():
                       "orig": "tag_value",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
