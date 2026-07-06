@@ -37,7 +37,18 @@ export interface QuoteLoadMatch {
   id: string
 }
 
-export type QuoteListMatch = Partial<Quote>
+export interface QuoteListMatch {
+  appeared_at?: string
+  count?: number
+  created_at?: string
+  embedded?: Record<string, any>
+  link?: Record<string, any>
+  quote_id?: string
+  tag?: any[]
+  total?: number
+  updated_at?: string
+  value?: string
+}
 
 export interface Source {
   count?: number

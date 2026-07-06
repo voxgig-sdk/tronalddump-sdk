@@ -109,14 +109,14 @@ author := client.Author(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | ``$STRING`` | No |  |
-| `bio` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `slug` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `author_id` | `string` | No |  |
+| `bio` | `string` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `map[string]any` | No |  |
+| `link` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `slug` | `string` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -162,16 +162,16 @@ quote := client.Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `quote_id` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `value` | ``$STRING`` | No |  |
+| `appeared_at` | `string` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `map[string]any` | No |  |
+| `link` | `map[string]any` | No |  |
+| `quote_id` | `string` | No |  |
+| `tag` | `[]any` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
+| `value` | `string` | No |  |
 
 ### Operations
 
@@ -225,15 +225,15 @@ source := client.Source(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `source_id` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `map[string]any` | No |  |
+| `filename` | `string` | No |  |
+| `link` | `map[string]any` | No |  |
+| `source_id` | `string` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -279,10 +279,10 @@ tag := client.Tag(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `map[string]any` | No |  |
+| `link` | `map[string]any` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 

@@ -99,14 +99,14 @@ author = client.Author()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | ``$STRING`` | No |  |
-| `bio` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `slug` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `author_id` | `str` | No |  |
+| `bio` | `str` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `dict` | No |  |
+| `link` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `slug` | `str` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -157,25 +157,25 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `quote_id` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `value` | ``$STRING`` | No |  |
+| `appeared_at` | `str` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `str` | No |  |
+| `embedded` | `dict` | No |  |
+| `link` | `dict` | No |  |
+| `quote_id` | `str` | No |  |
+| `tag` | `list` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `str` | No |  |
+| `value` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Quote().list({})
+results = client.Quote().list()
 for quote in results:
     print(quote)
 ```
@@ -227,15 +227,15 @@ source = client.Source()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `source_id` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `str` | No |  |
+| `embedded` | `dict` | No |  |
+| `filename` | `str` | No |  |
+| `link` | `dict` | No |  |
+| `source_id` | `str` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
@@ -286,10 +286,10 @@ tag = client.Tag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `dict` | No |  |
+| `link` | `dict` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 

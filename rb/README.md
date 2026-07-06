@@ -4,6 +4,8 @@
 
 The Ruby SDK for the Tronalddump API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Author` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,6 +43,33 @@ end
 ```
 
 
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  author = client.Author.load({ "id" => "example_id" })
+rescue => err
+  warn "load failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -58,7 +87,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -89,7 +120,7 @@ client = TronalddumpSDK.test({
   "entity" => { "author" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
+# Entity ops return the bare mock record (raises on error).
 author = client.Author.load({ "id" => "test01" })
 puts author
 ```
@@ -179,10 +210,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -295,14 +323,14 @@ Create an instance: `author = client.Author`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | ``$STRING`` |  |
-| `bio` | ``$STRING`` |  |
-| `count` | ``$INTEGER`` |  |
-| `embedded` | ``$OBJECT`` |  |
-| `link` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `slug` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `author_id` | `String` |  |
+| `bio` | `String` |  |
+| `count` | `Integer` |  |
+| `embedded` | `Hash` |  |
+| `link` | `Hash` |  |
+| `name` | `String` |  |
+| `slug` | `String` |  |
+| `total` | `Integer` |  |
 
 #### Example: Load
 
@@ -327,16 +355,16 @@ Create an instance: `quote = client.Quote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appeared_at` | ``$STRING`` |  |
-| `count` | ``$INTEGER`` |  |
-| `created_at` | ``$STRING`` |  |
-| `embedded` | ``$OBJECT`` |  |
-| `link` | ``$OBJECT`` |  |
-| `quote_id` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
-| `updated_at` | ``$STRING`` |  |
-| `value` | ``$STRING`` |  |
+| `appeared_at` | `String` |  |
+| `count` | `Integer` |  |
+| `created_at` | `String` |  |
+| `embedded` | `Hash` |  |
+| `link` | `Hash` |  |
+| `quote_id` | `String` |  |
+| `tag` | `Array` |  |
+| `total` | `Integer` |  |
+| `updated_at` | `String` |  |
+| `value` | `String` |  |
 
 #### Example: Load
 
@@ -367,15 +395,15 @@ Create an instance: `source = client.Source`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `created_at` | ``$STRING`` |  |
-| `embedded` | ``$OBJECT`` |  |
-| `filename` | ``$STRING`` |  |
-| `link` | ``$OBJECT`` |  |
-| `source_id` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
-| `updated_at` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `count` | `Integer` |  |
+| `created_at` | `String` |  |
+| `embedded` | `Hash` |  |
+| `filename` | `String` |  |
+| `link` | `Hash` |  |
+| `source_id` | `String` |  |
+| `total` | `Integer` |  |
+| `updated_at` | `String` |  |
+| `url` | `String` |  |
 
 #### Example: Load
 
@@ -399,10 +427,10 @@ Create an instance: `tag = client.Tag`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `embedded` | ``$OBJECT`` |  |
-| `link` | ``$OBJECT`` |  |
-| `total` | ``$INTEGER`` |  |
+| `count` | `Integer` |  |
+| `embedded` | `Hash` |  |
+| `link` | `Hash` |  |
+| `total` | `Integer` |  |
 
 #### Example: Load
 
@@ -412,12 +440,16 @@ tag = client.Tag.load({ "id" => "tag_id" })
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -434,8 +466,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -486,7 +519,7 @@ stores the returned data and match criteria internally.
 author = client.Author
 author.load({ "id" => "example_id" })
 
-# author.data_get now returns the loaded author data
+# author.data_get now returns the author data from the last load
 # author.match_get returns the last match criteria
 ```
 

@@ -44,8 +44,7 @@ type QuoteLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// QuoteListMatch mirrors the quote fields as an all-optional match
-// filter (Go analog of Partial<Quote>).
+// QuoteListMatch is the typed request payload for Quote.ListTyped.
 type QuoteListMatch struct {
 	AppearedAt *string `json:"appeared_at,omitempty"`
 	Count *int `json:"count,omitempty"`

@@ -57,11 +57,11 @@ Create a new `SourceEntity` instance. Pass `null` for no initial data.
 
 Create a new `TagEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): TronalddumpUtility`
 
 Return a copy of the SDK utility object.
 
@@ -104,14 +104,14 @@ $author = $client->Author();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | ``$STRING`` | No |  |
-| `bio` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `slug` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `author_id` | `string` | No |  |
+| `bio` | `string` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `array` | No |  |
+| `link` | `array` | No |  |
+| `name` | `string` | No |  |
+| `slug` | `string` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -125,19 +125,19 @@ $result = $client->Author()->load(["id" => "author_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -146,7 +146,7 @@ Set the entity match criteria.
 Create a new `AuthorEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -163,25 +163,25 @@ $quote = $client->Quote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `quote_id` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `value` | ``$STRING`` | No |  |
+| `appeared_at` | `string` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `array` | No |  |
+| `link` | `array` | No |  |
+| `quote_id` | `string` | No |  |
+| `tag` | `array` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
+| `value` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Quote()->list([]);
+$results = $client->Quote()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -194,19 +194,19 @@ $result = $client->Quote()->load(["id" => "quote_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -215,7 +215,7 @@ Set the entity match criteria.
 Create a new `QuoteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -232,15 +232,15 @@ $source = $client->Source();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `source_id` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `array` | No |  |
+| `filename` | `string` | No |  |
+| `link` | `array` | No |  |
+| `source_id` | `string` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -254,19 +254,19 @@ $result = $client->Source()->load(["id" => "source_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -275,7 +275,7 @@ Set the entity match criteria.
 Create a new `SourceEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -292,10 +292,10 @@ $tag = $client->Tag();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `count` | `int` | No |  |
+| `embedded` | `array` | No |  |
+| `link` | `array` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -309,19 +309,19 @@ $result = $client->Tag()->load(["id" => "tag_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -330,7 +330,7 @@ Set the entity match criteria.
 Create a new `TagEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

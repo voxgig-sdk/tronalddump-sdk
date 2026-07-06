@@ -221,25 +221,25 @@ class TronalddumpSDK:
 
 
     def Author(self, data=None) -> "AuthorEntity":
-        """Entity factory: client.Author().list({}) / client.Author().load({"id": ...})."""
+        """Entity factory: client.Author().list() / client.Author().load({"id": ...})."""
         from entity.author_entity import AuthorEntity
         return AuthorEntity(self, data)
 
 
     def Quote(self, data=None) -> "QuoteEntity":
-        """Entity factory: client.Quote().list({}) / client.Quote().load({"id": ...})."""
+        """Entity factory: client.Quote().list() / client.Quote().load({"id": ...})."""
         from entity.quote_entity import QuoteEntity
         return QuoteEntity(self, data)
 
 
     def Source(self, data=None) -> "SourceEntity":
-        """Entity factory: client.Source().list({}) / client.Source().load({"id": ...})."""
+        """Entity factory: client.Source().list() / client.Source().load({"id": ...})."""
         from entity.source_entity import SourceEntity
         return SourceEntity(self, data)
 
 
     def Tag(self, data=None) -> "TagEntity":
-        """Entity factory: client.Tag().list({}) / client.Tag().load({"id": ...})."""
+        """Entity factory: client.Tag().list() / client.Tag().load({"id": ...})."""
         from entity.tag_entity import TagEntity
         return TagEntity(self, data)
 

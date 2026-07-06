@@ -102,14 +102,14 @@ local author = client:Author(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | ``$STRING`` | No |  |
-| `bio` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `slug` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `author_id` | `string` | No |  |
+| `bio` | `string` | No |  |
+| `count` | `number` | No |  |
+| `embedded` | `table` | No |  |
+| `link` | `table` | No |  |
+| `name` | `string` | No |  |
+| `slug` | `string` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 
@@ -161,16 +161,16 @@ local quote = client:Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `quote_id` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `value` | ``$STRING`` | No |  |
+| `appeared_at` | `string` | No |  |
+| `count` | `number` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `table` | No |  |
+| `link` | `table` | No |  |
+| `quote_id` | `string` | No |  |
+| `tag` | `table` | No |  |
+| `total` | `number` | No |  |
+| `updated_at` | `string` | No |  |
+| `value` | `string` | No |  |
 
 ### Operations
 
@@ -230,15 +230,15 @@ local source = client:Source(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `source_id` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `count` | `number` | No |  |
+| `created_at` | `string` | No |  |
+| `embedded` | `table` | No |  |
+| `filename` | `string` | No |  |
+| `link` | `table` | No |  |
+| `source_id` | `string` | No |  |
+| `total` | `number` | No |  |
+| `updated_at` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -290,10 +290,10 @@ local tag = client:Tag(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `count` | `number` | No |  |
+| `embedded` | `table` | No |  |
+| `link` | `table` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 

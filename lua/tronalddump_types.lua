@@ -35,6 +35,16 @@
 ---@field id string
 
 ---@class QuoteListMatch
+---@field appeared_at? string
+---@field count? number
+---@field created_at? string
+---@field embedded? table
+---@field link? table
+---@field quote_id? string
+---@field tag? table
+---@field total? number
+---@field updated_at? string
+---@field value? string
 
 ---@class Source
 ---@field count? number

@@ -8,7 +8,7 @@ Complete API reference for the Tronalddump Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'tronalddump_sdk'
+require_relative 'Tronalddump_sdk'
 
 client = TronalddumpSDK.new(options)
 ```
@@ -105,14 +105,14 @@ author = client.Author
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | ``$STRING`` | No |  |
-| `bio` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `slug` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `author_id` | `String` | No |  |
+| `bio` | `String` | No |  |
+| `count` | `Integer` | No |  |
+| `embedded` | `Hash` | No |  |
+| `link` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `slug` | `String` | No |  |
+| `total` | `Integer` | No |  |
 
 ### Operations
 
@@ -164,25 +164,25 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | ``$STRING`` | No |  |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `quote_id` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `value` | ``$STRING`` | No |  |
+| `appeared_at` | `String` | No |  |
+| `count` | `Integer` | No |  |
+| `created_at` | `String` | No |  |
+| `embedded` | `Hash` | No |  |
+| `link` | `Hash` | No |  |
+| `quote_id` | `String` | No |  |
+| `tag` | `Array` | No |  |
+| `total` | `Integer` | No |  |
+| `updated_at` | `String` | No |  |
+| `value` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Quote.list(nil)
+results = client.Quote.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -233,15 +233,15 @@ source = client.Source
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `source_id` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `count` | `Integer` | No |  |
+| `created_at` | `String` | No |  |
+| `embedded` | `Hash` | No |  |
+| `filename` | `String` | No |  |
+| `link` | `Hash` | No |  |
+| `source_id` | `String` | No |  |
+| `total` | `Integer` | No |  |
+| `updated_at` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
@@ -293,10 +293,10 @@ tag = client.Tag
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `embedded` | ``$OBJECT`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `count` | `Integer` | No |  |
+| `embedded` | `Hash` | No |  |
+| `link` | `Hash` | No |  |
+| `total` | `Integer` | No |  |
 
 ### Operations
 
