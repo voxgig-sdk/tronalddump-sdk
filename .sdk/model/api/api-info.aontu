@@ -16,9 +16,9 @@ main: {
           url: "https://api.tronalddump.io"
         }
       ]
+      summary: "Api & web archive for the dumbest things Donald Trump has ever said."
       title: "tronalddump API"
       version: "1.0.0"
+      website: "https://docs.tronalddump.io/"
     }
   }
-}
-

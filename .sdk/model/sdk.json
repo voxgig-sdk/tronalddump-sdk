@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -804,14 +801,17 @@
           "url": "https://docs.tronalddump.io/"
         },
         "description": "Api & web archive for the dumbest things Donald Trump has ever said. Service to retrieve and create tags, quotes sources, authors, and quotes.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.tronalddump.io"
           }
         ],
+        "summary": "Api & web archive for the dumbest things Donald Trump has ever said.",
         "title": "tronalddump API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://docs.tronalddump.io/"
       },
       "option": {},
       "target": {
@@ -864,6 +864,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -914,6 +917,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

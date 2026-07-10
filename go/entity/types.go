@@ -22,7 +22,7 @@ type Author struct {
 
 // AuthorLoadMatch is the typed request payload for Author.LoadTyped.
 type AuthorLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Quote is the typed data model for the quote entity.
@@ -41,7 +41,7 @@ type Quote struct {
 
 // QuoteLoadMatch is the typed request payload for Quote.LoadTyped.
 type QuoteLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // QuoteListMatch is the typed request payload for Quote.ListTyped.
@@ -73,7 +73,7 @@ type Source struct {
 
 // SourceLoadMatch is the typed request payload for Source.LoadTyped.
 type SourceLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Tag is the typed data model for the tag entity.
@@ -86,7 +86,7 @@ type Tag struct {
 
 // TagLoadMatch is the typed request payload for Tag.LoadTyped.
 type TagLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

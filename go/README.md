@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single author — the value is the loaded record.
-    author, err := client.Author(nil).Load(map[string]any{"id": "example"}, nil)
+    author, err := client.Author(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

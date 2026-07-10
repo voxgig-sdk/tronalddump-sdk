@@ -48,7 +48,7 @@ Author = Struct.new(
 # Request payload for Author#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AuthorLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -102,7 +102,7 @@ Quote = Struct.new(
 # Request payload for Quote#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 QuoteLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -197,7 +197,7 @@ Source = Struct.new(
 # Request payload for Source#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 SourceLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -227,7 +227,7 @@ Tag = Struct.new(
 # Request payload for Tag#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 TagLoadMatch = Struct.new(
   :id,
   keyword_init: true

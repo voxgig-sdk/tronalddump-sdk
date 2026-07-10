@@ -28,7 +28,7 @@ class Author
 /** Request payload for Author#load. */
 class AuthorLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Quote entity data model. */
@@ -49,7 +49,7 @@ class Quote
 /** Request payload for Quote#load. */
 class QuoteLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Request payload for Quote#list. */
@@ -84,7 +84,7 @@ class Source
 /** Request payload for Source#load. */
 class SourceLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Tag entity data model. */
@@ -99,6 +99,6 @@ class Tag
 /** Request payload for Tag#load. */
 class TagLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
