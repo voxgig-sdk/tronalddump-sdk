@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Tronalddump SDK exists test
 
 local sdk = require("tronalddump_sdk")
 
