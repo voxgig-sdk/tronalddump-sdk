@@ -12,6 +12,7 @@ guide: {
     path: "/author/{author_id}": {
       rename: param: "author_id": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body._links`")|top
     }
   }
 
@@ -35,6 +36,7 @@ guide: {
     path: "/source/{source_id}": {
       rename: param: "source_id": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body._links`")|top
     }
   }
 

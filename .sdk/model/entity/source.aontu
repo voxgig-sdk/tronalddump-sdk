@@ -11,44 +11,19 @@ main: kit: entity: source: {
       type: "`$INTEGER`"
     }
     {
-      name: "created_at"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "embedded"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "filename"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "link"
+      name: "links"
       req: false
       type: "`$OBJECT`"
-    }
-    {
-      name: "source_id"
-      req: false
-      type: "`$STRING`"
     }
     {
       name: "total"
       req: false
       type: "`$INTEGER`"
-    }
-    {
-      name: "updated_at"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "url"
-      req: false
-      type: "`$STRING`"
     }
   ]
 
@@ -87,7 +62,7 @@ main: kit: entity: source: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body._links`"
           }
         }
         {

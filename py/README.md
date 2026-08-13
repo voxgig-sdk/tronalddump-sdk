@@ -38,7 +38,7 @@ client = TronalddumpSDK()
 
 ### 3. Load an author
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    author = client.Author().load({"id": "example_id"})
+    author = client.Author().load()
     print(author)
 except Exception as err:
     print(f"load failed: {err}")
@@ -122,7 +122,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TronalddumpSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 author = client.Author().load({"id": "test01"})
 # author contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -244,13 +245,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `author_id` |  |
-| `bio` |  |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
-| `name` |  |
-| `slug` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -265,9 +262,9 @@ API path: `/author/{author_id}`
 | `count` |  |
 | `created_at` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `quote_id` |  |
-| `tag` |  |
+| `tags` |  |
 | `total` |  |
 | `updated_at` |  |
 | `value` |  |
@@ -281,14 +278,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `created_at` |  |
 | `embedded` |  |
-| `filename` |  |
-| `link` |  |
-| `source_id` |  |
+| `links` |  |
 | `total` |  |
-| `updated_at` |  |
-| `url` |  |
 
 Operations: Load.
 
@@ -300,7 +292,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -326,13 +318,9 @@ Create an instance: `author = client.Author()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `str` |  |
-| `bio` | `str` |  |
 | `count` | `int` |  |
 | `embedded` | `dict` |  |
-| `link` | `dict` |  |
-| `name` | `str` |  |
-| `slug` | `str` |  |
+| `links` | `dict` |  |
 | `total` | `int` |  |
 
 #### Example: Load
@@ -361,9 +349,9 @@ Create an instance: `quote = client.Quote()`
 | `count` | `int` |  |
 | `created_at` | `str` |  |
 | `embedded` | `dict` |  |
-| `link` | `dict` |  |
+| `links` | `dict` |  |
 | `quote_id` | `str` |  |
-| `tag` | `list` |  |
+| `tags` | `list` |  |
 | `total` | `int` |  |
 | `updated_at` | `str` |  |
 | `value` | `str` |  |
@@ -396,14 +384,9 @@ Create an instance: `source = client.Source()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `created_at` | `str` |  |
 | `embedded` | `dict` |  |
-| `filename` | `str` |  |
-| `link` | `dict` |  |
-| `source_id` | `str` |  |
+| `links` | `dict` |  |
 | `total` | `int` |  |
-| `updated_at` | `str` |  |
-| `url` | `str` |  |
 
 #### Example: Load
 
@@ -428,7 +411,7 @@ Create an instance: `tag = client.Tag()`
 | --- | --- | --- |
 | `count` | `int` |  |
 | `embedded` | `dict` |  |
-| `link` | `dict` |  |
+| `links` | `dict` |  |
 | `total` | `int` |  |
 
 #### Example: Load
@@ -514,7 +497,7 @@ stores the returned data and match criteria internally.
 
 ```python
 author = client.Author()
-author.load({"id": "example_id"})
+author.load()
 
 # author.data_get() now returns the author data from the last load
 # author.match_get() returns the last match criteria

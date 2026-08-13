@@ -10,37 +10,21 @@
 
 # Author entity data model.
 #
-# @!attribute [rw] author_id
-#   @return [String, nil]
-#
-# @!attribute [rw] bio
-#   @return [String, nil]
-#
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] slug
-#   @return [String, nil]
 #
 # @!attribute [rw] total
 #   @return [Integer, nil]
 Author = Struct.new(
-  :author_id,
-  :bio,
   :count,
   :embedded,
-  :link,
-  :name,
-  :slug,
+  :links,
   :total,
   keyword_init: true
 )
@@ -68,13 +52,13 @@ AuthorLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] quote_id
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
@@ -90,9 +74,9 @@ Quote = Struct.new(
   :count,
   :created_at,
   :embedded,
-  :link,
+  :links,
   :quote_id,
-  :tag,
+  :tags,
   :total,
   :updated_at,
   :value,
@@ -122,13 +106,13 @@ QuoteLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] quote_id
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
@@ -144,9 +128,9 @@ QuoteListMatch = Struct.new(
   :count,
   :created_at,
   :embedded,
-  :link,
+  :links,
   :quote_id,
-  :tag,
+  :tags,
   :total,
   :updated_at,
   :value,
@@ -158,39 +142,19 @@ QuoteListMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] created_at
-#   @return [String, nil]
-#
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
-# @!attribute [rw] filename
-#   @return [String, nil]
-#
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
-#
-# @!attribute [rw] source_id
-#   @return [String, nil]
 #
 # @!attribute [rw] total
 #   @return [Integer, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
 Source = Struct.new(
   :count,
-  :created_at,
   :embedded,
-  :filename,
-  :link,
-  :source_id,
+  :links,
   :total,
-  :updated_at,
-  :url,
   keyword_init: true
 )
 
@@ -211,7 +175,7 @@ SourceLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] total
@@ -219,7 +183,7 @@ SourceLoadMatch = Struct.new(
 Tag = Struct.new(
   :count,
   :embedded,
-  :link,
+  :links,
   :total,
   keyword_init: true
 )

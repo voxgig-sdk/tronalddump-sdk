@@ -99,13 +99,9 @@ author = client.Author()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `str` | No |  |
-| `bio` | `str` | No |  |
 | `count` | `int` | No |  |
 | `embedded` | `dict` | No |  |
-| `link` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `slug` | `str` | No |  |
+| `links` | `dict` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations
@@ -161,9 +157,9 @@ quote = client.Quote()
 | `count` | `int` | No |  |
 | `created_at` | `str` | No |  |
 | `embedded` | `dict` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `quote_id` | `str` | No |  |
-| `tag` | `list` | No |  |
+| `tags` | `list` | No |  |
 | `total` | `int` | No |  |
 | `updated_at` | `str` | No |  |
 | `value` | `str` | No |  |
@@ -228,14 +224,9 @@ source = client.Source()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
-| `created_at` | `str` | No |  |
 | `embedded` | `dict` | No |  |
-| `filename` | `str` | No |  |
-| `link` | `dict` | No |  |
-| `source_id` | `str` | No |  |
+| `links` | `dict` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `str` | No |  |
-| `url` | `str` | No |  |
 
 ### Operations
 
@@ -288,7 +279,7 @@ tag = client.Tag()
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
 | `embedded` | `dict` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations

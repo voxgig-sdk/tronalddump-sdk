@@ -35,59 +35,31 @@ class TronalddumpConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'author_id',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 0,
-            ],
-            [
-              'active' => true,
-              'name' => 'bio',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 1,
-            ],
-            [
-              'active' => true,
               'name' => 'count',
               'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 2,
+              'index$' => 0,
             ],
             [
               'active' => true,
               'name' => 'embedded',
               'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 3,
+              'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'link',
+              'name' => 'links',
               'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 4,
-            ],
-            [
-              'active' => true,
-              'name' => 'name',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 5,
-            ],
-            [
-              'active' => true,
-              'name' => 'slug',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 6,
+              'index$' => 2,
             ],
             [
               'active' => true,
               'name' => 'total',
               'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 7,
+              'index$' => 3,
             ],
           ],
           'name' => 'author',
@@ -111,6 +83,7 @@ class TronalddumpConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/author/{author_id}',
                   'parts' => [
@@ -129,13 +102,14 @@ class TronalddumpConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body._links`',
                   ],
                   'index$' => 0,
                 ],
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/author',
                   'parts' => [
@@ -188,7 +162,7 @@ class TronalddumpConfig
             ],
             [
               'active' => true,
-              'name' => 'link',
+              'name' => 'links',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 4,
@@ -202,7 +176,7 @@ class TronalddumpConfig
             ],
             [
               'active' => true,
-              'name' => 'tag',
+              'name' => 'tags',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 6,
@@ -238,6 +212,7 @@ class TronalddumpConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/random/quote',
                   'parts' => [
@@ -290,6 +265,7 @@ class TronalddumpConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search/quote',
                   'parts' => [
@@ -324,6 +300,7 @@ class TronalddumpConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quote/{quote_id}',
                   'parts' => [
@@ -365,59 +342,24 @@ class TronalddumpConfig
             ],
             [
               'active' => true,
-              'name' => 'created_at',
+              'name' => 'embedded',
               'req' => false,
-              'type' => '`$STRING`',
+              'type' => '`$OBJECT`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'embedded',
+              'name' => 'links',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'filename',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 3,
-            ],
-            [
-              'active' => true,
-              'name' => 'link',
-              'req' => false,
-              'type' => '`$OBJECT`',
-              'index$' => 4,
-            ],
-            [
-              'active' => true,
-              'name' => 'source_id',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 5,
-            ],
-            [
-              'active' => true,
               'name' => 'total',
               'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 6,
-            ],
-            [
-              'active' => true,
-              'name' => 'updated_at',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 7,
-            ],
-            [
-              'active' => true,
-              'name' => 'url',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 8,
+              'index$' => 3,
             ],
           ],
           'name' => 'source',
@@ -441,6 +383,7 @@ class TronalddumpConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/source/{source_id}',
                   'parts' => [
@@ -459,13 +402,14 @@ class TronalddumpConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body._links`',
                   ],
                   'index$' => 0,
                 ],
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/source',
                   'parts' => [
@@ -504,7 +448,7 @@ class TronalddumpConfig
             ],
             [
               'active' => true,
-              'name' => 'link',
+              'name' => 'links',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 2,
@@ -558,6 +502,7 @@ class TronalddumpConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tag/{tag_value}',
                   'parts' => [
@@ -585,6 +530,7 @@ class TronalddumpConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tag',
                   'parts' => [

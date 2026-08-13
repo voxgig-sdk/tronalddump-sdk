@@ -34,7 +34,7 @@ client = TronalddumpSDK.new
 
 ```ruby
 begin
-  # load returns the bare Author record (raises on error).
+  # load returns the ENTITY — call data_get for the Author record (raises on error).
   author = client.Author.load({ "id" => "example_id" })
   puts author
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  author = client.Author.load({ "id" => "example_id" })
+  author = client.Author.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -120,7 +120,8 @@ client = TronalddumpSDK.test({
   "entity" => { "author" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 author = client.Author.load({ "id" => "test01" })
 puts author
 ```
@@ -241,13 +242,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `author_id` |  |
-| `bio` |  |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
-| `name` |  |
-| `slug` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -262,9 +259,9 @@ API path: `/author/{author_id}`
 | `count` |  |
 | `created_at` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `quote_id` |  |
-| `tag` |  |
+| `tags` |  |
 | `total` |  |
 | `updated_at` |  |
 | `value` |  |
@@ -278,14 +275,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `created_at` |  |
 | `embedded` |  |
-| `filename` |  |
-| `link` |  |
-| `source_id` |  |
+| `links` |  |
 | `total` |  |
-| `updated_at` |  |
-| `url` |  |
 
 Operations: Load.
 
@@ -297,7 +289,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -323,19 +315,15 @@ Create an instance: `author = client.Author`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `String` |  |
-| `bio` | `String` |  |
 | `count` | `Integer` |  |
 | `embedded` | `Hash` |  |
-| `link` | `Hash` |  |
-| `name` | `String` |  |
-| `slug` | `String` |  |
+| `links` | `Hash` |  |
 | `total` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Author record (raises on error).
+# load returns the ENTITY — call data_get for the Author record (raises on error).
 author = client.Author.load({ "id" => "author_id" })
 ```
 
@@ -359,9 +347,9 @@ Create an instance: `quote = client.Quote`
 | `count` | `Integer` |  |
 | `created_at` | `String` |  |
 | `embedded` | `Hash` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `quote_id` | `String` |  |
-| `tag` | `Array` |  |
+| `tags` | `Array` |  |
 | `total` | `Integer` |  |
 | `updated_at` | `String` |  |
 | `value` | `String` |  |
@@ -369,7 +357,7 @@ Create an instance: `quote = client.Quote`
 #### Example: Load
 
 ```ruby
-# load returns the bare Quote record (raises on error).
+# load returns the ENTITY — call data_get for the Quote record (raises on error).
 quote = client.Quote.load({ "id" => "quote_id" })
 ```
 
@@ -396,19 +384,14 @@ Create an instance: `source = client.Source`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `created_at` | `String` |  |
 | `embedded` | `Hash` |  |
-| `filename` | `String` |  |
-| `link` | `Hash` |  |
-| `source_id` | `String` |  |
+| `links` | `Hash` |  |
 | `total` | `Integer` |  |
-| `updated_at` | `String` |  |
-| `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Source record (raises on error).
+# load returns the ENTITY — call data_get for the Source record (raises on error).
 source = client.Source.load({ "id" => "source_id" })
 ```
 
@@ -429,13 +412,13 @@ Create an instance: `tag = client.Tag`
 | --- | --- | --- |
 | `count` | `Integer` |  |
 | `embedded` | `Hash` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `total` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Tag record (raises on error).
+# load returns the ENTITY — call data_get for the Tag record (raises on error).
 tag = client.Tag.load({ "id" => "tag_id" })
 ```
 
@@ -517,7 +500,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 author = client.Author
-author.load({ "id" => "example_id" })
+author.load()
 
 # author.data_get now returns the author data from the last load
 # author.match_get returns the last match criteria

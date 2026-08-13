@@ -104,13 +104,9 @@ $author = $client->Author();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `string` | No |  |
-| `bio` | `string` | No |  |
 | `count` | `int` | No |  |
 | `embedded` | `array` | No |  |
-| `link` | `array` | No |  |
-| `name` | `string` | No |  |
-| `slug` | `string` | No |  |
+| `links` | `array` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations
@@ -167,9 +163,9 @@ $quote = $client->Quote();
 | `count` | `int` | No |  |
 | `created_at` | `string` | No |  |
 | `embedded` | `array` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `quote_id` | `string` | No |  |
-| `tag` | `array` | No |  |
+| `tags` | `array` | No |  |
 | `total` | `int` | No |  |
 | `updated_at` | `string` | No |  |
 | `value` | `string` | No |  |
@@ -233,14 +229,9 @@ $source = $client->Source();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
-| `created_at` | `string` | No |  |
 | `embedded` | `array` | No |  |
-| `filename` | `string` | No |  |
-| `link` | `array` | No |  |
-| `source_id` | `string` | No |  |
+| `links` | `array` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
-| `url` | `string` | No |  |
 
 ### Operations
 
@@ -294,7 +285,7 @@ $tag = $client->Tag();
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
 | `embedded` | `array` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations

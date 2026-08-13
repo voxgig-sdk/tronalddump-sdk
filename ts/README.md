@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const author = await client.Author().load({ id: "example_id" })
+  const author = await client.Author().load()
   console.log(author)
 } catch (err) {
   console.error('load failed:', err)
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = TronalddumpSDK.test()
 
 const author = await client.Author().load({ id: 'test01' })
-// author is a bare entity populated with mock response data
+// author is the entity, populated with mock response data
+// — call author.data() for the record itself
 console.log(author)
 ```
 
@@ -290,13 +291,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `author_id` |  |
-| `bio` |  |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
-| `name` |  |
-| `slug` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: load.
@@ -311,9 +308,9 @@ API path: `/author/{author_id}`
 | `count` |  |
 | `created_at` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `quote_id` |  |
-| `tag` |  |
+| `tags` |  |
 | `total` |  |
 | `updated_at` |  |
 | `value` |  |
@@ -327,14 +324,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `created_at` |  |
 | `embedded` |  |
-| `filename` |  |
-| `link` |  |
-| `source_id` |  |
+| `links` |  |
 | `total` |  |
-| `updated_at` |  |
-| `url` |  |
 
 Operations: load.
 
@@ -346,7 +338,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: load.
@@ -372,13 +364,9 @@ Create an instance: `const author = client.Author()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `string` |  |
-| `bio` | `string` |  |
 | `count` | `number` |  |
 | `embedded` | `Record<string, any>` |  |
-| `link` | `Record<string, any>` |  |
-| `name` | `string` |  |
-| `slug` | `string` |  |
+| `links` | `Record<string, any>` |  |
 | `total` | `number` |  |
 
 #### Example: Load
@@ -407,9 +395,9 @@ Create an instance: `const quote = client.Quote()`
 | `count` | `number` |  |
 | `created_at` | `string` |  |
 | `embedded` | `Record<string, any>` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `quote_id` | `string` |  |
-| `tag` | `any[]` |  |
+| `tags` | `any[]` |  |
 | `total` | `number` |  |
 | `updated_at` | `string` |  |
 | `value` | `string` |  |
@@ -442,14 +430,9 @@ Create an instance: `const source = client.Source()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `created_at` | `string` |  |
 | `embedded` | `Record<string, any>` |  |
-| `filename` | `string` |  |
-| `link` | `Record<string, any>` |  |
-| `source_id` | `string` |  |
+| `links` | `Record<string, any>` |  |
 | `total` | `number` |  |
-| `updated_at` | `string` |  |
-| `url` | `string` |  |
 
 #### Example: Load
 
@@ -474,7 +457,7 @@ Create an instance: `const tag = client.Tag()`
 | --- | --- | --- |
 | `count` | `number` |  |
 | `embedded` | `Record<string, any>` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `total` | `number` |  |
 
 #### Example: Load
@@ -554,7 +537,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const author = client.Author()
-await author.load({ id: "example_id" })
+await author.load()
 
 // author.data() now returns the author data from the last `load`
 // author.match() returns { id: "example_id" }

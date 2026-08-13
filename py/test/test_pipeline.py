@@ -16,11 +16,11 @@
 import pytest
 
 from tronalddump_sdk import TronalddumpSDK
-from core.error import TronalddumpError
-from core.result import TronalddumpResult
-from core.response import TronalddumpResponse
-from core.spec import TronalddumpSpec
-from feature.base_feature import TronalddumpBaseFeature
+from tronalddump_sdk.core.error import TronalddumpError
+from tronalddump_sdk.core.result import TronalddumpResult
+from tronalddump_sdk.core.response import TronalddumpResponse
+from tronalddump_sdk.core.spec import TronalddumpSpec
+from tronalddump_sdk.feature.base_feature import TronalddumpBaseFeature
 
 
 def _client():

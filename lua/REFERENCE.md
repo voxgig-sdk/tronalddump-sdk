@@ -102,13 +102,9 @@ local author = client:Author(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `string` | No |  |
-| `bio` | `string` | No |  |
 | `count` | `number` | No |  |
 | `embedded` | `table` | No |  |
-| `link` | `table` | No |  |
-| `name` | `string` | No |  |
-| `slug` | `string` | No |  |
+| `links` | `table` | No |  |
 | `total` | `number` | No |  |
 
 ### Operations
@@ -165,9 +161,9 @@ local quote = client:Quote(nil)
 | `count` | `number` | No |  |
 | `created_at` | `string` | No |  |
 | `embedded` | `table` | No |  |
-| `link` | `table` | No |  |
+| `links` | `table` | No |  |
 | `quote_id` | `string` | No |  |
-| `tag` | `table` | No |  |
+| `tags` | `table` | No |  |
 | `total` | `number` | No |  |
 | `updated_at` | `string` | No |  |
 | `value` | `string` | No |  |
@@ -231,14 +227,9 @@ local source = client:Source(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `number` | No |  |
-| `created_at` | `string` | No |  |
 | `embedded` | `table` | No |  |
-| `filename` | `string` | No |  |
-| `link` | `table` | No |  |
-| `source_id` | `string` | No |  |
+| `links` | `table` | No |  |
 | `total` | `number` | No |  |
-| `updated_at` | `string` | No |  |
-| `url` | `string` | No |  |
 
 ### Operations
 
@@ -292,7 +283,7 @@ local tag = client:Tag(nil)
 | --- | --- | --- | --- |
 | `count` | `number` | No |  |
 | `embedded` | `table` | No |  |
-| `link` | `table` | No |  |
+| `links` | `table` | No |  |
 | `total` | `number` | No |  |
 
 ### Operations

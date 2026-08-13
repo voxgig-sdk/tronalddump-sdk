@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-author, err := client.Author(nil).Load(map[string]any{"id": "example_id"}, nil)
+author, err := client.Author(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
@@ -263,13 +263,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"author_id"` |  |
-| `"bio"` |  |
 | `"count"` |  |
 | `"embedded"` |  |
-| `"link"` |  |
-| `"name"` |  |
-| `"slug"` |  |
+| `"links"` |  |
 | `"total"` |  |
 
 Operations: Load.
@@ -284,9 +280,9 @@ API path: `/author/{author_id}`
 | `"count"` |  |
 | `"created_at"` |  |
 | `"embedded"` |  |
-| `"link"` |  |
+| `"links"` |  |
 | `"quote_id"` |  |
-| `"tag"` |  |
+| `"tags"` |  |
 | `"total"` |  |
 | `"updated_at"` |  |
 | `"value"` |  |
@@ -300,14 +296,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"created_at"` |  |
 | `"embedded"` |  |
-| `"filename"` |  |
-| `"link"` |  |
-| `"source_id"` |  |
+| `"links"` |  |
 | `"total"` |  |
-| `"updated_at"` |  |
-| `"url"` |  |
 
 Operations: Load.
 
@@ -319,7 +310,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `"count"` |  |
 | `"embedded"` |  |
-| `"link"` |  |
+| `"links"` |  |
 | `"total"` |  |
 
 Operations: Load.
@@ -345,13 +336,9 @@ Create an instance: `author := client.Author(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `string` |  |
-| `bio` | `string` |  |
 | `count` | `int` |  |
 | `embedded` | `map[string]any` |  |
-| `link` | `map[string]any` |  |
-| `name` | `string` |  |
-| `slug` | `string` |  |
+| `links` | `map[string]any` |  |
 | `total` | `int` |  |
 
 #### Example: Load
@@ -384,9 +371,9 @@ Create an instance: `quote := client.Quote(nil)`
 | `count` | `int` |  |
 | `created_at` | `string` |  |
 | `embedded` | `map[string]any` |  |
-| `link` | `map[string]any` |  |
+| `links` | `map[string]any` |  |
 | `quote_id` | `string` |  |
-| `tag` | `[]any` |  |
+| `tags` | `[]any` |  |
 | `total` | `int` |  |
 | `updated_at` | `string` |  |
 | `value` | `string` |  |
@@ -427,14 +414,9 @@ Create an instance: `source := client.Source(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `created_at` | `string` |  |
 | `embedded` | `map[string]any` |  |
-| `filename` | `string` |  |
-| `link` | `map[string]any` |  |
-| `source_id` | `string` |  |
+| `links` | `map[string]any` |  |
 | `total` | `int` |  |
-| `updated_at` | `string` |  |
-| `url` | `string` |  |
 
 #### Example: Load
 
@@ -463,7 +445,7 @@ Create an instance: `tag := client.Tag(nil)`
 | --- | --- | --- |
 | `count` | `int` |  |
 | `embedded` | `map[string]any` |  |
-| `link` | `map[string]any` |  |
+| `links` | `map[string]any` |  |
 | `total` | `int` |  |
 
 #### Example: Load
@@ -551,7 +533,7 @@ stores the returned data and match criteria internally.
 
 ```go
 author := client.Author(nil)
-author.Load(map[string]any{"id": "example_id"}, nil)
+author.Load(nil, nil)
 
 // author.Data() now returns the author data from the last load
 // author.Match() returns the last match criteria

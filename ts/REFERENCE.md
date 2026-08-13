@@ -152,13 +152,9 @@ const author = client.Author()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `string` | No |  |
-| `bio` | `string` | No |  |
 | `count` | `number` | No |  |
 | `embedded` | `Record<string, any>` | No |  |
-| `link` | `Record<string, any>` | No |  |
-| `name` | `string` | No |  |
-| `slug` | `string` | No |  |
+| `links` | `Record<string, any>` | No |  |
 | `total` | `number` | No |  |
 
 ### Operations
@@ -213,9 +209,9 @@ const quote = client.Quote()
 | `count` | `number` | No |  |
 | `created_at` | `string` | No |  |
 | `embedded` | `Record<string, any>` | No |  |
-| `link` | `Record<string, any>` | No |  |
+| `links` | `Record<string, any>` | No |  |
 | `quote_id` | `string` | No |  |
-| `tag` | `any[]` | No |  |
+| `tags` | `any[]` | No |  |
 | `total` | `number` | No |  |
 | `updated_at` | `string` | No |  |
 | `value` | `string` | No |  |
@@ -277,14 +273,9 @@ const source = client.Source()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `number` | No |  |
-| `created_at` | `string` | No |  |
 | `embedded` | `Record<string, any>` | No |  |
-| `filename` | `string` | No |  |
-| `link` | `Record<string, any>` | No |  |
-| `source_id` | `string` | No |  |
+| `links` | `Record<string, any>` | No |  |
 | `total` | `number` | No |  |
-| `updated_at` | `string` | No |  |
-| `url` | `string` | No |  |
 
 ### Operations
 
@@ -336,7 +327,7 @@ const tag = client.Tag()
 | --- | --- | --- | --- |
 | `count` | `number` | No |  |
 | `embedded` | `Record<string, any>` | No |  |
-| `link` | `Record<string, any>` | No |  |
+| `links` | `Record<string, any>` | No |  |
 | `total` | `number` | No |  |
 
 ### Operations

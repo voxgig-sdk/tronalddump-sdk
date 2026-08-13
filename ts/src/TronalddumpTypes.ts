@@ -6,13 +6,9 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Author {
-  author_id?: string
-  bio?: string
   count?: number
   embedded?: Record<string, any>
-  link?: Record<string, any>
-  name?: string
-  slug?: string
+  links?: Record<string, any>
   total?: number
 }
 
@@ -25,9 +21,9 @@ export interface Quote {
   count?: number
   created_at?: string
   embedded?: Record<string, any>
-  link?: Record<string, any>
+  links?: Record<string, any>
   quote_id?: string
-  tag?: any[]
+  tags?: any[]
   total?: number
   updated_at?: string
   value?: string
@@ -42,9 +38,9 @@ export interface QuoteListMatch {
   count?: number
   created_at?: string
   embedded?: Record<string, any>
-  link?: Record<string, any>
+  links?: Record<string, any>
   quote_id?: string
-  tag?: any[]
+  tags?: any[]
   total?: number
   updated_at?: string
   value?: string
@@ -52,14 +48,9 @@ export interface QuoteListMatch {
 
 export interface Source {
   count?: number
-  created_at?: string
   embedded?: Record<string, any>
-  filename?: string
-  link?: Record<string, any>
-  source_id?: string
+  links?: Record<string, any>
   total?: number
-  updated_at?: string
-  url?: string
 }
 
 export interface SourceLoadMatch {
@@ -69,7 +60,7 @@ export interface SourceLoadMatch {
 export interface Tag {
   count?: number
   embedded?: Record<string, any>
-  link?: Record<string, any>
+  links?: Record<string, any>
   total?: number
 }
 

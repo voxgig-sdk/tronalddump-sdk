@@ -2,36 +2,24 @@
   "existing": {
     "author": {
       "AUTHOR00": {
-        "author_id": "AUTHOR01",
-        "bio": "s51",
-        "count": "s52",
+        "count": "s28",
         "embedded": {},
-        "link": {},
-        "name": "s55",
-        "slug": "s56",
-        "total": "s57",
+        "links": {},
+        "total": "s2b",
         "id": "AUTHOR00"
       },
       "AUTHOR01": {
-        "author_id": "AUTHOR01",
-        "bio": "sa1",
-        "count": "sa2",
+        "count": "s50",
         "embedded": {},
-        "link": {},
-        "name": "sa5",
-        "slug": "sa6",
-        "total": "sa7",
+        "links": {},
+        "total": "s53",
         "id": "AUTHOR01"
       },
       "AUTHOR02": {
-        "author_id": "AUTHOR01",
-        "bio": "sf1",
-        "count": "sf2",
+        "count": "s78",
         "embedded": {},
-        "link": {},
-        "name": "sf5",
-        "slug": "sf6",
-        "total": "sf7",
+        "links": {},
+        "total": "s7b",
         "id": "AUTHOR02"
       }
     }
@@ -39,14 +27,10 @@
   "new": {
     "author": {
       "author_ref01": {
-        "author_id": "AUTHOR01",
-        "bio": "s141",
-        "count": "s142",
+        "count": "sa0",
         "embedded": {},
-        "link": {},
-        "name": "s145",
-        "slug": "s146",
-        "total": "s147"
+        "links": {},
+        "total": "sa3"
       }
     }
   }

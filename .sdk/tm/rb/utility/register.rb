@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ TronalddumpUtility.registrar = ->(u) {
   u.prepare_params = TronalddumpUtilities::PrepareParams
   u.prepare_path = TronalddumpUtilities::PreparePath
   u.prepare_query = TronalddumpUtilities::PrepareQuery
+  u.graphql_body = TronalddumpUtilities::GraphqlBody
+  u.graphql_errors = TronalddumpUtilities::GraphqlErrors
   u.result_basic = TronalddumpUtilities::ResultBasic
   u.result_body = TronalddumpUtilities::ResultBody
   u.result_headers = TronalddumpUtilities::ResultHeaders

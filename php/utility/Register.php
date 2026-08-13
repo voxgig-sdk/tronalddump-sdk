@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ TronalddumpUtility::setRegistrar(function (TronalddumpUtility $u): void {
     $u->prepare_params = [TronalddumpPrepareParams::class, 'call'];
     $u->prepare_path = [TronalddumpPreparePath::class, 'call'];
     $u->prepare_query = [TronalddumpPrepareQuery::class, 'call'];
+    $u->graphql_body = [TronalddumpGraphql::class, 'body'];
+    $u->graphql_errors = [TronalddumpGraphql::class, 'errors'];
     $u->result_basic = [TronalddumpResultBasic::class, 'call'];
     $u->result_body = [TronalddumpResultBody::class, 'call'];
     $u->result_headers = [TronalddumpResultHeaders::class, 'call'];

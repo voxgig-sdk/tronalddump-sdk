@@ -35,7 +35,7 @@ $client = new TronalddumpSDK();
 
 ```php
 try {
-    // load() returns the bare Author record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Author record (throws on error).
     $author = $client->Author()->load(["id" => "example_id"]);
     print_r($author);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $author = $client->Author()->load(["id" => "example_id"]);
+    $author = $client->Author()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -126,7 +126,8 @@ $client = TronalddumpSDK::test([
     "entity" => ["author" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $author = $client->Author()->load(["id" => "test01"]);
 print_r($author);
 ```
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -251,13 +252,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `author_id` |  |
-| `bio` |  |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
-| `name` |  |
-| `slug` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -272,9 +269,9 @@ API path: `/author/{author_id}`
 | `count` |  |
 | `created_at` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `quote_id` |  |
-| `tag` |  |
+| `tags` |  |
 | `total` |  |
 | `updated_at` |  |
 | `value` |  |
@@ -288,14 +285,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `created_at` |  |
 | `embedded` |  |
-| `filename` |  |
-| `link` |  |
-| `source_id` |  |
+| `links` |  |
 | `total` |  |
-| `updated_at` |  |
-| `url` |  |
 
 Operations: Load.
 
@@ -307,7 +299,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -333,19 +325,15 @@ Create an instance: `$author = $client->Author();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `string` |  |
-| `bio` | `string` |  |
 | `count` | `int` |  |
 | `embedded` | `array` |  |
-| `link` | `array` |  |
-| `name` | `string` |  |
-| `slug` | `string` |  |
+| `links` | `array` |  |
 | `total` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Author record (throws on error).
+// load() returns the ENTITY — call data_get() for the Author record (throws on error).
 $author = $client->Author()->load(["id" => "author_id"]);
 ```
 
@@ -369,9 +357,9 @@ Create an instance: `$quote = $client->Quote();`
 | `count` | `int` |  |
 | `created_at` | `string` |  |
 | `embedded` | `array` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `quote_id` | `string` |  |
-| `tag` | `array` |  |
+| `tags` | `array` |  |
 | `total` | `int` |  |
 | `updated_at` | `string` |  |
 | `value` | `string` |  |
@@ -379,7 +367,7 @@ Create an instance: `$quote = $client->Quote();`
 #### Example: Load
 
 ```php
-// load() returns the bare Quote record (throws on error).
+// load() returns the ENTITY — call data_get() for the Quote record (throws on error).
 $quote = $client->Quote()->load(["id" => "quote_id"]);
 ```
 
@@ -406,19 +394,14 @@ Create an instance: `$source = $client->Source();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `created_at` | `string` |  |
 | `embedded` | `array` |  |
-| `filename` | `string` |  |
-| `link` | `array` |  |
-| `source_id` | `string` |  |
+| `links` | `array` |  |
 | `total` | `int` |  |
-| `updated_at` | `string` |  |
-| `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Source record (throws on error).
+// load() returns the ENTITY — call data_get() for the Source record (throws on error).
 $source = $client->Source()->load(["id" => "source_id"]);
 ```
 
@@ -439,13 +422,13 @@ Create an instance: `$tag = $client->Tag();`
 | --- | --- | --- |
 | `count` | `int` |  |
 | `embedded` | `array` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `total` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Tag record (throws on error).
+// load() returns the ENTITY — call data_get() for the Tag record (throws on error).
 $tag = $client->Tag()->load(["id" => "tag_id"]);
 ```
 
@@ -527,7 +510,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $author = $client->Author();
-$author->load(["id" => "example_id"]);
+$author->load();
 
 // $author->data_get() now returns the author data from the last load
 // $author->match_get() returns the last match criteria

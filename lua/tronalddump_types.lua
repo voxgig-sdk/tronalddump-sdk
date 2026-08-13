@@ -7,13 +7,9 @@
 -- edit by hand.
 
 ---@class Author
----@field author_id? string
----@field bio? string
 ---@field count? number
 ---@field embedded? table
----@field link? table
----@field name? string
----@field slug? string
+---@field links? table
 ---@field total? number
 
 ---@class AuthorLoadMatch
@@ -24,9 +20,9 @@
 ---@field count? number
 ---@field created_at? string
 ---@field embedded? table
----@field link? table
+---@field links? table
 ---@field quote_id? string
----@field tag? table
+---@field tags? table
 ---@field total? number
 ---@field updated_at? string
 ---@field value? string
@@ -39,23 +35,18 @@
 ---@field count? number
 ---@field created_at? string
 ---@field embedded? table
----@field link? table
+---@field links? table
 ---@field quote_id? string
----@field tag? table
+---@field tags? table
 ---@field total? number
 ---@field updated_at? string
 ---@field value? string
 
 ---@class Source
 ---@field count? number
----@field created_at? string
 ---@field embedded? table
----@field filename? string
----@field link? table
----@field source_id? string
+---@field links? table
 ---@field total? number
----@field updated_at? string
----@field url? string
 
 ---@class SourceLoadMatch
 ---@field id? string
@@ -63,7 +54,7 @@
 ---@class Tag
 ---@field count? number
 ---@field embedded? table
----@field link? table
+---@field links? table
 ---@field total? number
 
 ---@class TagLoadMatch

@@ -16,7 +16,7 @@ main: kit: entity: tag: {
       type: "`$OBJECT`"
     }
     {
-      name: "link"
+      name: "links"
       req: false
       type: "`$OBJECT`"
     }

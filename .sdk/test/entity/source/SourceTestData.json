@@ -2,39 +2,24 @@
   "existing": {
     "source": {
       "SOURCE00": {
-        "count": "s5a",
-        "created_at": "s5b",
+        "count": "s28",
         "embedded": {},
-        "filename": "s5d",
-        "link": {},
-        "source_id": "SOURCE01",
-        "total": "s60",
-        "updated_at": "s61",
-        "url": "s62",
+        "links": {},
+        "total": "s2b",
         "id": "SOURCE00"
       },
       "SOURCE01": {
-        "count": "sb4",
-        "created_at": "sb5",
+        "count": "s50",
         "embedded": {},
-        "filename": "sb7",
-        "link": {},
-        "source_id": "SOURCE01",
-        "total": "sba",
-        "updated_at": "sbb",
-        "url": "sbc",
+        "links": {},
+        "total": "s53",
         "id": "SOURCE01"
       },
       "SOURCE02": {
-        "count": "s10e",
-        "created_at": "s10f",
+        "count": "s78",
         "embedded": {},
-        "filename": "s111",
-        "link": {},
-        "source_id": "SOURCE01",
-        "total": "s114",
-        "updated_at": "s115",
-        "url": "s116",
+        "links": {},
+        "total": "s7b",
         "id": "SOURCE02"
       }
     }
@@ -42,15 +27,10 @@
   "new": {
     "source": {
       "source_ref01": {
-        "count": "s168",
-        "created_at": "s169",
+        "count": "sa0",
         "embedded": {},
-        "filename": "s16b",
-        "link": {},
-        "source_id": "SOURCE01",
-        "total": "s16e",
-        "updated_at": "s16f",
-        "url": "s170"
+        "links": {},
+        "total": "sa3"
       }
     }
   }

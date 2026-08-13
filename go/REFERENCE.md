@@ -110,13 +110,9 @@ fmt.Println(author.GetName()) // "author"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `string` | No |  |
-| `bio` | `string` | No |  |
 | `count` | `int` | No |  |
 | `embedded` | `map[string]any` | No |  |
-| `link` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `slug` | `string` | No |  |
+| `links` | `map[string]any` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations
@@ -172,9 +168,9 @@ fmt.Println(quote.GetName()) // "quote"
 | `count` | `int` | No |  |
 | `created_at` | `string` | No |  |
 | `embedded` | `map[string]any` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `quote_id` | `string` | No |  |
-| `tag` | `[]any` | No |  |
+| `tags` | `[]any` | No |  |
 | `total` | `int` | No |  |
 | `updated_at` | `string` | No |  |
 | `value` | `string` | No |  |
@@ -241,14 +237,9 @@ fmt.Println(source.GetName()) // "source"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
-| `created_at` | `string` | No |  |
 | `embedded` | `map[string]any` | No |  |
-| `filename` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
-| `source_id` | `string` | No |  |
+| `links` | `map[string]any` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
-| `url` | `string` | No |  |
 
 ### Operations
 
@@ -301,7 +292,7 @@ fmt.Println(tag.GetName()) // "tag"
 | --- | --- | --- | --- |
 | `count` | `int` | No |  |
 | `embedded` | `map[string]any` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations

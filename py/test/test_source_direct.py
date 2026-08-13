@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from tronalddump_sdk.utility.voxgig_struct import voxgig_struct as vs
 from tronalddump_sdk import TronalddumpSDK
-from core import helpers
+from tronalddump_sdk.core import helpers
 from test import runner
 
 

@@ -4,21 +4,21 @@
       "TAG00": {
         "count": "s28",
         "embedded": {},
-        "link": {},
+        "links": {},
         "total": "s2b",
         "id": "TAG00"
       },
       "TAG01": {
         "count": "s50",
         "embedded": {},
-        "link": {},
+        "links": {},
         "total": "s53",
         "id": "TAG01"
       },
       "TAG02": {
         "count": "s78",
         "embedded": {},
-        "link": {},
+        "links": {},
         "total": "s7b",
         "id": "TAG02"
       }
@@ -29,7 +29,7 @@
       "tag_ref01": {
         "count": "sa0",
         "embedded": {},
-        "link": {},
+        "links": {},
         "total": "sa3"
       }
     }

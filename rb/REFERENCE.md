@@ -105,13 +105,9 @@ author = client.Author
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author_id` | `String` | No |  |
-| `bio` | `String` | No |  |
 | `count` | `Integer` | No |  |
 | `embedded` | `Hash` | No |  |
-| `link` | `Hash` | No |  |
-| `name` | `String` | No |  |
-| `slug` | `String` | No |  |
+| `links` | `Hash` | No |  |
 | `total` | `Integer` | No |  |
 
 ### Operations
@@ -168,9 +164,9 @@ quote = client.Quote
 | `count` | `Integer` | No |  |
 | `created_at` | `String` | No |  |
 | `embedded` | `Hash` | No |  |
-| `link` | `Hash` | No |  |
+| `links` | `Hash` | No |  |
 | `quote_id` | `String` | No |  |
-| `tag` | `Array` | No |  |
+| `tags` | `Array` | No |  |
 | `total` | `Integer` | No |  |
 | `updated_at` | `String` | No |  |
 | `value` | `String` | No |  |
@@ -234,14 +230,9 @@ source = client.Source
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | No |  |
-| `created_at` | `String` | No |  |
 | `embedded` | `Hash` | No |  |
-| `filename` | `String` | No |  |
-| `link` | `Hash` | No |  |
-| `source_id` | `String` | No |  |
+| `links` | `Hash` | No |  |
 | `total` | `Integer` | No |  |
-| `updated_at` | `String` | No |  |
-| `url` | `String` | No |  |
 
 ### Operations
 
@@ -295,7 +286,7 @@ tag = client.Tag
 | --- | --- | --- | --- |
 | `count` | `Integer` | No |  |
 | `embedded` | `Hash` | No |  |
-| `link` | `Hash` | No |  |
+| `links` | `Hash` | No |  |
 | `total` | `Integer` | No |  |
 
 ### Operations

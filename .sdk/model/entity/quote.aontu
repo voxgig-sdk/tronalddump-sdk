@@ -26,7 +26,7 @@ main: kit: entity: quote: {
       type: "`$OBJECT`"
     }
     {
-      name: "link"
+      name: "links"
       req: false
       type: "`$OBJECT`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: quote: {
       type: "`$STRING`"
     }
     {
-      name: "tag"
+      name: "tags"
       req: false
       type: "`$ARRAY`"
     }

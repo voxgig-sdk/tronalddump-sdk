@@ -15,13 +15,9 @@ declare(strict_types=1);
 /** Author entity data model. */
 class Author
 {
-    public ?string $author_id = null;
-    public ?string $bio = null;
     public ?int $count = null;
     public ?array $embedded = null;
-    public ?array $link = null;
-    public ?string $name = null;
-    public ?string $slug = null;
+    public ?array $links = null;
     public ?int $total = null;
 }
 
@@ -38,9 +34,9 @@ class Quote
     public ?int $count = null;
     public ?string $created_at = null;
     public ?array $embedded = null;
-    public ?array $link = null;
+    public ?array $links = null;
     public ?string $quote_id = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
     public ?int $total = null;
     public ?string $updated_at = null;
     public ?string $value = null;
@@ -59,9 +55,9 @@ class QuoteListMatch
     public ?int $count = null;
     public ?string $created_at = null;
     public ?array $embedded = null;
-    public ?array $link = null;
+    public ?array $links = null;
     public ?string $quote_id = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
     public ?int $total = null;
     public ?string $updated_at = null;
     public ?string $value = null;
@@ -71,14 +67,9 @@ class QuoteListMatch
 class Source
 {
     public ?int $count = null;
-    public ?string $created_at = null;
     public ?array $embedded = null;
-    public ?string $filename = null;
-    public ?array $link = null;
-    public ?string $source_id = null;
+    public ?array $links = null;
     public ?int $total = null;
-    public ?string $updated_at = null;
-    public ?string $url = null;
 }
 
 /** Request payload for Source#load. */
@@ -92,7 +83,7 @@ class Tag
 {
     public ?int $count = null;
     public ?array $embedded = null;
-    public ?array $link = null;
+    public ?array $links = null;
     public ?int $total = null;
 }
 

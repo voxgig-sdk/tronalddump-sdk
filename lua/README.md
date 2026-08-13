@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local author, err = client:Author():load({ id = "example_id" })
+local author, err = client:Author():load()
 if err then error(err) end
 ```
 
@@ -230,13 +230,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `author_id` |  |
-| `bio` |  |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
-| `name` |  |
-| `slug` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -251,9 +247,9 @@ API path: `/author/{author_id}`
 | `count` |  |
 | `created_at` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `quote_id` |  |
-| `tag` |  |
+| `tags` |  |
 | `total` |  |
 | `updated_at` |  |
 | `value` |  |
@@ -267,14 +263,9 @@ API path: `/random/quote`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `created_at` |  |
 | `embedded` |  |
-| `filename` |  |
-| `link` |  |
-| `source_id` |  |
+| `links` |  |
 | `total` |  |
-| `updated_at` |  |
-| `url` |  |
 
 Operations: Load.
 
@@ -286,7 +277,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` |  |
 | `embedded` |  |
-| `link` |  |
+| `links` |  |
 | `total` |  |
 
 Operations: Load.
@@ -312,13 +303,9 @@ Create an instance: `local author = client:Author(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author_id` | `string` |  |
-| `bio` | `string` |  |
 | `count` | `number` |  |
 | `embedded` | `table` |  |
-| `link` | `table` |  |
-| `name` | `string` |  |
-| `slug` | `string` |  |
+| `links` | `table` |  |
 | `total` | `number` |  |
 
 #### Example: Load
@@ -347,9 +334,9 @@ Create an instance: `local quote = client:Quote(nil)`
 | `count` | `number` |  |
 | `created_at` | `string` |  |
 | `embedded` | `table` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `quote_id` | `string` |  |
-| `tag` | `table` |  |
+| `tags` | `table` |  |
 | `total` | `number` |  |
 | `updated_at` | `string` |  |
 | `value` | `string` |  |
@@ -382,14 +369,9 @@ Create an instance: `local source = client:Source(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `created_at` | `string` |  |
 | `embedded` | `table` |  |
-| `filename` | `string` |  |
-| `link` | `table` |  |
-| `source_id` | `string` |  |
+| `links` | `table` |  |
 | `total` | `number` |  |
-| `updated_at` | `string` |  |
-| `url` | `string` |  |
 
 #### Example: Load
 
@@ -414,7 +396,7 @@ Create an instance: `local tag = client:Tag(nil)`
 | --- | --- | --- |
 | `count` | `number` |  |
 | `embedded` | `table` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `total` | `number` |  |
 
 #### Example: Load
@@ -501,7 +483,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local author = client:Author()
-author:load({ id = "example_id" })
+author:load()
 
 -- author:data_get() now returns the author data from the last load
 -- author:match_get() returns the last match criteria

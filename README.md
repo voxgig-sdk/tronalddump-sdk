@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = TronalddumpSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = TronalddumpSDK.test({
+  entity: {
+    author: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const author = await client.Author().load({ id: 'test01' })
-// author is a bare Author populated with mock data
+// author is the Author entity, populated with mock data
+// — call author.data() for the record itself
 console.log(author)
 ```
 
@@ -185,7 +194,7 @@ require_once 'tronalddump_sdk.php';
 $client = new TronalddumpSDK();
 
 
-// Load a specific author (returns the bare record; throws on error)
+// Load a specific author (returns the ENTITY; call data_get() for the record; throws on error)
 $author = $client->Author()->load(["id" => "example_id"]);
 print_r($author);
 ```
@@ -213,7 +222,7 @@ require_relative "Tronalddump_sdk"
 client = TronalddumpSDK.new
 
 
-# Load a specific author (returns the bare record; raises on error)
+# Load a specific author (returns the ENTITY; call data_get for the record)
 author = client.Author.load({ "id" => "example_id" })
 puts author
 ```
@@ -347,6 +356,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://docs.tronalddump.io/](https://docs.tronalddump.io/)
 

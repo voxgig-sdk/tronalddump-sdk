@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import TronalddumpControl
-from core.error import TronalddumpError
-from core.result import TronalddumpResult
-from core.spec import TronalddumpSpec
+from tronalddump_sdk.config import make_config
+from tronalddump_sdk.features import _make_feature
+from tronalddump_sdk.core.control import TronalddumpControl
+from tronalddump_sdk.core.error import TronalddumpError
+from tronalddump_sdk.core.result import TronalddumpResult
+from tronalddump_sdk.core.spec import TronalddumpSpec
 
 
 # True when this SDK was generated with the named feature.

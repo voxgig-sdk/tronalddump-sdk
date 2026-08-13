@@ -6,16 +6,6 @@ main: kit: entity: author: {
 
   fields: [
     {
-      name: "author_id"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "bio"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "count"
       req: false
       type: "`$INTEGER`"
@@ -26,19 +16,9 @@ main: kit: entity: author: {
       type: "`$OBJECT`"
     }
     {
-      name: "link"
+      name: "links"
       req: false
       type: "`$OBJECT`"
-    }
-    {
-      name: "name"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "slug"
-      req: false
-      type: "`$STRING`"
     }
     {
       name: "total"
@@ -82,7 +62,7 @@ main: kit: entity: author: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body._links`"
           }
         }
         {
