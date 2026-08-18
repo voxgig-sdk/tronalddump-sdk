@@ -13,7 +13,7 @@ export interface Author {
 }
 
 export interface AuthorLoadMatch {
-  id?: string
+  id: string
 }
 
 export interface Quote {
@@ -30,7 +30,7 @@ export interface Quote {
 }
 
 export interface QuoteLoadMatch {
-  id?: string
+  id: string
 }
 
 export interface QuoteListMatch {
@@ -54,7 +54,7 @@ export interface Source {
 }
 
 export interface SourceLoadMatch {
-  id?: string
+  id: string
 }
 
 export interface Tag {
@@ -65,6 +65,6 @@ export interface Tag {
 }
 
 export interface TagLoadMatch {
-  id?: string
+  id: string
 }
 

@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local author, err = client:Author():load()
+local author, err = client:Author():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -483,7 +483,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local author = client:Author()
-author:load()
+author:load({ id = "example_id" })
 
 -- author:data_get() now returns the author data from the last load
 -- author:match_get() returns the last match criteria

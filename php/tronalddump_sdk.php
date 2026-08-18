@@ -40,7 +40,7 @@ class TronalddumpSDK
         $utility = new TronalddumpUtility();
         $this->_utility = $utility;
 
-        $config = TronalddumpConfig::make_config();
+        $config = TronalddumpConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

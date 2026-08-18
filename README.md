@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new TronalddumpSDK()
-const author = await client.Author().load()
+const author = await client.Author().load({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —

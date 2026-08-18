@@ -13,7 +13,7 @@
 ---@field total? number
 
 ---@class AuthorLoadMatch
----@field id? string
+---@field id string
 
 ---@class Quote
 ---@field appeared_at? string
@@ -28,7 +28,7 @@
 ---@field value? string
 
 ---@class QuoteLoadMatch
----@field id? string
+---@field id string
 
 ---@class QuoteListMatch
 ---@field appeared_at? string
@@ -49,7 +49,7 @@
 ---@field total? number
 
 ---@class SourceLoadMatch
----@field id? string
+---@field id string
 
 ---@class Tag
 ---@field count? number
@@ -58,7 +58,7 @@
 ---@field total? number
 
 ---@class TagLoadMatch
----@field id? string
+---@field id string
 
 local M = {}
 

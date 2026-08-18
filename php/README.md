@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $author = $client->Author()->load();
+    $author = $client->Author()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -510,7 +510,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $author = $client->Author();
-$author->load();
+$author->load(["id" => "example_id"]);
 
 // $author->data_get() now returns the author data from the last load
 // $author->match_get() returns the last match criteria

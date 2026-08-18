@@ -28,7 +28,7 @@ class TronalddumpSDK
     utility = TronalddumpUtility.new
     @_utility = utility
 
-    config = TronalddumpConfig.make_config
+    config = TronalddumpConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

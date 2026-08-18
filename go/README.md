@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-author, err := client.Author(nil).Load(nil, nil)
+author, err := client.Author(nil).Load(map[string]any{"id": "example_id"}, nil)
 if err != nil {
     // handle err
     return
@@ -533,7 +533,7 @@ stores the returned data and match criteria internally.
 
 ```go
 author := client.Author(nil)
-author.Load(nil, nil)
+author.Load(map[string]any{"id": "example_id"}, nil)
 
 // author.Data() now returns the author data from the last load
 // author.Match() returns the last match criteria

@@ -23,7 +23,7 @@ class Author(TypedDict, total=False):
     total: int
 
 
-class AuthorLoadMatch(TypedDict, total=False):
+class AuthorLoadMatch(TypedDict):
     id: str
 
 
@@ -40,7 +40,7 @@ class Quote(TypedDict, total=False):
     value: str
 
 
-class QuoteLoadMatch(TypedDict, total=False):
+class QuoteLoadMatch(TypedDict):
     id: str
 
 
@@ -64,7 +64,7 @@ class Source(TypedDict, total=False):
     total: int
 
 
-class SourceLoadMatch(TypedDict, total=False):
+class SourceLoadMatch(TypedDict):
     id: str
 
 
@@ -75,5 +75,5 @@ class Tag(TypedDict, total=False):
     total: int
 
 
-class TagLoadMatch(TypedDict, total=False):
+class TagLoadMatch(TypedDict):
     id: str

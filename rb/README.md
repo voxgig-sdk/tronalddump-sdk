@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  author = client.Author.load()
+  author = client.Author.load({ "id" => "example_id" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -500,7 +500,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 author = client.Author
-author.load()
+author.load({ "id" => "example_id" })
 
 # author.data_get now returns the author data from the last load
 # author.match_get returns the last match criteria
