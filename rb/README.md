@@ -242,10 +242,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of authors |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of authors available |
 
 Operations: Load.
 
@@ -255,16 +255,16 @@ API path: `/author/{author_id}`
 
 | Field | Description |
 | --- | --- |
-| `appeared_at` |  |
-| `count` |  |
-| `created_at` |  |
+| `appeared_at` | The date and time when the quote appeared |
+| `count` | Total number of quotes found |
+| `created_at` | The date and time when the quote was created in the system |
 | `embedded` |  |
-| `links` |  |
-| `quote_id` |  |
-| `tags` |  |
-| `total` |  |
-| `updated_at` |  |
-| `value` |  |
+| `links` | HATEOAS links for pagination |
+| `quote_id` | Unique identifier for the quote |
+| `tags` | Tags associated with the quote |
+| `total` | Total number of quotes available |
+| `updated_at` | The date and time when the quote was last updated |
+| `value` | The actual quote text |
 
 Operations: List, Load.
 
@@ -274,10 +274,10 @@ API path: `/random/quote`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of sources |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of sources available |
 
 Operations: Load.
 
@@ -287,10 +287,10 @@ API path: `/source/{source_id}`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of quotes found |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links for pagination |
+| `total` | Total number of quotes available |
 
 Operations: Load.
 
@@ -315,10 +315,10 @@ Create an instance: `author = client.Author`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
+| `count` | `Integer` | Total number of authors |
 | `embedded` | `Hash` |  |
-| `links` | `Hash` |  |
-| `total` | `Integer` |  |
+| `links` | `Hash` | HATEOAS links |
+| `total` | `Integer` | Total number of authors available |
 
 #### Example: Load
 
@@ -343,16 +343,16 @@ Create an instance: `quote = client.Quote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appeared_at` | `String` |  |
-| `count` | `Integer` |  |
-| `created_at` | `String` |  |
+| `appeared_at` | `String` | The date and time when the quote appeared |
+| `count` | `Integer` | Total number of quotes found |
+| `created_at` | `String` | The date and time when the quote was created in the system |
 | `embedded` | `Hash` |  |
-| `links` | `Hash` |  |
-| `quote_id` | `String` |  |
-| `tags` | `Array` |  |
-| `total` | `Integer` |  |
-| `updated_at` | `String` |  |
-| `value` | `String` |  |
+| `links` | `Hash` | HATEOAS links for pagination |
+| `quote_id` | `String` | Unique identifier for the quote |
+| `tags` | `Array` | Tags associated with the quote |
+| `total` | `Integer` | Total number of quotes available |
+| `updated_at` | `String` | The date and time when the quote was last updated |
+| `value` | `String` | The actual quote text |
 
 #### Example: Load
 
@@ -383,10 +383,10 @@ Create an instance: `source = client.Source`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
+| `count` | `Integer` | Total number of sources |
 | `embedded` | `Hash` |  |
-| `links` | `Hash` |  |
-| `total` | `Integer` |  |
+| `links` | `Hash` | HATEOAS links |
+| `total` | `Integer` | Total number of sources available |
 
 #### Example: Load
 
@@ -410,10 +410,10 @@ Create an instance: `tag = client.Tag`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
+| `count` | `Integer` | Total number of quotes found |
 | `embedded` | `Hash` |  |
-| `links` | `Hash` |  |
-| `total` | `Integer` |  |
+| `links` | `Hash` | HATEOAS links for pagination |
+| `total` | `Integer` | Total number of quotes available |
 
 #### Example: Load
 

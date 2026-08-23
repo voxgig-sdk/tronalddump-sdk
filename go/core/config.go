@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Tronalddump",
+			"slug": "tronalddump",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,6 +39,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "count",
+						"short": "Total number of authors",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -44,10 +48,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "links",
+						"short": "HATEOAS links",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of authors available",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -116,14 +122,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "appeared_at",
+						"short": "The date and time when the quote appeared",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "count",
+						"short": "Total number of quotes found",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "created_at",
+						"short": "The date and time when the quote was created in the system",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -132,26 +141,32 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "links",
+						"short": "HATEOAS links for pagination",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "quote_id",
+						"short": "Unique identifier for the quote",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tags",
+						"short": "Tags associated with the quote",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of quotes available",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "updated_at",
+						"short": "The date and time when the quote was last updated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
+						"short": "The actual quote text",
 						"type": "`$STRING`",
 					},
 				},
@@ -272,6 +287,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "count",
+						"short": "Total number of sources",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -280,10 +296,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "links",
+						"short": "HATEOAS links",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of sources available",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -352,6 +370,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "count",
+						"short": "Total number of quotes found",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -360,10 +379,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "links",
+						"short": "HATEOAS links for pagination",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of quotes available",
 						"type": "`$INTEGER`",
 					},
 				},

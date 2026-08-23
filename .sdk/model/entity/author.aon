@@ -1,0 +1,88 @@
+# Entity: author
+
+main: kit: entity: author: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: false
+      short: "Total number of authors"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "embedded"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "links"
+      req: false
+      short: "HATEOAS links"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "total"
+      req: false
+      short: "Total number of authors available"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "author"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "author_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/author/{author_id}"
+          parts: [
+            "author"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              author_id: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body._links`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/author"
+          parts: [
+            "author"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

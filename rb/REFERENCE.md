@@ -105,10 +105,10 @@ author = client.Author
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `Integer` | No |  |
+| `count` | `Integer` | No | Total number of authors |
 | `embedded` | `Hash` | No |  |
-| `links` | `Hash` | No |  |
-| `total` | `Integer` | No |  |
+| `links` | `Hash` | No | HATEOAS links |
+| `total` | `Integer` | No | Total number of authors available |
 
 ### Operations
 
@@ -160,16 +160,16 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | `String` | No |  |
-| `count` | `Integer` | No |  |
-| `created_at` | `String` | No |  |
+| `appeared_at` | `String` | No | The date and time when the quote appeared |
+| `count` | `Integer` | No | Total number of quotes found |
+| `created_at` | `String` | No | The date and time when the quote was created in the system |
 | `embedded` | `Hash` | No |  |
-| `links` | `Hash` | No |  |
-| `quote_id` | `String` | No |  |
-| `tags` | `Array` | No |  |
-| `total` | `Integer` | No |  |
-| `updated_at` | `String` | No |  |
-| `value` | `String` | No |  |
+| `links` | `Hash` | No | HATEOAS links for pagination |
+| `quote_id` | `String` | No | Unique identifier for the quote |
+| `tags` | `Array` | No | Tags associated with the quote |
+| `total` | `Integer` | No | Total number of quotes available |
+| `updated_at` | `String` | No | The date and time when the quote was last updated |
+| `value` | `String` | No | The actual quote text |
 
 ### Operations
 
@@ -229,10 +229,10 @@ source = client.Source
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `Integer` | No |  |
+| `count` | `Integer` | No | Total number of sources |
 | `embedded` | `Hash` | No |  |
-| `links` | `Hash` | No |  |
-| `total` | `Integer` | No |  |
+| `links` | `Hash` | No | HATEOAS links |
+| `total` | `Integer` | No | Total number of sources available |
 
 ### Operations
 
@@ -284,10 +284,10 @@ tag = client.Tag
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `Integer` | No |  |
+| `count` | `Integer` | No | Total number of quotes found |
 | `embedded` | `Hash` | No |  |
-| `links` | `Hash` | No |  |
-| `total` | `Integer` | No |  |
+| `links` | `Hash` | No | HATEOAS links for pagination |
+| `total` | `Integer` | No | Total number of quotes available |
 
 ### Operations
 

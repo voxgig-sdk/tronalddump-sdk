@@ -104,10 +104,10 @@ $author = $client->Author();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of authors |
 | `embedded` | `array` | No |  |
-| `links` | `array` | No |  |
-| `total` | `int` | No |  |
+| `links` | `array` | No | HATEOAS links |
+| `total` | `int` | No | Total number of authors available |
 
 ### Operations
 
@@ -159,16 +159,16 @@ $quote = $client->Quote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | `string` | No |  |
-| `count` | `int` | No |  |
-| `created_at` | `string` | No |  |
+| `appeared_at` | `string` | No | The date and time when the quote appeared |
+| `count` | `int` | No | Total number of quotes found |
+| `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `array` | No |  |
-| `links` | `array` | No |  |
-| `quote_id` | `string` | No |  |
-| `tags` | `array` | No |  |
-| `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
-| `value` | `string` | No |  |
+| `links` | `array` | No | HATEOAS links for pagination |
+| `quote_id` | `string` | No | Unique identifier for the quote |
+| `tags` | `array` | No | Tags associated with the quote |
+| `total` | `int` | No | Total number of quotes available |
+| `updated_at` | `string` | No | The date and time when the quote was last updated |
+| `value` | `string` | No | The actual quote text |
 
 ### Operations
 
@@ -228,10 +228,10 @@ $source = $client->Source();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of sources |
 | `embedded` | `array` | No |  |
-| `links` | `array` | No |  |
-| `total` | `int` | No |  |
+| `links` | `array` | No | HATEOAS links |
+| `total` | `int` | No | Total number of sources available |
 
 ### Operations
 
@@ -283,10 +283,10 @@ $tag = $client->Tag();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of quotes found |
 | `embedded` | `array` | No |  |
-| `links` | `array` | No |  |
-| `total` | `int` | No |  |
+| `links` | `array` | No | HATEOAS links for pagination |
+| `total` | `int` | No | Total number of quotes available |
 
 ### Operations
 

@@ -152,10 +152,10 @@ const author = client.Author()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | No |  |
+| `count` | `number` | No | Total number of authors |
 | `embedded` | `Record<string, any>` | No |  |
-| `links` | `Record<string, any>` | No |  |
-| `total` | `number` | No |  |
+| `links` | `Record<string, any>` | No | HATEOAS links |
+| `total` | `number` | No | Total number of authors available |
 
 ### Operations
 
@@ -205,16 +205,16 @@ const quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | `string` | No |  |
-| `count` | `number` | No |  |
-| `created_at` | `string` | No |  |
+| `appeared_at` | `string` | No | The date and time when the quote appeared |
+| `count` | `number` | No | Total number of quotes found |
+| `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `Record<string, any>` | No |  |
-| `links` | `Record<string, any>` | No |  |
-| `quote_id` | `string` | No |  |
-| `tags` | `any[]` | No |  |
-| `total` | `number` | No |  |
-| `updated_at` | `string` | No |  |
-| `value` | `string` | No |  |
+| `links` | `Record<string, any>` | No | HATEOAS links for pagination |
+| `quote_id` | `string` | No | Unique identifier for the quote |
+| `tags` | `any[]` | No | Tags associated with the quote |
+| `total` | `number` | No | Total number of quotes available |
+| `updated_at` | `string` | No | The date and time when the quote was last updated |
+| `value` | `string` | No | The actual quote text |
 
 ### Operations
 
@@ -272,10 +272,10 @@ const source = client.Source()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | No |  |
+| `count` | `number` | No | Total number of sources |
 | `embedded` | `Record<string, any>` | No |  |
-| `links` | `Record<string, any>` | No |  |
-| `total` | `number` | No |  |
+| `links` | `Record<string, any>` | No | HATEOAS links |
+| `total` | `number` | No | Total number of sources available |
 
 ### Operations
 
@@ -325,10 +325,10 @@ const tag = client.Tag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | No |  |
+| `count` | `number` | No | Total number of quotes found |
 | `embedded` | `Record<string, any>` | No |  |
-| `links` | `Record<string, any>` | No |  |
-| `total` | `number` | No |  |
+| `links` | `Record<string, any>` | No | HATEOAS links for pagination |
+| `total` | `number` | No | Total number of quotes available |
 
 ### Operations
 

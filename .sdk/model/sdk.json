@@ -36,6 +36,7 @@
               "active": true,
               "name": "count",
               "req": false,
+              "short": "Total number of authors",
               "type": "`$INTEGER`"
             },
             {
@@ -48,12 +49,14 @@
               "active": true,
               "name": "links",
               "req": false,
+              "short": "HATEOAS links",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of authors available",
               "type": "`$INTEGER`"
             }
           ],
@@ -131,18 +134,21 @@
               "active": true,
               "name": "appeared_at",
               "req": false,
+              "short": "The date and time when the quote appeared",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "count",
               "req": false,
+              "short": "Total number of quotes found",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "created_at",
               "req": false,
+              "short": "The date and time when the quote was created in the system",
               "type": "`$STRING`"
             },
             {
@@ -155,36 +161,42 @@
               "active": true,
               "name": "links",
               "req": false,
+              "short": "HATEOAS links for pagination",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "quote_id",
               "req": false,
+              "short": "Unique identifier for the quote",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tags",
               "req": false,
+              "short": "Tags associated with the quote",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of quotes available",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "updated_at",
               "req": false,
+              "short": "The date and time when the quote was last updated",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "value",
               "req": false,
+              "short": "The actual quote text",
               "type": "`$STRING`"
             }
           ],
@@ -320,6 +332,7 @@
               "active": true,
               "name": "count",
               "req": false,
+              "short": "Total number of sources",
               "type": "`$INTEGER`"
             },
             {
@@ -332,12 +345,14 @@
               "active": true,
               "name": "links",
               "req": false,
+              "short": "HATEOAS links",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of sources available",
               "type": "`$INTEGER`"
             }
           ],
@@ -415,6 +430,7 @@
               "active": true,
               "name": "count",
               "req": false,
+              "short": "Total number of quotes found",
               "type": "`$INTEGER`"
             },
             {
@@ -427,12 +443,14 @@
               "active": true,
               "name": "links",
               "req": false,
+              "short": "HATEOAS links for pagination",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of quotes available",
               "type": "`$INTEGER`"
             }
           ],

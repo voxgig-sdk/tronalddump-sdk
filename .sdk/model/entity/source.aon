@@ -1,0 +1,88 @@
+# Entity: source
+
+main: kit: entity: source: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: false
+      short: "Total number of sources"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "embedded"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "links"
+      req: false
+      short: "HATEOAS links"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "total"
+      req: false
+      short: "Total number of sources available"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "source"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "source_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/source/{source_id}"
+          parts: [
+            "source"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              source_id: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body._links`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/source"
+          parts: [
+            "source"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

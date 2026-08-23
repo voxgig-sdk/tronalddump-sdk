@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Tronalddump",
+            "slug": "tronalddump",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -53,6 +56,7 @@ def make_config():
         "fields": [
           {
             "name": "count",
+            "short": "Total number of authors",
             "type": "`$INTEGER`",
           },
           {
@@ -61,10 +65,12 @@ def make_config():
           },
           {
             "name": "links",
+            "short": "HATEOAS links",
             "type": "`$OBJECT`",
           },
           {
             "name": "total",
+            "short": "Total number of authors available",
             "type": "`$INTEGER`",
           },
         ],
@@ -133,14 +139,17 @@ def make_config():
         "fields": [
           {
             "name": "appeared_at",
+            "short": "The date and time when the quote appeared",
             "type": "`$STRING`",
           },
           {
             "name": "count",
+            "short": "Total number of quotes found",
             "type": "`$INTEGER`",
           },
           {
             "name": "created_at",
+            "short": "The date and time when the quote was created in the system",
             "type": "`$STRING`",
           },
           {
@@ -149,26 +158,32 @@ def make_config():
           },
           {
             "name": "links",
+            "short": "HATEOAS links for pagination",
             "type": "`$OBJECT`",
           },
           {
             "name": "quote_id",
+            "short": "Unique identifier for the quote",
             "type": "`$STRING`",
           },
           {
             "name": "tags",
+            "short": "Tags associated with the quote",
             "type": "`$ARRAY`",
           },
           {
             "name": "total",
+            "short": "Total number of quotes available",
             "type": "`$INTEGER`",
           },
           {
             "name": "updated_at",
+            "short": "The date and time when the quote was last updated",
             "type": "`$STRING`",
           },
           {
             "name": "value",
+            "short": "The actual quote text",
             "type": "`$STRING`",
           },
         ],
@@ -289,6 +304,7 @@ def make_config():
         "fields": [
           {
             "name": "count",
+            "short": "Total number of sources",
             "type": "`$INTEGER`",
           },
           {
@@ -297,10 +313,12 @@ def make_config():
           },
           {
             "name": "links",
+            "short": "HATEOAS links",
             "type": "`$OBJECT`",
           },
           {
             "name": "total",
+            "short": "Total number of sources available",
             "type": "`$INTEGER`",
           },
         ],
@@ -369,6 +387,7 @@ def make_config():
         "fields": [
           {
             "name": "count",
+            "short": "Total number of quotes found",
             "type": "`$INTEGER`",
           },
           {
@@ -377,10 +396,12 @@ def make_config():
           },
           {
             "name": "links",
+            "short": "HATEOAS links for pagination",
             "type": "`$OBJECT`",
           },
           {
             "name": "total",
+            "short": "Total number of quotes available",
             "type": "`$INTEGER`",
           },
         ],

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -291,10 +291,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of authors |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of authors available |
 
 Operations: load.
 
@@ -304,16 +304,16 @@ API path: `/author/{author_id}`
 
 | Field | Description |
 | --- | --- |
-| `appeared_at` |  |
-| `count` |  |
-| `created_at` |  |
+| `appeared_at` | The date and time when the quote appeared |
+| `count` | Total number of quotes found |
+| `created_at` | The date and time when the quote was created in the system |
 | `embedded` |  |
-| `links` |  |
-| `quote_id` |  |
-| `tags` |  |
-| `total` |  |
-| `updated_at` |  |
-| `value` |  |
+| `links` | HATEOAS links for pagination |
+| `quote_id` | Unique identifier for the quote |
+| `tags` | Tags associated with the quote |
+| `total` | Total number of quotes available |
+| `updated_at` | The date and time when the quote was last updated |
+| `value` | The actual quote text |
 
 Operations: list, load.
 
@@ -323,10 +323,10 @@ API path: `/random/quote`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of sources |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of sources available |
 
 Operations: load.
 
@@ -336,10 +336,10 @@ API path: `/source/{source_id}`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of quotes found |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links for pagination |
+| `total` | Total number of quotes available |
 
 Operations: load.
 
@@ -364,10 +364,10 @@ Create an instance: `const author = client.Author()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
+| `count` | `number` | Total number of authors |
 | `embedded` | `Record<string, any>` |  |
-| `links` | `Record<string, any>` |  |
-| `total` | `number` |  |
+| `links` | `Record<string, any>` | HATEOAS links |
+| `total` | `number` | Total number of authors available |
 
 #### Example: Load
 
@@ -391,16 +391,16 @@ Create an instance: `const quote = client.Quote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appeared_at` | `string` |  |
-| `count` | `number` |  |
-| `created_at` | `string` |  |
+| `appeared_at` | `string` | The date and time when the quote appeared |
+| `count` | `number` | Total number of quotes found |
+| `created_at` | `string` | The date and time when the quote was created in the system |
 | `embedded` | `Record<string, any>` |  |
-| `links` | `Record<string, any>` |  |
-| `quote_id` | `string` |  |
-| `tags` | `any[]` |  |
-| `total` | `number` |  |
-| `updated_at` | `string` |  |
-| `value` | `string` |  |
+| `links` | `Record<string, any>` | HATEOAS links for pagination |
+| `quote_id` | `string` | Unique identifier for the quote |
+| `tags` | `any[]` | Tags associated with the quote |
+| `total` | `number` | Total number of quotes available |
+| `updated_at` | `string` | The date and time when the quote was last updated |
+| `value` | `string` | The actual quote text |
 
 #### Example: Load
 
@@ -429,10 +429,10 @@ Create an instance: `const source = client.Source()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
+| `count` | `number` | Total number of sources |
 | `embedded` | `Record<string, any>` |  |
-| `links` | `Record<string, any>` |  |
-| `total` | `number` |  |
+| `links` | `Record<string, any>` | HATEOAS links |
+| `total` | `number` | Total number of sources available |
 
 #### Example: Load
 
@@ -455,10 +455,10 @@ Create an instance: `const tag = client.Tag()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
+| `count` | `number` | Total number of quotes found |
 | `embedded` | `Record<string, any>` |  |
-| `links` | `Record<string, any>` |  |
-| `total` | `number` |  |
+| `links` | `Record<string, any>` | HATEOAS links for pagination |
+| `total` | `number` | Total number of quotes available |
 
 #### Example: Load
 

@@ -110,10 +110,10 @@ fmt.Println(author.GetName()) // "author"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of authors |
 | `embedded` | `map[string]any` | No |  |
-| `links` | `map[string]any` | No |  |
-| `total` | `int` | No |  |
+| `links` | `map[string]any` | No | HATEOAS links |
+| `total` | `int` | No | Total number of authors available |
 
 ### Operations
 
@@ -164,16 +164,16 @@ fmt.Println(quote.GetName()) // "quote"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | `string` | No |  |
-| `count` | `int` | No |  |
-| `created_at` | `string` | No |  |
+| `appeared_at` | `string` | No | The date and time when the quote appeared |
+| `count` | `int` | No | Total number of quotes found |
+| `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `map[string]any` | No |  |
-| `links` | `map[string]any` | No |  |
-| `quote_id` | `string` | No |  |
-| `tags` | `[]any` | No |  |
-| `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
-| `value` | `string` | No |  |
+| `links` | `map[string]any` | No | HATEOAS links for pagination |
+| `quote_id` | `string` | No | Unique identifier for the quote |
+| `tags` | `[]any` | No | Tags associated with the quote |
+| `total` | `int` | No | Total number of quotes available |
+| `updated_at` | `string` | No | The date and time when the quote was last updated |
+| `value` | `string` | No | The actual quote text |
 
 ### Operations
 
@@ -236,10 +236,10 @@ fmt.Println(source.GetName()) // "source"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of sources |
 | `embedded` | `map[string]any` | No |  |
-| `links` | `map[string]any` | No |  |
-| `total` | `int` | No |  |
+| `links` | `map[string]any` | No | HATEOAS links |
+| `total` | `int` | No | Total number of sources available |
 
 ### Operations
 
@@ -290,10 +290,10 @@ fmt.Println(tag.GetName()) // "tag"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of quotes found |
 | `embedded` | `map[string]any` | No |  |
-| `links` | `map[string]any` | No |  |
-| `total` | `int` | No |  |
+| `links` | `map[string]any` | No | HATEOAS links for pagination |
+| `total` | `int` | No | Total number of quotes available |
 
 ### Operations
 

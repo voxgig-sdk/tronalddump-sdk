@@ -252,10 +252,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of authors |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of authors available |
 
 Operations: Load.
 
@@ -265,16 +265,16 @@ API path: `/author/{author_id}`
 
 | Field | Description |
 | --- | --- |
-| `appeared_at` |  |
-| `count` |  |
-| `created_at` |  |
+| `appeared_at` | The date and time when the quote appeared |
+| `count` | Total number of quotes found |
+| `created_at` | The date and time when the quote was created in the system |
 | `embedded` |  |
-| `links` |  |
-| `quote_id` |  |
-| `tags` |  |
-| `total` |  |
-| `updated_at` |  |
-| `value` |  |
+| `links` | HATEOAS links for pagination |
+| `quote_id` | Unique identifier for the quote |
+| `tags` | Tags associated with the quote |
+| `total` | Total number of quotes available |
+| `updated_at` | The date and time when the quote was last updated |
+| `value` | The actual quote text |
 
 Operations: List, Load.
 
@@ -284,10 +284,10 @@ API path: `/random/quote`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of sources |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links |
+| `total` | Total number of sources available |
 
 Operations: Load.
 
@@ -297,10 +297,10 @@ API path: `/source/{source_id}`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
+| `count` | Total number of quotes found |
 | `embedded` |  |
-| `links` |  |
-| `total` |  |
+| `links` | HATEOAS links for pagination |
+| `total` | Total number of quotes available |
 
 Operations: Load.
 
@@ -325,10 +325,10 @@ Create an instance: `$author = $client->Author();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of authors |
 | `embedded` | `array` |  |
-| `links` | `array` |  |
-| `total` | `int` |  |
+| `links` | `array` | HATEOAS links |
+| `total` | `int` | Total number of authors available |
 
 #### Example: Load
 
@@ -353,16 +353,16 @@ Create an instance: `$quote = $client->Quote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appeared_at` | `string` |  |
-| `count` | `int` |  |
-| `created_at` | `string` |  |
+| `appeared_at` | `string` | The date and time when the quote appeared |
+| `count` | `int` | Total number of quotes found |
+| `created_at` | `string` | The date and time when the quote was created in the system |
 | `embedded` | `array` |  |
-| `links` | `array` |  |
-| `quote_id` | `string` |  |
-| `tags` | `array` |  |
-| `total` | `int` |  |
-| `updated_at` | `string` |  |
-| `value` | `string` |  |
+| `links` | `array` | HATEOAS links for pagination |
+| `quote_id` | `string` | Unique identifier for the quote |
+| `tags` | `array` | Tags associated with the quote |
+| `total` | `int` | Total number of quotes available |
+| `updated_at` | `string` | The date and time when the quote was last updated |
+| `value` | `string` | The actual quote text |
 
 #### Example: Load
 
@@ -393,10 +393,10 @@ Create an instance: `$source = $client->Source();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of sources |
 | `embedded` | `array` |  |
-| `links` | `array` |  |
-| `total` | `int` |  |
+| `links` | `array` | HATEOAS links |
+| `total` | `int` | Total number of sources available |
 
 #### Example: Load
 
@@ -420,10 +420,10 @@ Create an instance: `$tag = $client->Tag();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of quotes found |
 | `embedded` | `array` |  |
-| `links` | `array` |  |
-| `total` | `int` |  |
+| `links` | `array` | HATEOAS links for pagination |
+| `total` | `int` | Total number of quotes available |
 
 #### Example: Load
 

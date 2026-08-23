@@ -99,10 +99,10 @@ author = client.Author()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of authors |
 | `embedded` | `dict` | No |  |
-| `links` | `dict` | No |  |
-| `total` | `int` | No |  |
+| `links` | `dict` | No | HATEOAS links |
+| `total` | `int` | No | Total number of authors available |
 
 ### Operations
 
@@ -153,16 +153,16 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appeared_at` | `str` | No |  |
-| `count` | `int` | No |  |
-| `created_at` | `str` | No |  |
+| `appeared_at` | `str` | No | The date and time when the quote appeared |
+| `count` | `int` | No | Total number of quotes found |
+| `created_at` | `str` | No | The date and time when the quote was created in the system |
 | `embedded` | `dict` | No |  |
-| `links` | `dict` | No |  |
-| `quote_id` | `str` | No |  |
-| `tags` | `list` | No |  |
-| `total` | `int` | No |  |
-| `updated_at` | `str` | No |  |
-| `value` | `str` | No |  |
+| `links` | `dict` | No | HATEOAS links for pagination |
+| `quote_id` | `str` | No | Unique identifier for the quote |
+| `tags` | `list` | No | Tags associated with the quote |
+| `total` | `int` | No | Total number of quotes available |
+| `updated_at` | `str` | No | The date and time when the quote was last updated |
+| `value` | `str` | No | The actual quote text |
 
 ### Operations
 
@@ -223,10 +223,10 @@ source = client.Source()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of sources |
 | `embedded` | `dict` | No |  |
-| `links` | `dict` | No |  |
-| `total` | `int` | No |  |
+| `links` | `dict` | No | HATEOAS links |
+| `total` | `int` | No | Total number of sources available |
 
 ### Operations
 
@@ -277,10 +277,10 @@ tag = client.Tag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
+| `count` | `int` | No | Total number of quotes found |
 | `embedded` | `dict` | No |  |
-| `links` | `dict` | No |  |
-| `total` | `int` | No |  |
+| `links` | `dict` | No | HATEOAS links for pagination |
+| `total` | `int` | No | Total number of quotes available |
 
 ### Operations
 

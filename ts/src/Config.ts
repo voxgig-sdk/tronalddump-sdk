@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Tronalddump',
+        slug: "tronalddump",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -65,6 +76,7 @@ class Config {
       "fields": [
         {
           "name": "count",
+          "short": "Total number of authors",
           "type": "`$INTEGER`"
         },
         {
@@ -73,10 +85,12 @@ class Config {
         },
         {
           "name": "links",
+          "short": "HATEOAS links",
           "type": "`$OBJECT`"
         },
         {
           "name": "total",
+          "short": "Total number of authors available",
           "type": "`$INTEGER`"
         }
       ],
@@ -145,14 +159,17 @@ class Config {
       "fields": [
         {
           "name": "appeared_at",
+          "short": "The date and time when the quote appeared",
           "type": "`$STRING`"
         },
         {
           "name": "count",
+          "short": "Total number of quotes found",
           "type": "`$INTEGER`"
         },
         {
           "name": "created_at",
+          "short": "The date and time when the quote was created in the system",
           "type": "`$STRING`"
         },
         {
@@ -161,26 +178,32 @@ class Config {
         },
         {
           "name": "links",
+          "short": "HATEOAS links for pagination",
           "type": "`$OBJECT`"
         },
         {
           "name": "quote_id",
+          "short": "Unique identifier for the quote",
           "type": "`$STRING`"
         },
         {
           "name": "tags",
+          "short": "Tags associated with the quote",
           "type": "`$ARRAY`"
         },
         {
           "name": "total",
+          "short": "Total number of quotes available",
           "type": "`$INTEGER`"
         },
         {
           "name": "updated_at",
+          "short": "The date and time when the quote was last updated",
           "type": "`$STRING`"
         },
         {
           "name": "value",
+          "short": "The actual quote text",
           "type": "`$STRING`"
         }
       ],
@@ -301,6 +324,7 @@ class Config {
       "fields": [
         {
           "name": "count",
+          "short": "Total number of sources",
           "type": "`$INTEGER`"
         },
         {
@@ -309,10 +333,12 @@ class Config {
         },
         {
           "name": "links",
+          "short": "HATEOAS links",
           "type": "`$OBJECT`"
         },
         {
           "name": "total",
+          "short": "Total number of sources available",
           "type": "`$INTEGER`"
         }
       ],
@@ -381,6 +407,7 @@ class Config {
       "fields": [
         {
           "name": "count",
+          "short": "Total number of quotes found",
           "type": "`$INTEGER`"
         },
         {
@@ -389,10 +416,12 @@ class Config {
         },
         {
           "name": "links",
+          "short": "HATEOAS links for pagination",
           "type": "`$OBJECT`"
         },
         {
           "name": "total",
+          "short": "Total number of quotes available",
           "type": "`$INTEGER`"
         }
       ],

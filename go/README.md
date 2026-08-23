@@ -6,7 +6,7 @@ The Golang SDK for the Tronalddump API — an entity-oriented client using stand
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Author(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,10 +263,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"count"` |  |
+| `"count"` | Total number of authors |
 | `"embedded"` |  |
-| `"links"` |  |
-| `"total"` |  |
+| `"links"` | HATEOAS links |
+| `"total"` | Total number of authors available |
 
 Operations: Load.
 
@@ -276,16 +276,16 @@ API path: `/author/{author_id}`
 
 | Field | Description |
 | --- | --- |
-| `"appeared_at"` |  |
-| `"count"` |  |
-| `"created_at"` |  |
+| `"appeared_at"` | The date and time when the quote appeared |
+| `"count"` | Total number of quotes found |
+| `"created_at"` | The date and time when the quote was created in the system |
 | `"embedded"` |  |
-| `"links"` |  |
-| `"quote_id"` |  |
-| `"tags"` |  |
-| `"total"` |  |
-| `"updated_at"` |  |
-| `"value"` |  |
+| `"links"` | HATEOAS links for pagination |
+| `"quote_id"` | Unique identifier for the quote |
+| `"tags"` | Tags associated with the quote |
+| `"total"` | Total number of quotes available |
+| `"updated_at"` | The date and time when the quote was last updated |
+| `"value"` | The actual quote text |
 
 Operations: List, Load.
 
@@ -295,10 +295,10 @@ API path: `/random/quote`
 
 | Field | Description |
 | --- | --- |
-| `"count"` |  |
+| `"count"` | Total number of sources |
 | `"embedded"` |  |
-| `"links"` |  |
-| `"total"` |  |
+| `"links"` | HATEOAS links |
+| `"total"` | Total number of sources available |
 
 Operations: Load.
 
@@ -308,10 +308,10 @@ API path: `/source/{source_id}`
 
 | Field | Description |
 | --- | --- |
-| `"count"` |  |
+| `"count"` | Total number of quotes found |
 | `"embedded"` |  |
-| `"links"` |  |
-| `"total"` |  |
+| `"links"` | HATEOAS links for pagination |
+| `"total"` | Total number of quotes available |
 
 Operations: Load.
 
@@ -336,10 +336,10 @@ Create an instance: `author := client.Author(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of authors |
 | `embedded` | `map[string]any` |  |
-| `links` | `map[string]any` |  |
-| `total` | `int` |  |
+| `links` | `map[string]any` | HATEOAS links |
+| `total` | `int` | Total number of authors available |
 
 #### Example: Load
 
@@ -367,16 +367,16 @@ Create an instance: `quote := client.Quote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appeared_at` | `string` |  |
-| `count` | `int` |  |
-| `created_at` | `string` |  |
+| `appeared_at` | `string` | The date and time when the quote appeared |
+| `count` | `int` | Total number of quotes found |
+| `created_at` | `string` | The date and time when the quote was created in the system |
 | `embedded` | `map[string]any` |  |
-| `links` | `map[string]any` |  |
-| `quote_id` | `string` |  |
-| `tags` | `[]any` |  |
-| `total` | `int` |  |
-| `updated_at` | `string` |  |
-| `value` | `string` |  |
+| `links` | `map[string]any` | HATEOAS links for pagination |
+| `quote_id` | `string` | Unique identifier for the quote |
+| `tags` | `[]any` | Tags associated with the quote |
+| `total` | `int` | Total number of quotes available |
+| `updated_at` | `string` | The date and time when the quote was last updated |
+| `value` | `string` | The actual quote text |
 
 #### Example: Load
 
@@ -413,10 +413,10 @@ Create an instance: `source := client.Source(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of sources |
 | `embedded` | `map[string]any` |  |
-| `links` | `map[string]any` |  |
-| `total` | `int` |  |
+| `links` | `map[string]any` | HATEOAS links |
+| `total` | `int` | Total number of sources available |
 
 #### Example: Load
 
@@ -443,10 +443,10 @@ Create an instance: `tag := client.Tag(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
+| `count` | `int` | Total number of quotes found |
 | `embedded` | `map[string]any` |  |
-| `links` | `map[string]any` |  |
-| `total` | `int` |  |
+| `links` | `map[string]any` | HATEOAS links for pagination |
+| `total` | `int` | Total number of quotes available |
 
 #### Example: Load
 
