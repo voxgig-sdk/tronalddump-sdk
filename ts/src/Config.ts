@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -82,6 +83,10 @@ class Config {
         {
           "name": "embedded",
           "type": "`$OBJECT`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "links",
@@ -175,6 +180,10 @@ class Config {
         {
           "name": "embedded",
           "type": "`$OBJECT`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "links",
@@ -332,6 +341,10 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "links",
           "short": "HATEOAS links",
           "type": "`$OBJECT`"
@@ -413,6 +426,10 @@ class Config {
         {
           "name": "embedded",
           "type": "`$OBJECT`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "links",

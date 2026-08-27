@@ -8,6 +8,7 @@
 export interface Author {
   count?: number
   embedded?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   total?: number
 }
@@ -21,6 +22,7 @@ export interface Quote {
   count?: number
   created_at?: string
   embedded?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   quote_id?: string
   tags?: any[]
@@ -38,6 +40,7 @@ export interface QuoteListMatch {
   count?: number
   created_at?: string
   embedded?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   quote_id?: string
   tags?: any[]
@@ -49,6 +52,7 @@ export interface QuoteListMatch {
 export interface Source {
   count?: number
   embedded?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   total?: number
 }
@@ -60,6 +64,7 @@ export interface SourceLoadMatch {
 export interface Tag {
   count?: number
   embedded?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   total?: number
 }

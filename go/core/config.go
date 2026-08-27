@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -45,6 +46,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "embedded",
 						"type": "`$OBJECT`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "links",
@@ -138,6 +143,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "embedded",
 						"type": "`$OBJECT`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "links",
@@ -295,6 +304,10 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "links",
 						"short": "HATEOAS links",
 						"type": "`$OBJECT`",
@@ -376,6 +389,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "embedded",
 						"type": "`$OBJECT`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "links",

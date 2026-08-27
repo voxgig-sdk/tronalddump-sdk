@@ -41,9 +41,13 @@ class TagEntityTest < Minitest::Test
 
     # LOAD
     tag_ref01_ent = client.Tag(nil)
-    tag_ref01_match_dt0 = {}
+    tag_ref01_match_dt0 = {
+      "id" => tag_ref01_data["id"],
+    }
     tag_ref01_data_dt0_loaded = tag_ref01_ent.load(tag_ref01_match_dt0, nil)
-    assert !tag_ref01_data_dt0_loaded.nil?
+    tag_ref01_data_dt0_load_result = Helpers.to_map(tag_ref01_data_dt0_loaded.respond_to?(:data_get) ? tag_ref01_data_dt0_loaded.data_get : tag_ref01_data_dt0_loaded)
+    assert !tag_ref01_data_dt0_load_result.nil?
+    assert_equal tag_ref01_data_dt0_load_result["id"], tag_ref01_data["id"]
 
   end
 end

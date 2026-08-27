@@ -16,6 +16,7 @@ import (
 type Author struct {
 	Count *int `json:"count,omitempty"`
 	Embedded *map[string]any `json:"embedded,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
@@ -31,6 +32,7 @@ type Quote struct {
 	Count *int `json:"count,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Embedded *map[string]any `json:"embedded,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	QuoteId *string `json:"quote_id,omitempty"`
 	Tags *[]any `json:"tags,omitempty"`
@@ -50,6 +52,7 @@ type QuoteListMatch struct {
 	Count *int `json:"count,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Embedded *map[string]any `json:"embedded,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	QuoteId *string `json:"quote_id,omitempty"`
 	Tags *[]any `json:"tags,omitempty"`
@@ -62,6 +65,7 @@ type QuoteListMatch struct {
 type Source struct {
 	Count *int `json:"count,omitempty"`
 	Embedded *map[string]any `json:"embedded,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
@@ -75,6 +79,7 @@ type SourceLoadMatch struct {
 type Tag struct {
 	Count *int `json:"count,omitempty"`
 	Embedded *map[string]any `json:"embedded,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	Total *int `json:"total,omitempty"`
 }

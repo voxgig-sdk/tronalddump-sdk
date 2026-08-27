@@ -16,6 +16,9 @@
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -24,6 +27,7 @@
 Author = Struct.new(
   :count,
   :embedded,
+  :id,
   :links,
   :total,
   keyword_init: true
@@ -52,6 +56,9 @@ AuthorLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -74,6 +81,7 @@ Quote = Struct.new(
   :count,
   :created_at,
   :embedded,
+  :id,
   :links,
   :quote_id,
   :tags,
@@ -106,6 +114,9 @@ QuoteLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -128,6 +139,7 @@ QuoteListMatch = Struct.new(
   :count,
   :created_at,
   :embedded,
+  :id,
   :links,
   :quote_id,
   :tags,
@@ -145,6 +157,9 @@ QuoteListMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -153,6 +168,7 @@ QuoteListMatch = Struct.new(
 Source = Struct.new(
   :count,
   :embedded,
+  :id,
   :links,
   :total,
   keyword_init: true
@@ -175,6 +191,9 @@ SourceLoadMatch = Struct.new(
 # @!attribute [rw] embedded
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -183,6 +202,7 @@ SourceLoadMatch = Struct.new(
 Tag = Struct.new(
   :count,
   :embedded,
+  :id,
   :links,
   :total,
   keyword_init: true

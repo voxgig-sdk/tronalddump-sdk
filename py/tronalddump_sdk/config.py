@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -62,6 +63,10 @@ def make_config():
           {
             "name": "embedded",
             "type": "`$OBJECT`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "links",
@@ -155,6 +160,10 @@ def make_config():
           {
             "name": "embedded",
             "type": "`$OBJECT`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "links",
@@ -312,6 +321,10 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "links",
             "short": "HATEOAS links",
             "type": "`$OBJECT`",
@@ -393,6 +406,10 @@ def make_config():
           {
             "name": "embedded",
             "type": "`$OBJECT`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "links",

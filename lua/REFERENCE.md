@@ -104,6 +104,7 @@ local author = client:Author(nil)
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of authors |
 | `embedded` | `table` | No |  |
+| `id` | `string` | No |  |
 | `links` | `table` | No | HATEOAS links |
 | `total` | `number` | No | Total number of authors available |
 
@@ -161,6 +162,7 @@ local quote = client:Quote(nil)
 | `count` | `number` | No | Total number of quotes found |
 | `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `table` | No |  |
+| `id` | `string` | No |  |
 | `links` | `table` | No | HATEOAS links for pagination |
 | `quote_id` | `string` | No | Unique identifier for the quote |
 | `tags` | `table` | No | Tags associated with the quote |
@@ -228,6 +230,7 @@ local source = client:Source(nil)
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of sources |
 | `embedded` | `table` | No |  |
+| `id` | `string` | No |  |
 | `links` | `table` | No | HATEOAS links |
 | `total` | `number` | No | Total number of sources available |
 
@@ -283,6 +286,7 @@ local tag = client:Tag(nil)
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of quotes found |
 | `embedded` | `table` | No |  |
+| `id` | `string` | No |  |
 | `links` | `table` | No | HATEOAS links for pagination |
 | `total` | `number` | No | Total number of quotes available |
 

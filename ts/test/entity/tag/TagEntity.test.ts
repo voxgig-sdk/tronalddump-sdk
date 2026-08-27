@@ -59,9 +59,12 @@ describe('TagEntity', async () => {
 
     let tag_ref01_data = Object.values(setup.data.existing.tag)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const tag_ref01_ent = client.Tag()
+    const tag_ref01_match_dt0: any = {}
+    tag_ref01_match_dt0.id = tag_ref01_data.id
+    const tag_ref01_data_dt0 = (await tag_ref01_ent.load(tag_ref01_match_dt0)).data()
+    assert(tag_ref01_data_dt0.id === tag_ref01_data.id)
 
 
   })

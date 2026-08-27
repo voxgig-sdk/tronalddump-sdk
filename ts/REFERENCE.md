@@ -154,6 +154,7 @@ const author = client.Author()
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of authors |
 | `embedded` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `links` | `Record<string, any>` | No | HATEOAS links |
 | `total` | `number` | No | Total number of authors available |
 
@@ -209,6 +210,7 @@ const quote = client.Quote()
 | `count` | `number` | No | Total number of quotes found |
 | `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `links` | `Record<string, any>` | No | HATEOAS links for pagination |
 | `quote_id` | `string` | No | Unique identifier for the quote |
 | `tags` | `any[]` | No | Tags associated with the quote |
@@ -274,6 +276,7 @@ const source = client.Source()
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of sources |
 | `embedded` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `links` | `Record<string, any>` | No | HATEOAS links |
 | `total` | `number` | No | Total number of sources available |
 
@@ -327,6 +330,7 @@ const tag = client.Tag()
 | --- | --- | --- | --- |
 | `count` | `number` | No | Total number of quotes found |
 | `embedded` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `links` | `Record<string, any>` | No | HATEOAS links for pagination |
 | `total` | `number` | No | Total number of quotes available |
 

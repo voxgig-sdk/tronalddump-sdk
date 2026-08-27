@@ -106,6 +106,7 @@ $author = $client->Author();
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of authors |
 | `embedded` | `array` | No |  |
+| `id` | `string` | No |  |
 | `links` | `array` | No | HATEOAS links |
 | `total` | `int` | No | Total number of authors available |
 
@@ -163,6 +164,7 @@ $quote = $client->Quote();
 | `count` | `int` | No | Total number of quotes found |
 | `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `array` | No |  |
+| `id` | `string` | No |  |
 | `links` | `array` | No | HATEOAS links for pagination |
 | `quote_id` | `string` | No | Unique identifier for the quote |
 | `tags` | `array` | No | Tags associated with the quote |
@@ -230,6 +232,7 @@ $source = $client->Source();
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of sources |
 | `embedded` | `array` | No |  |
+| `id` | `string` | No |  |
 | `links` | `array` | No | HATEOAS links |
 | `total` | `int` | No | Total number of sources available |
 
@@ -285,6 +288,7 @@ $tag = $client->Tag();
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of quotes found |
 | `embedded` | `array` | No |  |
+| `id` | `string` | No |  |
 | `links` | `array` | No | HATEOAS links for pagination |
 | `total` | `int` | No | Total number of quotes available |
 

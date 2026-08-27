@@ -17,6 +17,11 @@ main: kit: entity: source: {
       type: "`$OBJECT`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "links"
       req: false
       short: "HATEOAS links"
@@ -29,6 +34,11 @@ main: kit: entity: source: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "source"
   op: {

@@ -17,6 +17,7 @@ class Author
 {
     public ?int $count = null;
     public ?array $embedded = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?int $total = null;
 }
@@ -34,6 +35,7 @@ class Quote
     public ?int $count = null;
     public ?string $created_at = null;
     public ?array $embedded = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?string $quote_id = null;
     public ?array $tags = null;
@@ -55,6 +57,7 @@ class QuoteListMatch
     public ?int $count = null;
     public ?string $created_at = null;
     public ?array $embedded = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?string $quote_id = null;
     public ?array $tags = null;
@@ -68,6 +71,7 @@ class Source
 {
     public ?int $count = null;
     public ?array $embedded = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?int $total = null;
 }
@@ -83,6 +87,7 @@ class Tag
 {
     public ?int $count = null;
     public ?array $embedded = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?int $total = null;
 }

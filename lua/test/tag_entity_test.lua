@@ -44,10 +44,14 @@ describe("TagEntity", function()
 
     -- LOAD
     local tag_ref01_ent = client:Tag(nil)
-    local tag_ref01_match_dt0 = {}
+    local tag_ref01_match_dt0 = {
+      id = tag_ref01_data["id"],
+    }
     local tag_ref01_data_dt0_loaded, err = tag_ref01_ent:load(tag_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(tag_ref01_data_dt0_loaded)
+    local tag_ref01_data_dt0_load_result = helpers.to_map(type(tag_ref01_data_dt0_loaded) == 'table' and tag_ref01_data_dt0_loaded.data_get and tag_ref01_data_dt0_loaded:data_get() or tag_ref01_data_dt0_loaded)
+    assert.is_not_nil(tag_ref01_data_dt0_load_result)
+    assert.are.equal(tag_ref01_data_dt0_load_result["id"], tag_ref01_data["id"])
 
   end)
 end)

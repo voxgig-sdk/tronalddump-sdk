@@ -59,9 +59,12 @@ describe('SourceEntity', async () => {
 
     let source_ref01_data = Object.values(setup.data.existing.source)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const source_ref01_ent = client.Source()
+    const source_ref01_match_dt0: any = {}
+    source_ref01_match_dt0.id = source_ref01_data.id
+    const source_ref01_data_dt0 = (await source_ref01_ent.load(source_ref01_match_dt0)).data()
+    assert(source_ref01_data_dt0.id === source_ref01_data.id)
 
 
   })

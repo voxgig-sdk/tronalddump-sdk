@@ -19,6 +19,7 @@ from typing import TypedDict, Any
 class Author(TypedDict, total=False):
     count: int
     embedded: dict
+    id: str
     links: dict
     total: int
 
@@ -32,6 +33,7 @@ class Quote(TypedDict, total=False):
     count: int
     created_at: str
     embedded: dict
+    id: str
     links: dict
     quote_id: str
     tags: list
@@ -49,6 +51,7 @@ class QuoteListMatch(TypedDict, total=False):
     count: int
     created_at: str
     embedded: dict
+    id: str
     links: dict
     quote_id: str
     tags: list
@@ -60,6 +63,7 @@ class QuoteListMatch(TypedDict, total=False):
 class Source(TypedDict, total=False):
     count: int
     embedded: dict
+    id: str
     links: dict
     total: int
 
@@ -71,6 +75,7 @@ class SourceLoadMatch(TypedDict):
 class Tag(TypedDict, total=False):
     count: int
     embedded: dict
+    id: str
     links: dict
     total: int
 

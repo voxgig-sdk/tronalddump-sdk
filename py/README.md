@@ -247,6 +247,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `count` | Total number of authors |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links |
 | `total` | Total number of authors available |
 
@@ -262,6 +263,7 @@ API path: `/author/{author_id}`
 | `count` | Total number of quotes found |
 | `created_at` | The date and time when the quote was created in the system |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links for pagination |
 | `quote_id` | Unique identifier for the quote |
 | `tags` | Tags associated with the quote |
@@ -279,6 +281,7 @@ API path: `/random/quote`
 | --- | --- |
 | `count` | Total number of sources |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links |
 | `total` | Total number of sources available |
 
@@ -292,6 +295,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` | Total number of quotes found |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links for pagination |
 | `total` | Total number of quotes available |
 
@@ -320,6 +324,7 @@ Create an instance: `author = client.Author()`
 | --- | --- | --- |
 | `count` | `int` | Total number of authors |
 | `embedded` | `dict` |  |
+| `id` | `str` |  |
 | `links` | `dict` | HATEOAS links |
 | `total` | `int` | Total number of authors available |
 
@@ -349,6 +354,7 @@ Create an instance: `quote = client.Quote()`
 | `count` | `int` | Total number of quotes found |
 | `created_at` | `str` | The date and time when the quote was created in the system |
 | `embedded` | `dict` |  |
+| `id` | `str` |  |
 | `links` | `dict` | HATEOAS links for pagination |
 | `quote_id` | `str` | Unique identifier for the quote |
 | `tags` | `list` | Tags associated with the quote |
@@ -385,6 +391,7 @@ Create an instance: `source = client.Source()`
 | --- | --- | --- |
 | `count` | `int` | Total number of sources |
 | `embedded` | `dict` |  |
+| `id` | `str` |  |
 | `links` | `dict` | HATEOAS links |
 | `total` | `int` | Total number of sources available |
 
@@ -411,6 +418,7 @@ Create an instance: `tag = client.Tag()`
 | --- | --- | --- |
 | `count` | `int` | Total number of quotes found |
 | `embedded` | `dict` |  |
+| `id` | `str` |  |
 | `links` | `dict` | HATEOAS links for pagination |
 | `total` | `int` | Total number of quotes available |
 

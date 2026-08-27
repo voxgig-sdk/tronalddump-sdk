@@ -265,6 +265,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"count"` | Total number of authors |
 | `"embedded"` |  |
+| `"id"` |  |
 | `"links"` | HATEOAS links |
 | `"total"` | Total number of authors available |
 
@@ -280,6 +281,7 @@ API path: `/author/{author_id}`
 | `"count"` | Total number of quotes found |
 | `"created_at"` | The date and time when the quote was created in the system |
 | `"embedded"` |  |
+| `"id"` |  |
 | `"links"` | HATEOAS links for pagination |
 | `"quote_id"` | Unique identifier for the quote |
 | `"tags"` | Tags associated with the quote |
@@ -297,6 +299,7 @@ API path: `/random/quote`
 | --- | --- |
 | `"count"` | Total number of sources |
 | `"embedded"` |  |
+| `"id"` |  |
 | `"links"` | HATEOAS links |
 | `"total"` | Total number of sources available |
 
@@ -310,6 +313,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `"count"` | Total number of quotes found |
 | `"embedded"` |  |
+| `"id"` |  |
 | `"links"` | HATEOAS links for pagination |
 | `"total"` | Total number of quotes available |
 
@@ -338,6 +342,7 @@ Create an instance: `author := client.Author(nil)`
 | --- | --- | --- |
 | `count` | `int` | Total number of authors |
 | `embedded` | `map[string]any` |  |
+| `id` | `string` |  |
 | `links` | `map[string]any` | HATEOAS links |
 | `total` | `int` | Total number of authors available |
 
@@ -371,6 +376,7 @@ Create an instance: `quote := client.Quote(nil)`
 | `count` | `int` | Total number of quotes found |
 | `created_at` | `string` | The date and time when the quote was created in the system |
 | `embedded` | `map[string]any` |  |
+| `id` | `string` |  |
 | `links` | `map[string]any` | HATEOAS links for pagination |
 | `quote_id` | `string` | Unique identifier for the quote |
 | `tags` | `[]any` | Tags associated with the quote |
@@ -415,6 +421,7 @@ Create an instance: `source := client.Source(nil)`
 | --- | --- | --- |
 | `count` | `int` | Total number of sources |
 | `embedded` | `map[string]any` |  |
+| `id` | `string` |  |
 | `links` | `map[string]any` | HATEOAS links |
 | `total` | `int` | Total number of sources available |
 
@@ -445,6 +452,7 @@ Create an instance: `tag := client.Tag(nil)`
 | --- | --- | --- |
 | `count` | `int` | Total number of quotes found |
 | `embedded` | `map[string]any` |  |
+| `id` | `string` |  |
 | `links` | `map[string]any` | HATEOAS links for pagination |
 | `total` | `int` | Total number of quotes available |
 

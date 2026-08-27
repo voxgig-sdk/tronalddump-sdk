@@ -2,35 +2,35 @@
   "existing": {
     "tag": {
       "TAG00": {
-        "count": "s28",
+        "count": "s32",
         "embedded": {},
+        "id": "TAG00",
         "links": {},
-        "total": "s2b",
-        "id": "TAG00"
+        "total": "s36"
       },
       "TAG01": {
-        "count": "s50",
+        "count": "s64",
         "embedded": {},
+        "id": "TAG01",
         "links": {},
-        "total": "s53",
-        "id": "TAG01"
+        "total": "s68"
       },
       "TAG02": {
-        "count": "s78",
+        "count": "s96",
         "embedded": {},
+        "id": "TAG02",
         "links": {},
-        "total": "s7b",
-        "id": "TAG02"
+        "total": "s9a"
       }
     }
   },
   "new": {
     "tag": {
       "tag_ref01": {
-        "count": "sa0",
+        "count": "sc8",
         "embedded": {},
         "links": {},
-        "total": "sa3"
+        "total": "scc"
       }
     }
   }

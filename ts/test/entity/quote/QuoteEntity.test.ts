@@ -68,8 +68,9 @@ describe('QuoteEntity', async () => {
 
     // LOAD
     const quote_ref01_match_dt0: any = {}
+    quote_ref01_match_dt0.id = quote_ref01_data.id
     const quote_ref01_data_dt0 = (await quote_ref01_ent.load(quote_ref01_match_dt0)).data()
-    assert(null != quote_ref01_data_dt0)
+    assert(quote_ref01_data_dt0.id === quote_ref01_data.id)
 
 
   })

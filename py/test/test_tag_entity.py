@@ -48,9 +48,13 @@ class TestTagEntity:
 
         # LOAD
         tag_ref01_ent = client.Tag(None)
-        tag_ref01_match_dt0 = {}
+        tag_ref01_match_dt0 = {
+            "id": tag_ref01_data["id"],
+        }
         tag_ref01_data_dt0_loaded = tag_ref01_ent.load(tag_ref01_match_dt0, None)
-        assert tag_ref01_data_dt0_loaded is not None
+        tag_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(tag_ref01_data_dt0_loaded))
+        assert tag_ref01_data_dt0_load_result is not None
+        assert tag_ref01_data_dt0_load_result["id"] == tag_ref01_data["id"]
 
 
 

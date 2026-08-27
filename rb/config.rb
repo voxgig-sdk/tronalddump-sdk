@@ -28,6 +28,7 @@ module TronalddumpConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -53,6 +54,10 @@ module TronalddumpConfig
             {
               "name" => "embedded",
               "type" => "`$OBJECT`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "links",
@@ -146,6 +151,10 @@ module TronalddumpConfig
             {
               "name" => "embedded",
               "type" => "`$OBJECT`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "links",
@@ -303,6 +312,10 @@ module TronalddumpConfig
               "type" => "`$OBJECT`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "links",
               "short" => "HATEOAS links",
               "type" => "`$OBJECT`",
@@ -384,6 +397,10 @@ module TronalddumpConfig
             {
               "name" => "embedded",
               "type" => "`$OBJECT`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "links",

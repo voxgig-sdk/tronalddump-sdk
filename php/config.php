@@ -42,6 +42,7 @@ class TronalddumpConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -67,6 +68,10 @@ class TronalddumpConfig
             [
               'name' => 'embedded',
               'type' => '`$OBJECT`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
@@ -160,6 +165,10 @@ class TronalddumpConfig
             [
               'name' => 'embedded',
               'type' => '`$OBJECT`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
@@ -317,6 +326,10 @@ class TronalddumpConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'links',
               'short' => 'HATEOAS links',
               'type' => '`$OBJECT`',
@@ -398,6 +411,10 @@ class TronalddumpConfig
             [
               'name' => 'embedded',
               'type' => '`$OBJECT`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'links',

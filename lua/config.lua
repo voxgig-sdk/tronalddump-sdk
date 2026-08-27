@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -41,6 +42,10 @@ local function make_config()
           {
             ["name"] = "embedded",
             ["type"] = "`$OBJECT`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "links",
@@ -134,6 +139,10 @@ local function make_config()
           {
             ["name"] = "embedded",
             ["type"] = "`$OBJECT`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "links",
@@ -291,6 +300,10 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+          {
             ["name"] = "links",
             ["short"] = "HATEOAS links",
             ["type"] = "`$OBJECT`",
@@ -372,6 +385,10 @@ local function make_config()
           {
             ["name"] = "embedded",
             ["type"] = "`$OBJECT`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "links",

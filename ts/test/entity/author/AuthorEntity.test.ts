@@ -59,9 +59,12 @@ describe('AuthorEntity', async () => {
 
     let author_ref01_data = Object.values(setup.data.existing.author)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const author_ref01_ent = client.Author()
+    const author_ref01_match_dt0: any = {}
+    author_ref01_match_dt0.id = author_ref01_data.id
+    const author_ref01_data_dt0 = (await author_ref01_ent.load(author_ref01_match_dt0)).data()
+    assert(author_ref01_data_dt0.id === author_ref01_data.id)
 
 
   })

@@ -2,59 +2,59 @@
   "existing": {
     "quote": {
       "QUOTE00": {
-        "appeared_at": "s64",
-        "count": "s65",
-        "created_at": "s66",
+        "appeared_at": "s6e",
+        "count": "s6f",
+        "created_at": "s70",
         "embedded": {},
+        "id": "QUOTE00",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s6b",
-        "updated_at": "s6c",
-        "value": "s6d",
-        "id": "QUOTE00"
+        "total": "s76",
+        "updated_at": "s77",
+        "value": "s78"
       },
       "QUOTE01": {
-        "appeared_at": "sc8",
-        "count": "sc9",
-        "created_at": "sca",
+        "appeared_at": "sdc",
+        "count": "sdd",
+        "created_at": "sde",
         "embedded": {},
+        "id": "QUOTE01",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "scf",
-        "updated_at": "sd0",
-        "value": "sd1",
-        "id": "QUOTE01"
+        "total": "se4",
+        "updated_at": "se5",
+        "value": "se6"
       },
       "QUOTE02": {
-        "appeared_at": "s12c",
-        "count": "s12d",
-        "created_at": "s12e",
+        "appeared_at": "s14a",
+        "count": "s14b",
+        "created_at": "s14c",
         "embedded": {},
+        "id": "QUOTE02",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s133",
-        "updated_at": "s134",
-        "value": "s135",
-        "id": "QUOTE02"
+        "total": "s152",
+        "updated_at": "s153",
+        "value": "s154"
       }
     }
   },
   "new": {
     "quote": {
       "quote_ref01": {
-        "appeared_at": "s190",
-        "count": "s191",
-        "created_at": "s192",
+        "appeared_at": "s1b8",
+        "count": "s1b9",
+        "created_at": "s1ba",
         "embedded": {},
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s197",
-        "updated_at": "s198",
-        "value": "s199"
+        "total": "s1c0",
+        "updated_at": "s1c1",
+        "value": "s1c2"
       }
     }
   }

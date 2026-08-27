@@ -48,9 +48,13 @@ class SourceEntityTest extends TestCase
 
         // LOAD
         $source_ref01_ent = $client->Source(null);
-        $source_ref01_match_dt0 = [];
+        $source_ref01_match_dt0 = [
+            "id" => $source_ref01_data["id"],
+        ];
         $source_ref01_data_dt0_loaded = $source_ref01_ent->load($source_ref01_match_dt0, null);
-        $this->assertNotNull($source_ref01_data_dt0_loaded);
+        $source_ref01_data_dt0_load_result = Helpers::to_map(is_object($source_ref01_data_dt0_loaded) && method_exists($source_ref01_data_dt0_loaded, 'data_get') ? $source_ref01_data_dt0_loaded->data_get() : $source_ref01_data_dt0_loaded);
+        $this->assertNotNull($source_ref01_data_dt0_load_result);
+        $this->assertEquals($source_ref01_data_dt0_load_result["id"], $source_ref01_data["id"]);
 
     }
 }

@@ -107,6 +107,7 @@ author = client.Author
 | --- | --- | --- | --- |
 | `count` | `Integer` | No | Total number of authors |
 | `embedded` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `links` | `Hash` | No | HATEOAS links |
 | `total` | `Integer` | No | Total number of authors available |
 
@@ -164,6 +165,7 @@ quote = client.Quote
 | `count` | `Integer` | No | Total number of quotes found |
 | `created_at` | `String` | No | The date and time when the quote was created in the system |
 | `embedded` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `links` | `Hash` | No | HATEOAS links for pagination |
 | `quote_id` | `String` | No | Unique identifier for the quote |
 | `tags` | `Array` | No | Tags associated with the quote |
@@ -231,6 +233,7 @@ source = client.Source
 | --- | --- | --- | --- |
 | `count` | `Integer` | No | Total number of sources |
 | `embedded` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `links` | `Hash` | No | HATEOAS links |
 | `total` | `Integer` | No | Total number of sources available |
 
@@ -286,6 +289,7 @@ tag = client.Tag
 | --- | --- | --- | --- |
 | `count` | `Integer` | No | Total number of quotes found |
 | `embedded` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `links` | `Hash` | No | HATEOAS links for pagination |
 | `total` | `Integer` | No | Total number of quotes available |
 

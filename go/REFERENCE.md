@@ -112,6 +112,7 @@ fmt.Println(author.GetName()) // "author"
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of authors |
 | `embedded` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `links` | `map[string]any` | No | HATEOAS links |
 | `total` | `int` | No | Total number of authors available |
 
@@ -168,6 +169,7 @@ fmt.Println(quote.GetName()) // "quote"
 | `count` | `int` | No | Total number of quotes found |
 | `created_at` | `string` | No | The date and time when the quote was created in the system |
 | `embedded` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `links` | `map[string]any` | No | HATEOAS links for pagination |
 | `quote_id` | `string` | No | Unique identifier for the quote |
 | `tags` | `[]any` | No | Tags associated with the quote |
@@ -238,6 +240,7 @@ fmt.Println(source.GetName()) // "source"
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of sources |
 | `embedded` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `links` | `map[string]any` | No | HATEOAS links |
 | `total` | `int` | No | Total number of sources available |
 
@@ -292,6 +295,7 @@ fmt.Println(tag.GetName()) // "tag"
 | --- | --- | --- | --- |
 | `count` | `int` | No | Total number of quotes found |
 | `embedded` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `links` | `map[string]any` | No | HATEOAS links for pagination |
 | `total` | `int` | No | Total number of quotes available |
 

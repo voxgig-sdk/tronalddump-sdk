@@ -9,6 +9,7 @@
 ---@class Author
 ---@field count? number
 ---@field embedded? table
+---@field id? string
 ---@field links? table
 ---@field total? number
 
@@ -20,6 +21,7 @@
 ---@field count? number
 ---@field created_at? string
 ---@field embedded? table
+---@field id? string
 ---@field links? table
 ---@field quote_id? string
 ---@field tags? table
@@ -35,6 +37,7 @@
 ---@field count? number
 ---@field created_at? string
 ---@field embedded? table
+---@field id? string
 ---@field links? table
 ---@field quote_id? string
 ---@field tags? table
@@ -45,6 +48,7 @@
 ---@class Source
 ---@field count? number
 ---@field embedded? table
+---@field id? string
 ---@field links? table
 ---@field total? number
 
@@ -54,6 +58,7 @@
 ---@class Tag
 ---@field count? number
 ---@field embedded? table
+---@field id? string
 ---@field links? table
 ---@field total? number
 

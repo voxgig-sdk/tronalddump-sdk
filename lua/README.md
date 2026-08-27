@@ -232,6 +232,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `count` | Total number of authors |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links |
 | `total` | Total number of authors available |
 
@@ -247,6 +248,7 @@ API path: `/author/{author_id}`
 | `count` | Total number of quotes found |
 | `created_at` | The date and time when the quote was created in the system |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links for pagination |
 | `quote_id` | Unique identifier for the quote |
 | `tags` | Tags associated with the quote |
@@ -264,6 +266,7 @@ API path: `/random/quote`
 | --- | --- |
 | `count` | Total number of sources |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links |
 | `total` | Total number of sources available |
 
@@ -277,6 +280,7 @@ API path: `/source/{source_id}`
 | --- | --- |
 | `count` | Total number of quotes found |
 | `embedded` |  |
+| `id` |  |
 | `links` | HATEOAS links for pagination |
 | `total` | Total number of quotes available |
 
@@ -305,6 +309,7 @@ Create an instance: `local author = client:Author(nil)`
 | --- | --- | --- |
 | `count` | `number` | Total number of authors |
 | `embedded` | `table` |  |
+| `id` | `string` |  |
 | `links` | `table` | HATEOAS links |
 | `total` | `number` | Total number of authors available |
 
@@ -334,6 +339,7 @@ Create an instance: `local quote = client:Quote(nil)`
 | `count` | `number` | Total number of quotes found |
 | `created_at` | `string` | The date and time when the quote was created in the system |
 | `embedded` | `table` |  |
+| `id` | `string` |  |
 | `links` | `table` | HATEOAS links for pagination |
 | `quote_id` | `string` | Unique identifier for the quote |
 | `tags` | `table` | Tags associated with the quote |
@@ -370,6 +376,7 @@ Create an instance: `local source = client:Source(nil)`
 | --- | --- | --- |
 | `count` | `number` | Total number of sources |
 | `embedded` | `table` |  |
+| `id` | `string` |  |
 | `links` | `table` | HATEOAS links |
 | `total` | `number` | Total number of sources available |
 
@@ -396,6 +403,7 @@ Create an instance: `local tag = client:Tag(nil)`
 | --- | --- | --- |
 | `count` | `number` | Total number of quotes found |
 | `embedded` | `table` |  |
+| `id` | `string` |  |
 | `links` | `table` | HATEOAS links for pagination |
 | `total` | `number` | Total number of quotes available |
 

@@ -44,10 +44,14 @@ describe("SourceEntity", function()
 
     -- LOAD
     local source_ref01_ent = client:Source(nil)
-    local source_ref01_match_dt0 = {}
+    local source_ref01_match_dt0 = {
+      id = source_ref01_data["id"],
+    }
     local source_ref01_data_dt0_loaded, err = source_ref01_ent:load(source_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(source_ref01_data_dt0_loaded)
+    local source_ref01_data_dt0_load_result = helpers.to_map(type(source_ref01_data_dt0_loaded) == 'table' and source_ref01_data_dt0_loaded.data_get and source_ref01_data_dt0_loaded:data_get() or source_ref01_data_dt0_loaded)
+    assert.is_not_nil(source_ref01_data_dt0_load_result)
+    assert.are.equal(source_ref01_data_dt0_load_result["id"], source_ref01_data["id"])
 
   end)
 end)
