@@ -212,8 +212,16 @@ Tag = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] size
+#   @return [Integer, nil]
 TagLoadMatch = Struct.new(
   :id,
+  :page,
+  :size,
   keyword_init: true
 )
 

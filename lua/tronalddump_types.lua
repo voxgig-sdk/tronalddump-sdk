@@ -64,6 +64,8 @@
 
 ---@class TagLoadMatch
 ---@field id string
+---@field page? number
+---@field size? number
 
 local M = {}
 

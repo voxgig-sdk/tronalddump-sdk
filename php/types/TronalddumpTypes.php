@@ -96,5 +96,7 @@ class Tag
 class TagLoadMatch
 {
     public string $id;
+    public ?int $page = null;
+    public ?int $size = null;
 }
 

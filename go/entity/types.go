@@ -87,6 +87,8 @@ type Tag struct {
 // TagLoadMatch is the typed request payload for Tag.LoadTyped.
 type TagLoadMatch struct {
 	Id string `json:"id"`
+	Page *int `json:"page,omitempty"`
+	Size *int `json:"size,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

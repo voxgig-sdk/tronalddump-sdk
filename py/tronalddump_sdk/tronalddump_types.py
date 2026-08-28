@@ -80,5 +80,10 @@ class Tag(TypedDict, total=False):
     total: int
 
 
-class TagLoadMatch(TypedDict):
+class TagLoadMatchRequired(TypedDict):
     id: str
+
+
+class TagLoadMatch(TagLoadMatchRequired, total=False):
+    page: int
+    size: int

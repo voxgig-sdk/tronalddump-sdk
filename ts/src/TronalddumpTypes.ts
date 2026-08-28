@@ -71,5 +71,7 @@ export interface Tag {
 
 export interface TagLoadMatch {
   id: string
+  page?: number
+  size?: number
 }
 
