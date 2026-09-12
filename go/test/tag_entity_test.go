@@ -50,7 +50,7 @@ func TestTagEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		tagRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.tag", setup.data)))
+		tagRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.tag")))
 		var tagRef01Data map[string]any
 		if len(tagRef01DataRaw) > 0 {
 			tagRef01Data = core.ToMapAny(tagRef01DataRaw[0][1])
@@ -103,7 +103,7 @@ func tagBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"tag01", "tag02", "tag03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -131,10 +131,22 @@ func tagBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["TRONALDDUMP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewTronalddumpSDK(core.ToMapAny(mergedOpts))
 	}

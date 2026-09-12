@@ -70,6 +70,10 @@ module TronalddumpConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "author",
           "op" => {
             "load" => {
@@ -91,15 +95,19 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/author/{author_id}",
-                  "parts" => [
-                    "author",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "author_id" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "author",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -109,20 +117,29 @@ module TronalddumpConfig
                     "req" => "`reqdata`",
                     "res" => "`body._links`",
                   },
+                  "parts" => [
+                    "author",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/author",
-                  "parts" => [
-                    "author",
+                  "segments" => [
+                    {
+                      "lit" => "author",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "author",
+                  ],
                 },
               ],
             },
@@ -134,6 +151,7 @@ module TronalddumpConfig
         "quote" => {
           "fields" => [
             {
+              "format" => "date-time",
               "name" => "appeared_at",
               "short" => "The date and time when the quote appeared",
               "type" => "`$STRING`",
@@ -144,6 +162,7 @@ module TronalddumpConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date-time",
               "name" => "created_at",
               "short" => "The date and time when the quote was created in the system",
               "type" => "`$STRING`",
@@ -177,6 +196,7 @@ module TronalddumpConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date-time",
               "name" => "updated_at",
               "short" => "The date and time when the quote was last updated",
               "type" => "`$STRING`",
@@ -187,6 +207,10 @@ module TronalddumpConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "quote",
           "op" => {
             "list" => {
@@ -198,15 +222,23 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/random/quote",
-                  "parts" => [
-                    "random",
-                    "quote",
+                  "segments" => [
+                    {
+                      "lit" => "random",
+                    },
+                    {
+                      "lit" => "quote",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "random",
+                    "quote",
+                  ],
                 },
               ],
             },
@@ -243,9 +275,13 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search/quote",
-                  "parts" => [
-                    "search",
-                    "quote",
+                  "segments" => [
+                    {
+                      "lit" => "search",
+                    },
+                    {
+                      "lit" => "quote",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -258,6 +294,10 @@ module TronalddumpConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "search",
+                    "quote",
+                  ],
                 },
                 {
                   "args" => {
@@ -274,15 +314,19 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quote/{quote_id}",
-                  "parts" => [
-                    "quote",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "quote_id" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "quote",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -292,6 +336,10 @@ module TronalddumpConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quote",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -326,6 +374,10 @@ module TronalddumpConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "source",
           "op" => {
             "load" => {
@@ -347,15 +399,19 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/source/{source_id}",
-                  "parts" => [
-                    "source",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "source_id" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "source",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -365,20 +421,29 @@ module TronalddumpConfig
                     "req" => "`reqdata`",
                     "res" => "`body._links`",
                   },
+                  "parts" => [
+                    "source",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/source",
-                  "parts" => [
-                    "source",
+                  "segments" => [
+                    {
+                      "lit" => "source",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "source",
+                  ],
                 },
               ],
             },
@@ -413,6 +478,10 @@ module TronalddumpConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "tag",
           "op" => {
             "load" => {
@@ -450,15 +519,19 @@ module TronalddumpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tag/{tag_value}",
-                  "parts" => [
-                    "tag",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "tag_value" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "tag",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -470,20 +543,29 @@ module TronalddumpConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "tag",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tag",
-                  "parts" => [
-                    "tag",
+                  "segments" => [
+                    {
+                      "lit" => "tag",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "tag",
+                  ],
                 },
               ],
             },

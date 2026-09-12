@@ -1,0 +1,590 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FEATURE_PLUGINS = exports.config = void 0;
+const TestFeature_1 = require("./feature/test/TestFeature");
+const FEATURE_CLASS = {
+    test: TestFeature_1.TestFeature,
+};
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS = {};
+exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
+class Config {
+    makeFeature(fn) {
+        const fc = FEATURE_CLASS[fn];
+        const fi = new fc();
+        // TODO: errors etc
+        return fi;
+    }
+    // False for a feature added at runtime via options.extend (station's
+    // adopt path) - the constructor uses this to skip makeFeature for names
+    // no generated class backs.
+    hasFeature(fn) {
+        return null != FEATURE_CLASS[fn];
+    }
+    main = {
+        name: 'Tronalddump',
+        slug: "tronalddump",
+        version: "0.0.1",
+        target: "ts",
+    };
+    feature = {
+        test: {
+            "options": {
+                "active": false
+            },
+            "transport": "base"
+        },
+    };
+    options = {
+        base: "https://api.tronalddump.io",
+        headers: {
+            "content-type": "application/json"
+        },
+        entity: {
+            author: {},
+            quote: {},
+            source: {},
+            tag: {},
+        }
+    };
+    entity = {
+        "author": {
+            "fields": [
+                {
+                    "name": "count",
+                    "short": "Total number of authors",
+                    "type": "`$INTEGER`"
+                },
+                {
+                    "name": "embedded",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "id",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "links",
+                    "short": "HATEOAS links",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "total",
+                    "short": "Total number of authors available",
+                    "type": "`$INTEGER`"
+                }
+            ],
+            "id": {
+                "field": "id",
+                "name": "id"
+            },
+            "name": "author",
+            "op": {
+                "load": {
+                    "input": "data",
+                    "name": "load",
+                    "points": [
+                        {
+                            "args": {
+                                "params": [
+                                    {
+                                        "kind": "param",
+                                        "name": "id",
+                                        "orig": "author_id",
+                                        "reqd": true,
+                                        "type": "`$STRING`"
+                                    }
+                                ]
+                            },
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/author/{author_id}",
+                            "rename": {
+                                "param": {
+                                    "author_id": "id"
+                                }
+                            },
+                            "segments": [
+                                {
+                                    "lit": "author"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body._links`"
+                            },
+                            "parts": [
+                                "author",
+                                "{id}"
+                            ]
+                        },
+                        {
+                            "args": {},
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/author",
+                            "segments": [
+                                {
+                                    "lit": "author"
+                                }
+                            ],
+                            "select": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "author"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "relations": {
+                "ancestors": []
+            }
+        },
+        "quote": {
+            "fields": [
+                {
+                    "format": "date-time",
+                    "name": "appeared_at",
+                    "short": "The date and time when the quote appeared",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "count",
+                    "short": "Total number of quotes found",
+                    "type": "`$INTEGER`"
+                },
+                {
+                    "format": "date-time",
+                    "name": "created_at",
+                    "short": "The date and time when the quote was created in the system",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "embedded",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "id",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "links",
+                    "short": "HATEOAS links for pagination",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "quote_id",
+                    "short": "Unique identifier for the quote",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "tags",
+                    "short": "Tags associated with the quote",
+                    "type": "`$ARRAY`"
+                },
+                {
+                    "name": "total",
+                    "short": "Total number of quotes available",
+                    "type": "`$INTEGER`"
+                },
+                {
+                    "format": "date-time",
+                    "name": "updated_at",
+                    "short": "The date and time when the quote was last updated",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "value",
+                    "short": "The actual quote text",
+                    "type": "`$STRING`"
+                }
+            ],
+            "id": {
+                "field": "id",
+                "name": "id"
+            },
+            "name": "quote",
+            "op": {
+                "list": {
+                    "input": "data",
+                    "name": "list",
+                    "points": [
+                        {
+                            "args": {},
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/random/quote",
+                            "segments": [
+                                {
+                                    "lit": "random"
+                                },
+                                {
+                                    "lit": "quote"
+                                }
+                            ],
+                            "select": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "random",
+                                "quote"
+                            ]
+                        }
+                    ]
+                },
+                "load": {
+                    "input": "data",
+                    "name": "load",
+                    "points": [
+                        {
+                            "args": {
+                                "query": [
+                                    {
+                                        "example": 0,
+                                        "kind": "query",
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`"
+                                    },
+                                    {
+                                        "kind": "query",
+                                        "name": "query",
+                                        "orig": "query",
+                                        "reqd": true,
+                                        "type": "`$STRING`"
+                                    },
+                                    {
+                                        "example": 25,
+                                        "kind": "query",
+                                        "name": "size",
+                                        "orig": "size",
+                                        "type": "`$INTEGER`"
+                                    }
+                                ]
+                            },
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/search/quote",
+                            "segments": [
+                                {
+                                    "lit": "search"
+                                },
+                                {
+                                    "lit": "quote"
+                                }
+                            ],
+                            "select": {
+                                "exist": [
+                                    "page",
+                                    "query",
+                                    "size"
+                                ]
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "search",
+                                "quote"
+                            ]
+                        },
+                        {
+                            "args": {
+                                "params": [
+                                    {
+                                        "kind": "param",
+                                        "name": "id",
+                                        "orig": "quote_id",
+                                        "reqd": true,
+                                        "type": "`$STRING`"
+                                    }
+                                ]
+                            },
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/quote/{quote_id}",
+                            "rename": {
+                                "param": {
+                                    "quote_id": "id"
+                                }
+                            },
+                            "segments": [
+                                {
+                                    "lit": "quote"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "quote",
+                                "{id}"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "relations": {
+                "ancestors": []
+            }
+        },
+        "source": {
+            "fields": [
+                {
+                    "name": "count",
+                    "short": "Total number of sources",
+                    "type": "`$INTEGER`"
+                },
+                {
+                    "name": "embedded",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "id",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "links",
+                    "short": "HATEOAS links",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "total",
+                    "short": "Total number of sources available",
+                    "type": "`$INTEGER`"
+                }
+            ],
+            "id": {
+                "field": "id",
+                "name": "id"
+            },
+            "name": "source",
+            "op": {
+                "load": {
+                    "input": "data",
+                    "name": "load",
+                    "points": [
+                        {
+                            "args": {
+                                "params": [
+                                    {
+                                        "kind": "param",
+                                        "name": "id",
+                                        "orig": "source_id",
+                                        "reqd": true,
+                                        "type": "`$STRING`"
+                                    }
+                                ]
+                            },
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/source/{source_id}",
+                            "rename": {
+                                "param": {
+                                    "source_id": "id"
+                                }
+                            },
+                            "segments": [
+                                {
+                                    "lit": "source"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body._links`"
+                            },
+                            "parts": [
+                                "source",
+                                "{id}"
+                            ]
+                        },
+                        {
+                            "args": {},
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/source",
+                            "segments": [
+                                {
+                                    "lit": "source"
+                                }
+                            ],
+                            "select": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "source"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "relations": {
+                "ancestors": []
+            }
+        },
+        "tag": {
+            "fields": [
+                {
+                    "name": "count",
+                    "short": "Total number of quotes found",
+                    "type": "`$INTEGER`"
+                },
+                {
+                    "name": "embedded",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "id",
+                    "type": "`$STRING`"
+                },
+                {
+                    "name": "links",
+                    "short": "HATEOAS links for pagination",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "total",
+                    "short": "Total number of quotes available",
+                    "type": "`$INTEGER`"
+                }
+            ],
+            "id": {
+                "field": "id",
+                "name": "id"
+            },
+            "name": "tag",
+            "op": {
+                "load": {
+                    "input": "data",
+                    "name": "load",
+                    "points": [
+                        {
+                            "args": {
+                                "params": [
+                                    {
+                                        "kind": "param",
+                                        "name": "id",
+                                        "orig": "tag_value",
+                                        "reqd": true,
+                                        "type": "`$STRING`"
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "example": 0,
+                                        "kind": "query",
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`"
+                                    },
+                                    {
+                                        "example": 25,
+                                        "kind": "query",
+                                        "name": "size",
+                                        "orig": "size",
+                                        "type": "`$INTEGER`"
+                                    }
+                                ]
+                            },
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/tag/{tag_value}",
+                            "rename": {
+                                "param": {
+                                    "tag_value": "id"
+                                }
+                            },
+                            "segments": [
+                                {
+                                    "lit": "tag"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "select": {
+                                "exist": [
+                                    "id",
+                                    "page",
+                                    "size"
+                                ]
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "tag",
+                                "{id}"
+                            ]
+                        },
+                        {
+                            "args": {},
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/tag",
+                            "segments": [
+                                {
+                                    "lit": "tag"
+                                }
+                            ],
+                            "select": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "parts": [
+                                "tag"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "relations": {
+                "ancestors": []
+            }
+        }
+    };
+}
+const config = new Config();
+exports.config = config;
+//# sourceMappingURL=Config.js.map

@@ -59,15 +59,19 @@ main: kit: entity: source: {
           }
           method: "GET"
           orig: "/source/{source_id}"
-          parts: [
-            "source"
-            "{id}"
-          ]
           rename: {
             param: {
               source_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "source"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -81,8 +85,10 @@ main: kit: entity: source: {
         {
           method: "GET"
           orig: "/source"
-          parts: [
-            "source"
+          segments: [
+            {
+              lit: "source"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -99,6 +110,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "author",
       "op": {
         "load": {
@@ -120,15 +135,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/author/{author_id}",
-              "parts": [
-                "author",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "author_id": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "author"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -137,21 +156,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body._links`"
-              }
+              },
+              "parts": [
+                "author",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/author",
-              "parts": [
-                "author"
+              "segments": [
+                {
+                  "lit": "author"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "author"
+              ]
             }
           ]
         }
@@ -163,6 +191,7 @@ class Config {
     "quote": {
       "fields": [
         {
+          "format": "date-time",
           "name": "appeared_at",
           "short": "The date and time when the quote appeared",
           "type": "`$STRING`"
@@ -173,6 +202,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "created_at",
           "short": "The date and time when the quote was created in the system",
           "type": "`$STRING`"
@@ -206,6 +236,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "updated_at",
           "short": "The date and time when the quote was last updated",
           "type": "`$STRING`"
@@ -216,6 +247,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "quote",
       "op": {
         "list": {
@@ -227,15 +262,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/random/quote",
-              "parts": [
-                "random",
-                "quote"
+              "segments": [
+                {
+                  "lit": "random"
+                },
+                {
+                  "lit": "quote"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "random",
+                "quote"
+              ]
             }
           ]
         },
@@ -272,9 +315,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/search/quote",
-              "parts": [
-                "search",
-                "quote"
+              "segments": [
+                {
+                  "lit": "search"
+                },
+                {
+                  "lit": "quote"
+                }
               ],
               "select": {
                 "exist": [
@@ -286,7 +333,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "search",
+                "quote"
+              ]
             },
             {
               "args": {
@@ -303,15 +354,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/quote/{quote_id}",
-              "parts": [
-                "quote",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "quote_id": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "quote"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -320,7 +375,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "quote",
+                "{id}"
+              ]
             }
           ]
         }
@@ -355,6 +414,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "source",
       "op": {
         "load": {
@@ -376,15 +439,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/source/{source_id}",
-              "parts": [
-                "source",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "source_id": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "source"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -393,21 +460,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body._links`"
-              }
+              },
+              "parts": [
+                "source",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/source",
-              "parts": [
-                "source"
+              "segments": [
+                {
+                  "lit": "source"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "source"
+              ]
             }
           ]
         }
@@ -442,6 +518,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "tag",
       "op": {
         "load": {
@@ -479,15 +559,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/tag/{tag_value}",
-              "parts": [
-                "tag",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "tag_value": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "tag"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id",
@@ -498,21 +582,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "tag",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/tag",
-              "parts": [
-                "tag"
+              "segments": [
+                {
+                  "lit": "tag"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "tag"
+              ]
             }
           ]
         }
@@ -528,6 +621,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

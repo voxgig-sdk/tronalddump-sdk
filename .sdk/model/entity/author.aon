@@ -59,15 +59,19 @@ main: kit: entity: author: {
           }
           method: "GET"
           orig: "/author/{author_id}"
-          parts: [
-            "author"
-            "{id}"
-          ]
           rename: {
             param: {
               author_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "author"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -81,8 +85,10 @@ main: kit: entity: author: {
         {
           method: "GET"
           orig: "/author"
-          parts: [
-            "author"
+          segments: [
+            {
+              lit: "author"
+            }
           ]
           transform: {
             req: "`reqdata`"
