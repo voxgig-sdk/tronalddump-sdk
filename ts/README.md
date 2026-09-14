@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
+import { TronalddumpSDK } from '@voxgig-sdk/tronalddump-sdk'
 
 const client = new TronalddumpSDK()
 ```
@@ -557,7 +557,7 @@ tronalddump/
 Import the SDK from the package root:
 
 ```ts
-import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
+import { TronalddumpSDK } from '@voxgig-sdk/tronalddump-sdk'
 ```
 
 ### Entity state

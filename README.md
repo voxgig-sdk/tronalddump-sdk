@@ -105,7 +105,7 @@ local result, err = client:Author():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
+| TypeScript | `@voxgig-sdk/tronalddump-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
 | Python | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
 | PHP | `voxgig-sdk/tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/tronalddump-sdk/go` | `go get github.com/voxgig-sdk/tronalddump-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Author():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { TronalddumpSDK } from '@voxgig-sdk/tronalddump'
+import { TronalddumpSDK } from '@voxgig-sdk/tronalddump-sdk'
 
 const client = new TronalddumpSDK()
 
