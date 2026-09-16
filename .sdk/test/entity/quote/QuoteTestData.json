@@ -3,40 +3,40 @@
     "quote": {
       "QUOTE00": {
         "appeared_at": "s6e",
-        "count": "s6f",
+        "count": 111,
         "created_at": "s70",
         "embedded": {},
         "id": "QUOTE00",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s76",
+        "total": 118,
         "updated_at": "s77",
         "value": "s78"
       },
       "QUOTE01": {
         "appeared_at": "sdc",
-        "count": "sdd",
+        "count": 221,
         "created_at": "sde",
         "embedded": {},
         "id": "QUOTE01",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "se4",
+        "total": 228,
         "updated_at": "se5",
         "value": "se6"
       },
       "QUOTE02": {
         "appeared_at": "s14a",
-        "count": "s14b",
+        "count": 331,
         "created_at": "s14c",
         "embedded": {},
         "id": "QUOTE02",
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s152",
+        "total": 338,
         "updated_at": "s153",
         "value": "s154"
       }
@@ -46,15 +46,475 @@
     "quote": {
       "quote_ref01": {
         "appeared_at": "s1b8",
-        "count": "s1b9",
+        "count": 441,
         "created_at": "s1ba",
         "embedded": {},
         "links": {},
         "quote_id": "QUOTE01",
         "tags": [],
-        "total": "s1c0",
+        "total": 448,
         "updated_at": "s1c1",
         "value": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /random/quote": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomQuote",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "_embedded": {
+                      "properties": {
+                        "author": {
+                          "items": {
+                            "properties": {
+                              "_links": {
+                                "description": "HATEOAS links related to the author",
+                                "type": "object"
+                              },
+                              "author_id": {
+                                "description": "Unique identifier for the author",
+                                "type": "string"
+                              },
+                              "bio": {
+                                "description": "Biography of the author",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the author",
+                                "type": "string"
+                              },
+                              "slug": {
+                                "description": "URL-friendly slug for the author",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "source": {
+                          "items": {
+                            "properties": {
+                              "_links": {
+                                "description": "HATEOAS links related to the source",
+                                "type": "object"
+                              },
+                              "created_at": {
+                                "description": "The date and time when the source was created",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "filename": {
+                                "description": "Filename associated with the source",
+                                "type": "string"
+                              },
+                              "source_id": {
+                                "description": "Unique identifier for the source",
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "description": "The date and time when the source was last updated",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "url": {
+                                "description": "URL of the source",
+                                "format": "uri",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "_links": {
+                      "description": "HATEOAS links related to the quote",
+                      "type": "object"
+                    },
+                    "appeared_at": {
+                      "description": "The date and time when the quote appeared",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "description": "The date and time when the quote was created in the system",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "quote_id": {
+                      "description": "Unique identifier for the quote",
+                      "type": "string"
+                    },
+                    "tags": {
+                      "description": "Tags associated with the quote",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "updated_at": {
+                      "description": "The date and time when the quote was last updated",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "The actual quote text",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Quote not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /search/quote": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchQuotes",
+        "parameters": [
+          {
+            "description": "Search query string",
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of results per page",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "default": 25,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "_embedded": {
+                      "properties": {
+                        "quotes": {
+                          "items": {
+                            "properties": {
+                              "_embedded": {
+                                "properties": {
+                                  "author": {
+                                    "items": {
+                                      "properties": {
+                                        "_links": {
+                                          "description": "HATEOAS links related to the author",
+                                          "type": "object"
+                                        },
+                                        "author_id": {
+                                          "description": "Unique identifier for the author",
+                                          "type": "string"
+                                        },
+                                        "bio": {
+                                          "description": "Biography of the author",
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "description": "Name of the author",
+                                          "type": "string"
+                                        },
+                                        "slug": {
+                                          "description": "URL-friendly slug for the author",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "source": {
+                                    "items": {
+                                      "properties": {
+                                        "_links": {
+                                          "description": "HATEOAS links related to the source",
+                                          "type": "object"
+                                        },
+                                        "created_at": {
+                                          "description": "The date and time when the source was created",
+                                          "format": "date-time",
+                                          "type": "string"
+                                        },
+                                        "filename": {
+                                          "description": "Filename associated with the source",
+                                          "type": "string"
+                                        },
+                                        "source_id": {
+                                          "description": "Unique identifier for the source",
+                                          "type": "string"
+                                        },
+                                        "updated_at": {
+                                          "description": "The date and time when the source was last updated",
+                                          "format": "date-time",
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "description": "URL of the source",
+                                          "format": "uri",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "_links": {
+                                "description": "HATEOAS links related to the quote",
+                                "type": "object"
+                              },
+                              "appeared_at": {
+                                "description": "The date and time when the quote appeared",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "description": "The date and time when the quote was created in the system",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "quote_id": {
+                                "description": "Unique identifier for the quote",
+                                "type": "string"
+                              },
+                              "tags": {
+                                "description": "Tags associated with the quote",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "updated_at": {
+                                "description": "The date and time when the quote was last updated",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "The actual quote text",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "_links": {
+                      "description": "HATEOAS links for pagination",
+                      "type": "object"
+                    },
+                    "count": {
+                      "description": "Total number of quotes found",
+                      "type": "integer"
+                    },
+                    "total": {
+                      "description": "Total number of quotes available",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "No quotes found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quote/{quote_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuoteById",
+        "parameters": [
+          {
+            "description": "The unique identifier of the quote",
+            "in": "path",
+            "name": "quote_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "_embedded": {
+                      "properties": {
+                        "author": {
+                          "items": {
+                            "properties": {
+                              "_links": {
+                                "description": "HATEOAS links related to the author",
+                                "type": "object"
+                              },
+                              "author_id": {
+                                "description": "Unique identifier for the author",
+                                "type": "string"
+                              },
+                              "bio": {
+                                "description": "Biography of the author",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the author",
+                                "type": "string"
+                              },
+                              "slug": {
+                                "description": "URL-friendly slug for the author",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "source": {
+                          "items": {
+                            "properties": {
+                              "_links": {
+                                "description": "HATEOAS links related to the source",
+                                "type": "object"
+                              },
+                              "created_at": {
+                                "description": "The date and time when the source was created",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "filename": {
+                                "description": "Filename associated with the source",
+                                "type": "string"
+                              },
+                              "source_id": {
+                                "description": "Unique identifier for the source",
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "description": "The date and time when the source was last updated",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "url": {
+                                "description": "URL of the source",
+                                "format": "uri",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "_links": {
+                      "description": "HATEOAS links related to the quote",
+                      "type": "object"
+                    },
+                    "appeared_at": {
+                      "description": "The date and time when the quote appeared",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "description": "The date and time when the quote was created in the system",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "quote_id": {
+                      "description": "Unique identifier for the quote",
+                      "type": "string"
+                    },
+                    "tags": {
+                      "description": "Tags associated with the quote",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "updated_at": {
+                      "description": "The date and time when the quote was last updated",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "The actual quote text",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Quote not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

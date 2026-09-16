@@ -1,12 +1,18 @@
 # Tronalddump SDK feature factory
 
 from tronalddump_sdk.feature.base_feature import TronalddumpBaseFeature
+from tronalddump_sdk.feature.ratelimit_feature import TronalddumpRatelimitFeature
+from tronalddump_sdk.feature.retry_feature import TronalddumpRetryFeature
 from tronalddump_sdk.feature.test_feature import TronalddumpTestFeature
+from tronalddump_sdk.feature.timeout_feature import TronalddumpTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: TronalddumpBaseFeature(),
+    "ratelimit": lambda: TronalddumpRatelimitFeature(),
+    "retry": lambda: TronalddumpRetryFeature(),
     "test": lambda: TronalddumpTestFeature(),
+    "timeout": lambda: TronalddumpTimeoutFeature(),
 }
 
 
