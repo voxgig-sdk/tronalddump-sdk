@@ -105,12 +105,12 @@ local result, err = client:Author():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/tronalddump-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
-| Python | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
-| PHP | `voxgig-sdk/tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
+| TypeScript | `@voxgig-sdk/tronalddump-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/tags) |
+| Python | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/tags) |
+| PHP | `voxgig-sdk/tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/tronalddump-sdk/go` | `go get github.com/voxgig-sdk/tronalddump-sdk/go@latest` |
-| Ruby | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
-| Lua | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/releases) |
+| Ruby | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/tags) |
+| Lua | `voxgig-sdk-tronalddump` | publish pending — [install from git tag](https://github.com/voxgig-sdk/tronalddump-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/tronalddump-sdk/go-cli` | `go install github.com/voxgig-sdk/tronalddump-sdk/go-cli/cmd/tronalddump@latest` |
 | Go MCP server | `github.com/voxgig-sdk/tronalddump-sdk/go-mcp` | `go get github.com/voxgig-sdk/tronalddump-sdk/go-mcp@latest` |
 

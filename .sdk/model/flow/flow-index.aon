@@ -1,6 +1,6 @@
 # Flows
 
-@"BasicAuthorFlow.aon"
-@"BasicQuoteFlow.aon"
-@"BasicSourceFlow.aon"
-@"BasicTagFlow.aon"
+@"./BasicAuthorFlow.aon"
+@"./BasicQuoteFlow.aon"
+@"./BasicSourceFlow.aon"
+@"./BasicTagFlow.aon"

@@ -1,6 +1,6 @@
 # Entity Models
 
-@"author.aon"
-@"quote.aon"
-@"source.aon"
-@"tag.aon"
+@"./author.aon"
+@"./quote.aon"
+@"./source.aon"
+@"./tag.aon"
