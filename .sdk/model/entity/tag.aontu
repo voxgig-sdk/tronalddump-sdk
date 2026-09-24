@@ -1,0 +1,139 @@
+# Entity: tag
+
+main: kit: entity: tag: {
+
+  alias: field: {}
+
+  fields: {
+    count: {
+      h: "Count"
+      n: "count"
+      r: false
+      sh: "Total number of quotes found"
+      t: "`$INTEGER`"
+    }
+    embedded: {
+      h: "Embedded"
+      n: "embedded"
+      r: false
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "HATEOAS links for pagination"
+      t: "`$OBJECT`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "Total number of quotes available"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tag"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /tag/{tag_value}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "tag_value"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 0
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 25
+                k: "query"
+                n: "size"
+                or: "size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/tag/{tag_value}"
+          q: {
+            exist: [
+              "id"
+              "page"
+              "size"
+            ]
+          }
+          r: {
+            param: {
+              tag_value: "id"
+            }
+          }
+          s: [
+            {
+              lit: "tag"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /tag"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/tag"
+          s: [
+            {
+              lit: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

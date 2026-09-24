@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -148,26 +141,31 @@ class Config {
       "fields": [
         {
           "name": "count",
-          "short": "Total number of authors",
-          "type": "`$INTEGER`"
+          "title": "Count",
+          "type": "`$INTEGER`",
+          "short": "Total number of authors"
         },
         {
           "name": "embedded",
+          "title": "Embedded",
           "type": "`$OBJECT`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "links",
-          "short": "HATEOAS links",
-          "type": "`$OBJECT`"
+          "title": "Links",
+          "type": "`$OBJECT`",
+          "short": "HATEOAS links"
         },
         {
           "name": "total",
-          "short": "Total number of authors available",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of authors available"
         }
       ],
       "id": {
@@ -181,25 +179,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "author_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/author/{author_id}",
-              "rename": {
-                "param": {
-                  "author_id": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "author"
@@ -208,22 +190,37 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
+              "parts": [
+                "author",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "author_id": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body._links`"
               },
-              "parts": [
-                "author",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "author_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/author",
@@ -232,14 +229,16 @@ class Config {
                   "lit": "author"
                 }
               ],
-              "select": {},
+              "parts": [
+                "author"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "author"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -251,60 +250,71 @@ class Config {
     "quote": {
       "fields": [
         {
-          "format": "date-time",
           "name": "appeared_at",
+          "title": "Appeared At",
+          "type": "`$STRING`",
           "short": "The date and time when the quote appeared",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "count",
-          "short": "Total number of quotes found",
-          "type": "`$INTEGER`"
+          "title": "Count",
+          "type": "`$INTEGER`",
+          "short": "Total number of quotes found"
         },
         {
-          "format": "date-time",
           "name": "created_at",
+          "title": "Created At",
+          "type": "`$STRING`",
           "short": "The date and time when the quote was created in the system",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "embedded",
+          "title": "Embedded",
           "type": "`$OBJECT`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "links",
-          "short": "HATEOAS links for pagination",
-          "type": "`$OBJECT`"
+          "title": "Links",
+          "type": "`$OBJECT`",
+          "short": "HATEOAS links for pagination"
         },
         {
           "name": "quote_id",
-          "short": "Unique identifier for the quote",
-          "type": "`$STRING`"
+          "title": "Quote Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the quote"
         },
         {
           "name": "tags",
-          "short": "Tags associated with the quote",
-          "type": "`$ARRAY`"
+          "title": "Tags",
+          "type": "`$ARRAY`",
+          "short": "Tags associated with the quote"
         },
         {
           "name": "total",
-          "short": "Total number of quotes available",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of quotes available"
         },
         {
-          "format": "date-time",
           "name": "updated_at",
+          "title": "Updated At",
+          "type": "`$STRING`",
           "short": "The date and time when the quote was last updated",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "value",
-          "short": "The actual quote text",
-          "type": "`$STRING`"
+          "title": "Value",
+          "type": "`$STRING`",
+          "short": "The actual quote text"
         }
       ],
       "id": {
@@ -318,7 +328,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/random/quote",
@@ -330,15 +339,17 @@ class Config {
                   "lit": "quote"
                 }
               ],
-              "select": {},
+              "parts": [
+                "random",
+                "quote"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "random",
-                "quote"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -347,31 +358,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "query",
-                    "orig": "query",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 25,
-                    "kind": "query",
-                    "name": "size",
-                    "orig": "size",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/search/quote",
@@ -383,42 +369,52 @@ class Config {
                   "lit": "quote"
                 }
               ],
+              "parts": [
+                "search",
+                "quote"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "query",
+                    "orig": "query",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "size",
+                    "orig": "size",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 25
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "page",
                   "query",
                   "size"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "search",
-                "quote"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "quote_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/quote/{quote_id}",
-              "rename": {
-                "param": {
-                  "quote_id": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "quote"
@@ -427,19 +423,35 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
+              "parts": [
+                "quote",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "quote_id": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "quote",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "quote_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -452,26 +464,31 @@ class Config {
       "fields": [
         {
           "name": "count",
-          "short": "Total number of sources",
-          "type": "`$INTEGER`"
+          "title": "Count",
+          "type": "`$INTEGER`",
+          "short": "Total number of sources"
         },
         {
           "name": "embedded",
+          "title": "Embedded",
           "type": "`$OBJECT`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "links",
-          "short": "HATEOAS links",
-          "type": "`$OBJECT`"
+          "title": "Links",
+          "type": "`$OBJECT`",
+          "short": "HATEOAS links"
         },
         {
           "name": "total",
-          "short": "Total number of sources available",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of sources available"
         }
       ],
       "id": {
@@ -485,25 +502,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "source_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/source/{source_id}",
-              "rename": {
-                "param": {
-                  "source_id": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "source"
@@ -512,22 +513,37 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
+              "parts": [
+                "source",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "source_id": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body._links`"
               },
-              "parts": [
-                "source",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "source_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/source",
@@ -536,14 +552,16 @@ class Config {
                   "lit": "source"
                 }
               ],
-              "select": {},
+              "parts": [
+                "source"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "source"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -556,26 +574,31 @@ class Config {
       "fields": [
         {
           "name": "count",
-          "short": "Total number of quotes found",
-          "type": "`$INTEGER`"
+          "title": "Count",
+          "type": "`$INTEGER`",
+          "short": "Total number of quotes found"
         },
         {
           "name": "embedded",
+          "title": "Embedded",
           "type": "`$OBJECT`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "links",
-          "short": "HATEOAS links for pagination",
-          "type": "`$OBJECT`"
+          "title": "Links",
+          "type": "`$OBJECT`",
+          "short": "HATEOAS links for pagination"
         },
         {
           "name": "total",
-          "short": "Total number of quotes available",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of quotes available"
         }
       ],
       "id": {
@@ -589,41 +612,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "tag_value",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 25,
-                    "kind": "query",
-                    "name": "size",
-                    "orig": "size",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/tag/{tag_value}",
-              "rename": {
-                "param": {
-                  "tag_value": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "tag"
@@ -632,24 +623,55 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "tag",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "tag_value": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "tag_value",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "size",
+                    "orig": "size",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 25
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "id",
                   "page",
                   "size"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "tag",
-                "{id}"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/tag",
@@ -658,14 +680,16 @@ class Config {
                   "lit": "tag"
                 }
               ],
-              "select": {},
+              "parts": [
+                "tag"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "tag"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

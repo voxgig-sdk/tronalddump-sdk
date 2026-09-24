@@ -116,26 +116,31 @@ class TronalddumpConfig
           'fields' => [
             [
               'name' => 'count',
-              'short' => 'Total number of authors',
+              'title' => 'Count',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of authors',
             ],
             [
               'name' => 'embedded',
+              'title' => 'Embedded',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
-              'short' => 'HATEOAS links',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'HATEOAS links',
             ],
             [
               'name' => 'total',
-              'short' => 'Total number of authors available',
+              'title' => 'Total',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of authors available',
             ],
           ],
           'id' => [
@@ -149,25 +154,9 @@ class TronalddumpConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'author_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/author/{author_id}',
-                  'rename' => [
-                    'param' => [
-                      'author_id' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'author',
@@ -176,22 +165,37 @@ class TronalddumpConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'author',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'author_id' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body._links`',
                   ],
-                  'parts' => [
-                    'author',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'author_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/author',
@@ -200,14 +204,16 @@ class TronalddumpConfig
                       'lit' => 'author',
                     ],
                   ],
-                  'select' => [],
+                  'parts' => [
+                    'author',
+                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'author',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -219,60 +225,71 @@ class TronalddumpConfig
         'quote' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'appeared_at',
-              'short' => 'The date and time when the quote appeared',
+              'title' => 'Appeared At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the quote appeared',
+              'format' => 'date-time',
             ],
             [
               'name' => 'count',
-              'short' => 'Total number of quotes found',
+              'title' => 'Count',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of quotes found',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created_at',
-              'short' => 'The date and time when the quote was created in the system',
+              'title' => 'Created At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the quote was created in the system',
+              'format' => 'date-time',
             ],
             [
               'name' => 'embedded',
+              'title' => 'Embedded',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
-              'short' => 'HATEOAS links for pagination',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'HATEOAS links for pagination',
             ],
             [
               'name' => 'quote_id',
-              'short' => 'Unique identifier for the quote',
+              'title' => 'Quote Id',
               'type' => '`$STRING`',
+              'short' => 'Unique identifier for the quote',
             ],
             [
               'name' => 'tags',
-              'short' => 'Tags associated with the quote',
+              'title' => 'Tags',
               'type' => '`$ARRAY`',
+              'short' => 'Tags associated with the quote',
             ],
             [
               'name' => 'total',
-              'short' => 'Total number of quotes available',
+              'title' => 'Total',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of quotes available',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updated_at',
-              'short' => 'The date and time when the quote was last updated',
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the quote was last updated',
+              'format' => 'date-time',
             ],
             [
               'name' => 'value',
-              'short' => 'The actual quote text',
+              'title' => 'Value',
               'type' => '`$STRING`',
+              'short' => 'The actual quote text',
             ],
           ],
           'id' => [
@@ -286,7 +303,6 @@ class TronalddumpConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/random/quote',
@@ -298,15 +314,17 @@ class TronalddumpConfig
                       'lit' => 'quote',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'random',
                     'quote',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -315,31 +333,6 @@ class TronalddumpConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'query',
-                        'orig' => 'query',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 25,
-                        'kind' => 'query',
-                        'name' => 'size',
-                        'orig' => 'size',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search/quote',
@@ -351,6 +344,40 @@ class TronalddumpConfig
                       'lit' => 'quote',
                     ],
                   ],
+                  'parts' => [
+                    'search',
+                    'quote',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'query',
+                        'orig' => 'query',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'size',
+                        'orig' => 'size',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 25,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
@@ -358,35 +385,11 @@ class TronalddumpConfig
                       'size',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'search',
-                    'quote',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'quote_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quote/{quote_id}',
-                  'rename' => [
-                    'param' => [
-                      'quote_id' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'quote',
@@ -395,18 +398,34 @@ class TronalddumpConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'quote',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'quote_id' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'quote',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'quote_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -420,26 +439,31 @@ class TronalddumpConfig
           'fields' => [
             [
               'name' => 'count',
-              'short' => 'Total number of sources',
+              'title' => 'Count',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of sources',
             ],
             [
               'name' => 'embedded',
+              'title' => 'Embedded',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
-              'short' => 'HATEOAS links',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'HATEOAS links',
             ],
             [
               'name' => 'total',
-              'short' => 'Total number of sources available',
+              'title' => 'Total',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of sources available',
             ],
           ],
           'id' => [
@@ -453,25 +477,9 @@ class TronalddumpConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'source_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/source/{source_id}',
-                  'rename' => [
-                    'param' => [
-                      'source_id' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'source',
@@ -480,22 +488,37 @@ class TronalddumpConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'source',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'source_id' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body._links`',
                   ],
-                  'parts' => [
-                    'source',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'source_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/source',
@@ -504,14 +527,16 @@ class TronalddumpConfig
                       'lit' => 'source',
                     ],
                   ],
-                  'select' => [],
+                  'parts' => [
+                    'source',
+                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'source',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -524,26 +549,31 @@ class TronalddumpConfig
           'fields' => [
             [
               'name' => 'count',
-              'short' => 'Total number of quotes found',
+              'title' => 'Count',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of quotes found',
             ],
             [
               'name' => 'embedded',
+              'title' => 'Embedded',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'links',
-              'short' => 'HATEOAS links for pagination',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'HATEOAS links for pagination',
             ],
             [
               'name' => 'total',
-              'short' => 'Total number of quotes available',
+              'title' => 'Total',
               'type' => '`$INTEGER`',
+              'short' => 'Total number of quotes available',
             ],
           ],
           'id' => [
@@ -557,47 +587,55 @@ class TronalddumpConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'tag_value',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 25,
-                        'kind' => 'query',
-                        'name' => 'size',
-                        'orig' => 'size',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tag/{tag_value}',
-                  'rename' => [
-                    'param' => [
-                      'tag_value' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'tag',
                     ],
                     [
                       'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'tag',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'tag_value' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'tag_value',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'size',
+                        'orig' => 'size',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 25,
+                      ],
                     ],
                   ],
                   'select' => [
@@ -607,17 +645,8 @@ class TronalddumpConfig
                       'size',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'tag',
-                    '{id}',
-                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tag',
@@ -626,14 +655,16 @@ class TronalddumpConfig
                       'lit' => 'tag',
                     ],
                   ],
-                  'select' => [],
+                  'parts' => [
+                    'tag',
+                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'tag',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],

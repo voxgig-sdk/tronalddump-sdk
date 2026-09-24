@@ -1,0 +1,28 @@
+# BasicTagFlow
+
+main: kit: flow: BasicTagFlow:
+{
+  entity: "tag",
+  kind: "basic",
+  name: "BasicTagFlow",
+  step: [
+    {
+      i: {
+        ref: "tag_ref01",
+        srcdatavar: "tag_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTagFlow"
+}

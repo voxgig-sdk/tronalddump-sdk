@@ -1,0 +1,28 @@
+# BasicSourceFlow
+
+main: kit: flow: BasicSourceFlow:
+{
+  entity: "source",
+  kind: "basic",
+  name: "BasicSourceFlow",
+  step: [
+    {
+      i: {
+        ref: "source_ref01",
+        srcdatavar: "source_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-source_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSourceFlow"
+}

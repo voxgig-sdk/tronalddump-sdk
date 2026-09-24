@@ -1,7 +1,7 @@
 // Typed models for the Tronalddump SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // Author is the typed data model for the author entity.
 type Author struct {
-	Count *int `json:"count,omitempty"`
-	Embedded *map[string]any `json:"embedded,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Total *int `json:"total,omitempty"`
 }
 
 // AuthorLoadMatch is the typed request payload for Author.LoadTyped.
@@ -28,17 +23,6 @@ type AuthorLoadMatch struct {
 
 // Quote is the typed data model for the quote entity.
 type Quote struct {
-	AppearedAt *string `json:"appeared_at,omitempty"`
-	Count *int `json:"count,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Embedded *map[string]any `json:"embedded,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	QuoteId *string `json:"quote_id,omitempty"`
-	Tags *[]any `json:"tags,omitempty"`
-	Total *int `json:"total,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Value *string `json:"value,omitempty"`
 }
 
 // QuoteLoadMatch is the typed request payload for Quote.LoadTyped.
@@ -63,11 +47,6 @@ type QuoteListMatch struct {
 
 // Source is the typed data model for the source entity.
 type Source struct {
-	Count *int `json:"count,omitempty"`
-	Embedded *map[string]any `json:"embedded,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Total *int `json:"total,omitempty"`
 }
 
 // SourceLoadMatch is the typed request payload for Source.LoadTyped.
@@ -77,11 +56,6 @@ type SourceLoadMatch struct {
 
 // Tag is the typed data model for the tag entity.
 type Tag struct {
-	Count *int `json:"count,omitempty"`
-	Embedded *map[string]any `json:"embedded,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Total *int `json:"total,omitempty"`
 }
 
 // TagLoadMatch is the typed request payload for Tag.LoadTyped.

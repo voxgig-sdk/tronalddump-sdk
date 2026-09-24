@@ -37,133 +37,13 @@
   "requests": {
     "GET /author/{author_id}": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getAuthorById",
-        "parameters": [
-          {
-            "description": "The unique identifier of the author",
-            "in": "path",
-            "name": "author_id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "_links": {
-                      "description": "HATEOAS links related to the author",
-                      "type": "object"
-                    },
-                    "author_id": {
-                      "description": "Unique identifier for the author",
-                      "type": "string"
-                    },
-                    "bio": {
-                      "description": "Biography of the author",
-                      "type": "string"
-                    },
-                    "name": {
-                      "description": "Name of the author",
-                      "type": "string"
-                    },
-                    "slug": {
-                      "description": "URL-friendly slug for the author",
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          },
-          "404": {
-            "description": "Author not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /author": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getAllAuthors",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "_embedded": {
-                      "properties": {
-                        "authors": {
-                          "items": {
-                            "properties": {
-                              "_links": {
-                                "description": "HATEOAS links related to the author",
-                                "type": "object"
-                              },
-                              "author_id": {
-                                "description": "Unique identifier for the author",
-                                "type": "string"
-                              },
-                              "bio": {
-                                "description": "Biography of the author",
-                                "type": "string"
-                              },
-                              "name": {
-                                "description": "Name of the author",
-                                "type": "string"
-                              },
-                              "slug": {
-                                "description": "URL-friendly slug for the author",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "_links": {
-                      "description": "HATEOAS links",
-                      "type": "object"
-                    },
-                    "count": {
-                      "description": "Total number of authors",
-                      "type": "integer"
-                    },
-                    "total": {
-                      "description": "Total number of authors available",
-                      "type": "integer"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }
